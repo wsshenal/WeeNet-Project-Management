@@ -1,0 +1,10 @@
+/*
+  Project color variables extracted from the provided palette.
+  Each custom property is named from lightest to deepest shade.
+*/
+:root {
+  --color1: #B0D287;
+  --color2: #96BD68;
+  --color3: #6A953F;
+  --color4: #4D6F2F;
+}
