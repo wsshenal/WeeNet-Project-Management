@@ -3,6 +3,7 @@ import pandas as pd
 from fastapi import FastAPI
 
 from models import RiskBatchRequest, RiskScore, RiskScoreResponse
+from models.risk_mng_catalog import RiskMngCatalog, load_risk_mng_catalog
 
 app = FastAPI(title="Weenet Project Management API")
 
@@ -41,3 +42,10 @@ def predict(data: RiskBatchRequest):
     project_risk_index = float(pd.Series(risk_indices).mean())
 
     return RiskScoreResponse(risk_scores=risk_scores, project_risk_index=project_risk_index)
+
+
+@app.get("/risk-management/catalog", response_model=RiskMngCatalog)
+def get_risk_management_catalog():
+    """Serve curated risk management categories and mitigations."""
+
+    return RiskMngCatalog(risk_catalog=load_risk_mng_catalog())
