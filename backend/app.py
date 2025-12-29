@@ -32,6 +32,7 @@ def predict(data: RiskBatchRequest):
     risk_scores = []
     for risk, risk_index, probability in zip(data.risks, risk_indices, probabilities):
         severity_score = severity_mapping.get(str(risk.severity).lower(), float("nan"))
+        risk_rules = evaluate_risk_rules(risk)
         risk_scores.append(
             RiskScore(
                 risk_type=str(risk.risk_type.value),
