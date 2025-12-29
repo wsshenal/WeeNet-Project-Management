@@ -13,7 +13,8 @@ def home():
 
 @app.post("/predict", response_model=RiskScoreResponse)
 def predict(data: RiskBatchRequest):
-    df = pd.DataFrame([risk.model_dump() for risk in data.risks])
+
+    df = prepare_dataframe(data)
     model = joblib.load("artifacts/random_forest.pkl")
 
     risk_indices = model.predict(df)
@@ -43,6 +44,37 @@ def predict(data: RiskBatchRequest):
 
     return RiskScoreResponse(risk_scores=risk_scores, project_risk_index=project_risk_index)
 
+@app.post("/risk/scores")
+def score_risks(batch: RiskBatchRequest):
+    """Return per-item risk labels and aggregated project risk scores."""
+
+    df = prepare_dataframe(batch)
+    model = joblib.load("artifacts/random_forest.pkl")
+
+    predictions = model.predict(df)
+
+    if hasattr(model, "predict_proba"):
+        probability_matrix = model.predict_proba(df)
+        class_index_lookup = {cls: idx for idx, cls in enumerate(model.classes_)}
+        probabilities = [
+            float(probability_matrix[i, class_index_lookup[pred]])
+            for i, pred in enumerate(predictions)
+        ]
+    else:
+        probabilities = [float(pred) for pred in predictions]
+
+    overall_risk_score = float(pd.Series(probabilities).mean()) if probabilities else 0.0
+    risks = []
+    for risk, prediction, probability in zip(batch.risks, predictions, probabilities):
+        risks.append(
+            {
+                "risk_type": risk.risk_type,
+                "risk_label": str(prediction),
+                "probability": float(probability),
+            }
+        )
+
+    return {"risks": risks, "overall_risk_score": overall_risk_score}
 
 @app.get("/risk-management/catalog", response_model=RiskMngCatalog)
 def get_risk_management_catalog():
