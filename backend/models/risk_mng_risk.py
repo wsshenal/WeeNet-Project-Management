@@ -1,12 +1,14 @@
 from typing import List
 
 from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, validator
 
+from models.risk import RiskRuleFlags, RiskType
 
 class RiskFactor(BaseModel):
     """Categorical and numeric risk drivers used by the risk model."""
 
-    risk_type: str = Field(..., description="Category such as technical, schedule, operational, or financial.")
+    risk_type: RiskType = Field(..., description="Validated risk category (technical, execution, business, environmental).")
     severity: str = Field(..., description="Ordinal severity label from the training data (e.g., low/medium/high/critical).")
     likelihood: str = Field(..., description="Probability tier of the risk materializing.")
     impact_area: str = Field(..., description="Primary area affected (schedule, scope, budget, quality).")
@@ -29,6 +31,15 @@ class RiskScore(BaseModel):
     risk_probability: float
     severity_score: float
     risk_index: float
+    risk_rules: RiskRuleFlags
+
+    @validator("risk_rules", pre=True)
+    def ensure_risk_rules(cls, value: RiskRuleFlags) -> RiskRuleFlags:
+        """Guarantee risk rules are instantiated."""
+
+        if isinstance(value, RiskRuleFlags):
+            return value
+        return RiskRuleFlags(**value)
 
 
 class RiskScoreResponse(BaseModel):

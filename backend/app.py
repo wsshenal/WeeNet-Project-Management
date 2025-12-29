@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from models import RiskBatchRequest, RiskScore, RiskScoreResponse
 from models.risk_mng_catalog import RiskMngCatalog, load_risk_mng_catalog
+from services.risk_rules import evaluate_risk_rules
 
 app = FastAPI(title="Weenet Project Management API")
 
@@ -33,10 +34,11 @@ def predict(data: RiskBatchRequest):
         severity_score = severity_mapping.get(str(risk.severity).lower(), float("nan"))
         risk_scores.append(
             RiskScore(
-                risk_type=risk.risk_type,
+                risk_type=str(risk.risk_type.value),
                 risk_probability=float(probability),
                 severity_score=severity_score,
                 risk_index=float(risk_index),
+                risk_rules=risk_rules,
             )
         )
 
@@ -66,11 +68,13 @@ def score_risks(batch: RiskBatchRequest):
     overall_risk_score = float(pd.Series(probabilities).mean()) if probabilities else 0.0
     risks = []
     for risk, prediction, probability in zip(batch.risks, predictions, probabilities):
+        risk_rules = evaluate_risk_rules(risk)
         risks.append(
             {
-                "risk_type": risk.risk_type,
+                "risk_type": str(risk.risk_type.value),
                 "risk_label": str(prediction),
                 "probability": float(probability),
+                "risk_rules": risk_rules.dict(),
             }
         )
 
