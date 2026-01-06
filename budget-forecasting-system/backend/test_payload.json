@@ -1,0 +1,12 @@
+{
+    "Domain": "E-Commerce",
+    "Mobile": 1,
+    "Desktop": 0,
+    "Web": 1,
+    "IoT": 0,
+    "Expected_Team_Size": 5,
+    "Expected_Budget": 50000,
+    "Date_Difference": 90,
+    "Risk": 2,
+    "Complexity_Level": "Medium"
+}

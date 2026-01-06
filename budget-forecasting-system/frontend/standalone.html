@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Forecasting System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result-card {
+            grid-column: 1 / -1;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box.green {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+
+        .stat-box.orange {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .stat-box.red {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .insights-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #c33;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 Budget Forecasting System</h1>
+            <p>AI-Powered Project Budget Prediction using XGBoost ML</p>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>📋 Project Details</h2>
+                <form id="budgetForm">
+                    <div class="form-group">
+                        <label for="domain">Domain</label>
+                        <select id="domain" required>
+                            <option value="E-Commerce">E-Commerce</option>
+                            <option value="Health">Health</option>
+                            <option value="Education">Education</option>
+                            <option value="Finance">Finance</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Platforms</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="mobile" value="1">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="desktop" value="1">
+                                <label for="desktop">Desktop</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="web" value="1" checked>
+                                <label for="web">Web</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="iot" value="1">
+                                <label for="iot">IoT</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamSize">Expected Team Size</label>
+                        <input type="number" id="teamSize" min="1" max="50" value="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Expected Budget ($)</label>
+                        <input type="number" id="budget" min="1000" step="1000" value="50000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration">Project Duration (days)</label>
+                        <input type="number" id="duration" min="1" max="365" value="90" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="risk">Risk Level</label>
+                        <select id="risk" required>
+                            <option value="1">Low (1)</option>
+                            <option value="2" selected>Medium (2)</option>
+                            <option value="3">High (3)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complexity">Complexity Level</label>
+                        <select id="complexity" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn" id="predictBtn">🔮 Predict Budget</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>ℹ️ How It Works</h2>
+                <p style="line-height: 1.8; color: #555;">
+                    This AI-powered system uses <strong>XGBoost regression</strong> trained on 861 historical projects to predict actual project budgets.
+                </p>
+                <br>
+                <p style="line-height: 1.8; color: #555;">
+                    <strong>Model Performance:</strong><br>
+                    • R² Score: 0.8836 (88% accuracy)<br>
+                    • MAPE: 14.61%<br>
+                    • MAE: $15,935.73<br>
+                    • RMSE: $21,783.17
+                </p>
+                <br>
+                <p style="line-height: 1.8; color: #555;">
+                    The system analyzes domain, platforms, team size, risk, complexity, and duration to provide accurate budget forecasts with AI-powered insights.
+                </p>
+            </div>
+        </div>
+
+        <div class="card result-card hidden" id="resultsCard">
+            <h2>📊 Prediction Results</h2>
+            <div id="loadingDiv" class="loading hidden">
+                <p>🔄 Analyzing project parameters...</p>
+            </div>
+            <div id="errorDiv" class="error hidden"></div>
+            <div id="resultsDiv" class="hidden">
+                <div class="result-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Expected Budget</div>
+                        <div class="stat-value" id="expectedBudget">$0</div>
+                    </div>
+                    <div class="stat-box" id="predictedBox">
+                        <div class="stat-label">Predicted Actual</div>
+                        <div class="stat-value" id="predictedBudget">$0</div>
+                    </div>
+                    <div class="stat-box" id="varianceBox">
+                        <div class="stat-label">Variance</div>
+                        <div class="stat-value" id="variance">$0</div>
+                    </div>
+                    <div class="stat-box" id="riskBox">
+                        <div class="stat-label">Budget Risk</div>
+                        <div class="stat-value" id="budgetRisk">-</div>
+                    </div>
+                </div>
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">🤖 AI-Powered Insights</h3>
+                <div class="insights-box" id="insights"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:5002';
+
+        document.getElementById('budgetForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const resultsCard = document.getElementById('resultsCard');
+            const loadingDiv = document.getElementById('loadingDiv');
+            const errorDiv = document.getElementById('errorDiv');
+            const resultsDiv = document.getElementById('resultsDiv');
+            const predictBtn = document.getElementById('predictBtn');
+
+            // Show results card and loading
+            resultsCard.classList.remove('hidden');
+            loadingDiv.classList.remove('hidden');
+            errorDiv.classList.add('hidden');
+            resultsDiv.classList.add('hidden');
+            predictBtn.disabled = true;
+
+            // Gather form data
+            const payload = {
+                Domain: document.getElementById('domain').value,
+                Mobile: document.getElementById('mobile').checked ? 1 : 0,
+                Desktop: document.getElementById('desktop').checked ? 1 : 0,
+                Web: document.getElementById('web').checked ? 1 : 0,
+                IoT: document.getElementById('iot').checked ? 1 : 0,
+                Expected_Team_Size: parseInt(document.getElementById('teamSize').value),
+                Expected_Budget: parseFloat(document.getElementById('budget').value),
+                Date_Difference: parseInt(document.getElementById('duration').value),
+                Risk: parseInt(document.getElementById('risk').value),
+                Complexity_Level: document.getElementById('complexity').value
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Hide loading
+                loadingDiv.classList.add('hidden');
+                resultsDiv.classList.remove('hidden');
+
+                // Update results
+                document.getElementById('expectedBudget').textContent = `$${data.expected_budget.toLocaleString()}`;
+                document.getElementById('predictedBudget').textContent = `$${data.predicted_budget.toLocaleString()}`;
+                document.getElementById('variance').textContent = `$${data.variance.toLocaleString()} (${data.variance_percent > 0 ? '+' : ''}${data.variance_percent}%)`;
+                document.getElementById('budgetRisk').textContent = data.budget_risk;
+                document.getElementById('insights').textContent = data.ai_insights;
+
+                // Color code risk boxes
+                const riskBox = document.getElementById('riskBox');
+                const varianceBox = document.getElementById('varianceBox');
+                
+                riskBox.className = 'stat-box';
+                varianceBox.className = 'stat-box';
+                
+                if (data.risk_color === 'green') {
+                    riskBox.classList.add('green');
+                    varianceBox.classList.add('green');
+                } else if (data.risk_color === 'orange') {
+                    riskBox.classList.add('orange');
+                    varianceBox.classList.add('orange');
+                } else {
+                    riskBox.classList.add('red');
+                    varianceBox.classList.add('red');
+                }
+
+            } catch (error) {
+                loadingDiv.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+                errorDiv.textContent = `Error: ${error.message}. Make sure the backend server is running on ${API_URL}`;
+            } finally {
+                predictBtn.disabled = false;
+            }
+        });
+
+        // Test connection on load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                const data = await response.json();
+                console.log('✅ Backend connected:', data);
+            } catch (error) {
+                console.error('❌ Backend not reachable:', error);
+            }
+        });
+    </script>
+</body>
+</html>
