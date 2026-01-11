@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/shenu/Documents/GitHub/WeeNet PM/backend/.venv/bin/python" "$0" "$@"
+'''exec' "/Users/shenu/Documents/Research Project/WeeNet Project Management/backend/.venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
