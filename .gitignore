@@ -2,18 +2,17 @@
 .DS_Store
 **/.DS_Store
 
-# Python virtual environments
+# Python
 .venv/
 venv/
 backend/.venv/
-backend/venv/
 
 # Node
 node_modules/
 frontend/node_modules/
 frontend/build/
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Data (optional – choose what to ignore)
+data/*.xlsx
+data/*.csv
+data/*.json
