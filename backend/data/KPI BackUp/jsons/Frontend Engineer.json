@@ -1,0 +1,51 @@
+{
+    "skills":{
+       "Proficiency in HTML/CSS":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Proficiency in JavaScript/TypeScript":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Knowledge of Frontend Frameworks/Libraries (React, Angular, Vue)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "UI/UX Design Principles":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Responsive Design and Cross-Browser Compatibility":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       }
+    },
+    "experience":{
+       "Years of Experience in Backend Engineer":{
+          "1-2 years":2,
+          "3-5 years":4,
+          "5+ years":6.6
+       },
+       "Experience of related domain":{
+          "0 - 5":3,
+          "6 - 14":6,
+          "15+":10
+       }
+    },
+    "education":{
+       "Bachelor's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       },
+       "Master's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       }
+    }
+ }

@@ -1,0 +1,13 @@
+numpy
+pandas 
+openpyxl
+llama-index
+llama-index-core
+llama-index-llms-openai
+scikit-learn
+flask
+flask_cors
+PyJWT
+# local LLM deps
+# using gpt4all instead of transformers-based models
+gpt4all
