@@ -1,0 +1,51 @@
+{
+    "skills":{
+       "Technical Expertise (in relevant programming languages, frameworks)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Leadership and Team Management":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Project Management Skills":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       },
+       "Problem-Solving and Decision-Making":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Communication and Collaboration":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       }
+    },
+    "experience":{
+       "Years of Experience in Tech Lead":{
+          "1-2 years":2,
+          "3-5 years":4,
+          "5+ years":6.6
+       },
+       "Experience of related domain":{
+          "0 - 5":3,
+          "6 - 14":6,
+          "15+":10
+       }
+    },
+    "education":{
+       "Bachelor's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       },
+       "Master's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       }
+    }
+ }
