@@ -1,0 +1,669 @@
+Project ID,Start Date,Domain,Expected Team Size,Team Experience,Web,Mobile,IoT,Desktop,Requirement specifity,Expected Budget,Complexity,Planning,Design,Requirements Analysis,Coding,Testing,Deployment,Maintenance
+FL-001,"Monday, January 2, 2023",Education,6,High,1,0,0,0,Well defined,"150,000.00",Low,10,15,15,25,20,10,5
+FL-002,"Tuesday, January 3, 2023",E- Commerce,6,High,1,0,1,1,Well defined,"150,000.00",Low,10,15,15,25,20,10,5
+FL-003,"Wednesday, January 4, 2023",Education,9,High,1,0,1,1,Well defined,"150,000.00",Low,10,15,15,25,20,10,5
+FL-004,"Thursday, January 5, 2023",Health,4,High,1,0,0,0,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-005,"Friday, January 6, 2023",E- Commerce,7,High,0,1,1,1,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-006,"Saturday, January 7, 2023",E- Commerce,14,High,0,0,0,1,Well defined,"99,461.62",Low,10,15,15,25,20,10,5
+FL-007,"Sunday, January 8, 2023",Health,6,High,0,1,0,1,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-008,"Monday, January 9, 2023",Education,11,High,0,1,1,0,Well defined,"89,153.66",Low,10,15,15,25,20,10,5
+FL-009,"Tuesday, January 10, 2023",E- Commerce,14,High,0,1,1,1,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-010,"Wednesday, January 11, 2023",Education,10,High,0,1,0,0,Well defined,"79,151.47",Low,10,15,15,25,20,10,5
+FL-011,"Thursday, January 12, 2023",Education,5,High,0,0,1,0,Well defined,"89,144.43",Low,10,15,15,25,20,10,5
+FL-012,"Friday, January 13, 2023",Health,12,High,1,1,1,0,Well defined,"69,133.27",Low,10,15,15,25,20,10,5
+FL-013,"Saturday, January 14, 2023",E- Commerce,5,High,0,1,0,1,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-014,"Sunday, January 15, 2023",E- Commerce,5,High,1,0,1,0,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-015,"Monday, January 16, 2023",Health,7,High,0,1,1,0,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-016,"Tuesday, January 17, 2023",Education,11,High,0,0,1,0,Well defined,"225,000.00",Low,10,15,15,25,20,10,5
+FL-017,"Wednesday, January 18, 2023",Health,4,High,0,0,0,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-018,"Thursday, January 19, 2023",E- Commerce,8,High,1,1,1,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-019,"Friday, January 20, 2023",Education,7,High,0,0,1,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-020,"Saturday, January 21, 2023",Health,3,High,1,1,0,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-021,"Sunday, January 22, 2023",Health,14,High,1,1,1,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-022,"Monday, January 23, 2023",Education,14,High,1,0,0,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-023,"Tuesday, January 24, 2023",Education,8,High,1,1,1,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-024,"Wednesday, January 25, 2023",E- Commerce,7,High,1,1,0,1,Well defined,"68,251.10",Low,10,15,15,25,20,10,5
+FL-025,"Thursday, January 26, 2023",Education,13,High,0,1,0,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-026,"Friday, January 27, 2023",Education,13,High,1,0,0,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-027,"Saturday, January 28, 2023",E- Commerce,4,High,1,0,1,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-028,"Sunday, January 29, 2023",Education,14,High,1,0,1,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-029,"Monday, January 30, 2023",E- Commerce,3,High,0,1,1,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-030,"Tuesday, January 31, 2023",Education,13,High,1,0,1,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-031,"Wednesday, February 1, 2023",E- Commerce,9,High,1,1,0,0,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-032,"Thursday, February 2, 2023",E- Commerce,12,High,1,0,0,1,Well defined,"98,675.00",Low,10,15,15,25,20,10,5
+FL-033,"Friday, February 3, 2023",Education,3,High,1,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-034,"Saturday, February 4, 2023",Education,12,High,0,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-035,"Sunday, February 5, 2023",E- Commerce,14,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-036,"Monday, February 6, 2023",Education,4,High,1,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-037,"Tuesday, February 7, 2023",Education,8,High,1,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-038,"Wednesday, February 8, 2023",Health,11,High,1,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-039,"Thursday, February 9, 2023",Education,5,High,1,1,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-040,"Friday, February 10, 2023",E- Commerce,12,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-041,"Saturday, February 11, 2023",Health,12,High,1,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-042,"Sunday, February 12, 2023",E- Commerce,6,High,0,0,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-043,"Monday, February 13, 2023",Education,7,High,1,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-044,"Tuesday, February 14, 2023",E- Commerce,10,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-045,"Wednesday, February 15, 2023",E- Commerce,12,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-046,"Thursday, February 16, 2023",Health,11,High,0,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-047,"Friday, February 17, 2023",E- Commerce,3,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-048,"Saturday, February 18, 2023",Education,10,High,0,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-049,"Sunday, February 19, 2023",Education,10,High,1,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-050,"Monday, February 20, 2023",E- Commerce,4,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-051,"Tuesday, February 21, 2023",E- Commerce,6,High,1,1,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-052,"Wednesday, February 22, 2023",Education,4,High,0,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-053,"Thursday, February 23, 2023",Health,7,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-054,"Friday, February 24, 2023",Education,12,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-055,"Saturday, February 25, 2023",Health,10,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-056,"Sunday, February 26, 2023",E- Commerce,9,High,1,0,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-057,"Monday, February 27, 2023",Education,12,High,0,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-058,"Tuesday, February 28, 2023",E- Commerce,5,High,0,1,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-059,"Wednesday, March 1, 2023",Education,5,High,0,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-060,"Thursday, March 2, 2023",E- Commerce,5,High,0,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-061,"Friday, March 3, 2023",Health,5,High,1,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-062,"Saturday, March 4, 2023",Education,3,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-063,"Sunday, March 5, 2023",Health,11,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-064,"Monday, March 6, 2023",Health,5,High,1,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-065,"Tuesday, March 7, 2023",Education,14,High,0,1,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-066,"Wednesday, March 8, 2023",Education,11,High,0,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-067,"Thursday, March 9, 2023",E- Commerce,5,High,0,1,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-068,"Friday, March 10, 2023",E- Commerce,5,High,1,0,0,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-069,"Saturday, March 11, 2023",E- Commerce,5,High,0,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-070,"Sunday, March 12, 2023",Health,8,High,1,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-071,"Monday, March 13, 2023",E- Commerce,12,High,1,1,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-072,"Tuesday, March 14, 2023",Education,11,High,0,1,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-073,"Wednesday, March 15, 2023",Health,13,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-074,"Thursday, March 16, 2023",Education,4,High,1,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-075,"Friday, March 17, 2023",Health,8,High,1,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-076,"Saturday, March 18, 2023",E- Commerce,3,High,0,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-077,"Sunday, March 19, 2023",Health,8,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-078,"Monday, March 20, 2023",E- Commerce,8,High,0,0,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-079,"Tuesday, March 21, 2023",E- Commerce,11,High,0,1,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-080,"Wednesday, March 22, 2023",Education,12,High,1,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-081,"Thursday, March 23, 2023",Education,12,High,0,1,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-082,"Friday, March 24, 2023",Health,7,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-083,"Saturday, March 25, 2023",Education,7,High,0,1,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-084,"Sunday, March 26, 2023",Health,10,High,0,0,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-085,"Monday, March 27, 2023",Education,8,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-086,"Tuesday, March 28, 2023",Health,12,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-087,"Wednesday, March 29, 2023",E- Commerce,9,High,1,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-088,"Thursday, March 30, 2023",Education,12,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-089,"Friday, March 31, 2023",Health,9,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-090,"Saturday, April 1, 2023",Education,13,High,0,1,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-091,"Sunday, April 2, 2023",Health,14,High,1,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-092,"Monday, April 3, 2023",Health,13,High,1,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-093,"Tuesday, April 4, 2023",Health,10,High,1,1,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-094,"Wednesday, April 5, 2023",Health,9,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-095,"Thursday, April 6, 2023",E- Commerce,7,High,0,1,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-096,"Friday, April 7, 2023",Education,8,High,0,0,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-097,"Saturday, April 8, 2023",E- Commerce,14,High,1,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-098,"Sunday, April 9, 2023",E- Commerce,14,High,1,1,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-099,"Monday, April 10, 2023",Health,3,High,0,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-100,"Tuesday, April 11, 2023",E- Commerce,14,High,0,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-101,"Wednesday, April 12, 2023",Health,11,High,1,0,0,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-102,"Thursday, April 13, 2023",Health,10,High,1,1,0,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-103,"Friday, April 14, 2023",E- Commerce,11,High,0,1,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-104,"Saturday, April 15, 2023",Health,14,High,1,1,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-105,"Sunday, April 16, 2023",E- Commerce,11,High,1,1,0,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-106,"Monday, April 17, 2023",Education,10,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-107,"Tuesday, April 18, 2023",E- Commerce,14,High,0,1,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-108,"Wednesday, April 19, 2023",E- Commerce,12,High,1,0,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-109,"Thursday, April 20, 2023",Health,11,High,0,0,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-110,"Friday, April 21, 2023",Health,9,High,0,1,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-111,"Saturday, April 22, 2023",Health,7,High,0,1,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-112,"Sunday, April 23, 2023",Education,14,High,1,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-113,"Monday, April 24, 2023",Health,3,High,0,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-114,"Tuesday, April 25, 2023",Health,4,High,1,0,0,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-115,"Wednesday, April 26, 2023",Health,9,High,0,0,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-116,"Thursday, April 27, 2023",E- Commerce,5,High,1,1,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-117,"Friday, April 28, 2023",Education,5,High,1,1,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-118,"Saturday, April 29, 2023",Education,8,High,1,1,1,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-119,"Sunday, April 30, 2023",Health,9,Medium,0,0,0,1,Average,"88,000.00",Medium,15,15,20,25,15,5,5
+FL-120,"Monday, May 1, 2023",E- Commerce,13,High,0,1,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-121,"Tuesday, May 2, 2023",Education,7,High,1,0,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-122,"Wednesday, May 3, 2023",Education,6,High,0,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-123,"Thursday, May 4, 2023",Health,7,Medium,1,0,0,0,Average,"88,000.00",Medium,15,15,20,25,15,5,5
+FL-124,"Friday, May 5, 2023",E- Commerce,3,High,0,0,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-125,"Saturday, May 6, 2023",Education,8,High,1,0,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-126,"Sunday, May 7, 2023",E- Commerce,10,High,0,0,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-127,"Monday, May 8, 2023",E- Commerce,9,High,1,1,0,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-128,"Tuesday, May 9, 2023",Education,3,High,1,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-129,"Wednesday, May 10, 2023",Health,10,Medium,0,0,0,1,Average,"88,000.00",Medium,15,15,20,25,15,5,5
+FL-130,"Thursday, May 11, 2023",Education,14,High,1,1,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-131,"Friday, May 12, 2023",E- Commerce,6,High,1,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-132,"Saturday, May 13, 2023",Health,3,Medium,0,0,0,1,Average,"88,000.00",Medium,15,15,20,25,15,5,5
+FL-133,"Sunday, May 14, 2023",Education,13,High,1,0,0,1,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-134,"Monday, May 15, 2023",Education,14,High,0,1,1,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-135,"Tuesday, May 16, 2023",Education,12,High,1,0,0,0,Well defined,"88,000.00",Low,10,15,15,25,20,10,5
+FL-136,"Wednesday, May 17, 2023",E- Commerce,6,High,0,0,1,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-137,"Thursday, May 18, 2023",E- Commerce,12,High,0,0,1,0,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-138,"Friday, May 19, 2023",Health,13,Medium,0,0,1,0,Average,"88,000.00",Medium,15,15,20,25,15,5,5
+FL-139,"Saturday, May 20, 2023",E- Commerce,14,High,1,0,0,1,Average,"88,000.00",Low,10,15,15,25,20,10,5
+FL-140,"Sunday, May 21, 2023",Health,13,Medium,1,1,1,1,Average,"88,000.00",Medium,15,15,20,25,15,5,5
+FL-141,"Monday, May 22, 2023",Health,11,Medium,0,1,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-142,"Tuesday, May 23, 2023",Education,11,High,0,1,0,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-143,"Wednesday, May 24, 2023",Education,10,High,0,1,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-144,"Thursday, May 25, 2023",Health,3,Medium,1,1,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-145,"Friday, May 26, 2023",Health,13,Medium,0,0,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-146,"Saturday, May 27, 2023",E- Commerce,11,High,1,0,1,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-147,"Sunday, May 28, 2023",Health,14,Medium,1,0,0,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-148,"Monday, May 29, 2023",E- Commerce,10,High,1,1,1,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-149,"Tuesday, May 30, 2023",Health,13,Medium,0,0,0,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-150,"Wednesday, May 31, 2023",Health,3,Medium,0,1,1,0,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-151,"Thursday, June 1, 2023",Education,12,High,1,1,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-152,"Friday, June 2, 2023",Education,7,High,1,1,0,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-153,"Saturday, June 3, 2023",Education,3,High,0,1,1,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-154,"Sunday, June 4, 2023",Education,4,High,1,0,0,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-155,"Monday, June 5, 2023",E- Commerce,4,High,0,1,0,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-156,"Tuesday, June 6, 2023",Health,5,Medium,1,1,0,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-157,"Wednesday, June 7, 2023",Education,7,High,1,1,1,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-158,"Thursday, June 8, 2023",Education,9,High,1,1,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-159,"Friday, June 9, 2023",Health,13,Medium,1,0,1,0,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-160,"Saturday, June 10, 2023",E- Commerce,3,High,1,1,1,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-161,"Sunday, June 11, 2023",Education,3,High,1,1,0,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-162,"Monday, June 12, 2023",Health,6,Medium,0,0,0,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-163,"Tuesday, June 13, 2023",Education,12,High,0,0,1,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-164,"Wednesday, June 14, 2023",Education,3,High,1,0,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-165,"Thursday, June 15, 2023",Education,11,High,0,1,0,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-166,"Friday, June 16, 2023",E- Commerce,9,High,0,0,0,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-167,"Saturday, June 17, 2023",Education,7,High,0,0,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-168,"Sunday, June 18, 2023",Health,12,Medium,1,1,1,0,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-169,"Monday, June 19, 2023",E- Commerce,12,High,1,0,0,0,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-170,"Tuesday, June 20, 2023",Education,11,High,0,0,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-171,"Wednesday, June 21, 2023",Education,6,High,1,1,1,0,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-172,"Thursday, June 22, 2023",E- Commerce,10,High,0,1,1,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-173,"Friday, June 23, 2023",Health,3,Medium,0,0,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-174,"Saturday, June 24, 2023",E- Commerce,11,High,0,1,0,1,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-175,"Sunday, June 25, 2023",Health,4,Medium,1,0,0,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-176,"Monday, June 26, 2023",E- Commerce,6,High,0,1,0,0,Average,"75,677.00",Low,10,15,15,25,20,10,5
+FL-177,"Tuesday, June 27, 2023",Health,14,Medium,0,1,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-178,"Wednesday, June 28, 2023",Health,8,Medium,1,0,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-179,"Thursday, June 29, 2023",Education,11,High,0,0,0,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-180,"Friday, June 30, 2023",Education,4,High,1,0,1,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-181,"Saturday, July 1, 2023",Education,5,High,0,1,1,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-182,"Sunday, July 2, 2023",Education,12,High,0,1,0,1,Well defined,"75,677.00",Low,10,15,15,25,20,10,5
+FL-183,"Monday, July 3, 2023",E- Commerce,9,Medium,0,1,0,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-184,"Tuesday, July 4, 2023",Health,14,Medium,1,0,0,0,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-185,"Wednesday, July 5, 2023",E- Commerce,8,Medium,1,1,1,1,Average,"75,677.00",Medium,15,15,20,25,15,5,5
+FL-186,"Thursday, July 6, 2023",Health,5,Medium,1,1,0,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-187,"Friday, July 7, 2023",Education,5,High,1,1,1,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-188,"Saturday, July 8, 2023",Health,12,Medium,1,1,1,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-189,"Sunday, July 9, 2023",E- Commerce,3,Medium,0,0,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-190,"Monday, July 10, 2023",Education,12,High,0,1,0,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-191,"Tuesday, July 11, 2023",Education,7,High,1,1,0,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-192,"Wednesday, July 12, 2023",Health,5,Medium,1,1,0,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-193,"Thursday, July 13, 2023",Education,5,High,1,1,1,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-194,"Friday, July 14, 2023",E- Commerce,11,Medium,1,0,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-195,"Saturday, July 15, 2023",E- Commerce,3,Medium,1,1,1,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-196,"Sunday, July 16, 2023",Education,14,High,0,0,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-197,"Monday, July 17, 2023",Health,10,Medium,0,1,0,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-198,"Tuesday, July 18, 2023",Health,4,Medium,1,1,1,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-199,"Wednesday, July 19, 2023",Education,6,High,0,0,0,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-200,"Thursday, July 20, 2023",Health,7,Medium,0,0,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-201,"Friday, July 21, 2023",Education,5,High,1,1,1,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-202,"Saturday, July 22, 2023",E- Commerce,8,Medium,1,0,0,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-203,"Sunday, July 23, 2023",Health,10,Medium,0,1,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-204,"Monday, July 24, 2023",Health,6,Medium,1,0,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-205,"Tuesday, July 25, 2023",Health,9,Medium,0,1,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-206,"Wednesday, July 26, 2023",Education,7,High,0,0,0,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-207,"Thursday, July 27, 2023",E- Commerce,5,Medium,0,0,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-208,"Friday, July 28, 2023",Health,5,Medium,1,0,1,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-209,"Saturday, July 29, 2023",Health,3,Medium,0,0,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-210,"Sunday, July 30, 2023",Education,11,High,0,0,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-211,"Monday, July 31, 2023",Education,5,High,0,1,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-212,"Tuesday, August 1, 2023",Education,8,High,0,0,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-213,"Wednesday, August 2, 2023",E- Commerce,3,Medium,1,1,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-214,"Thursday, August 3, 2023",E- Commerce,7,Medium,0,1,1,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-215,"Friday, August 4, 2023",E- Commerce,12,Medium,0,1,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-216,"Saturday, August 5, 2023",Education,14,High,1,0,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-217,"Sunday, August 6, 2023",E- Commerce,4,Medium,0,0,1,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-218,"Monday, August 7, 2023",Education,13,High,0,1,0,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-219,"Tuesday, August 8, 2023",Education,11,High,0,1,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-220,"Wednesday, August 9, 2023",Education,6,High,1,1,1,0,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-221,"Thursday, August 10, 2023",E- Commerce,11,Medium,1,1,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-222,"Friday, August 11, 2023",Education,4,High,1,1,1,1,Well defined,"165,875.00",Low,10,15,15,25,20,10,5
+FL-223,"Saturday, August 12, 2023",Health,14,Medium,1,0,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-224,"Sunday, August 13, 2023",Health,5,Medium,1,0,1,0,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-225,"Monday, August 14, 2023",E- Commerce,10,Medium,1,1,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-226,"Tuesday, August 15, 2023",Health,7,Medium,0,1,0,1,Average,"165,875.00",Medium,15,15,20,25,15,5,5
+FL-227,"Wednesday, August 16, 2023",E- Commerce,10,Medium,1,0,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-228,"Thursday, August 17, 2023",Education,7,High,0,1,1,0,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-229,"Friday, August 18, 2023",E- Commerce,4,Medium,0,1,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-230,"Saturday, August 19, 2023",Health,13,Medium,1,0,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-231,"Sunday, August 20, 2023",Health,4,Medium,0,1,0,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-232,"Monday, August 21, 2023",Health,11,Medium,0,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-233,"Tuesday, August 22, 2023",Health,12,Medium,1,1,0,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-234,"Wednesday, August 23, 2023",Education,8,High,0,0,0,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-235,"Thursday, August 24, 2023",Education,8,High,0,1,1,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-236,"Friday, August 25, 2023",Education,13,High,1,1,1,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-237,"Saturday, August 26, 2023",E- Commerce,3,Medium,0,1,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-238,"Sunday, August 27, 2023",Education,14,High,1,1,0,0,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-239,"Monday, August 28, 2023",Health,8,Medium,1,1,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-240,"Tuesday, August 29, 2023",Health,3,Medium,1,0,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-241,"Wednesday, August 30, 2023",Health,11,Medium,1,0,0,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-242,"Thursday, August 31, 2023",Education,10,High,1,0,0,0,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-243,"Friday, September 1, 2023",Health,14,Medium,1,1,0,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-244,"Saturday, September 2, 2023",Education,12,High,1,1,0,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-245,"Sunday, September 3, 2023",Health,5,Medium,0,1,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-246,"Monday, September 4, 2023",E- Commerce,9,Medium,1,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-247,"Tuesday, September 5, 2023",Health,3,Medium,1,0,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-248,"Wednesday, September 6, 2023",Health,9,Medium,0,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-249,"Thursday, September 7, 2023",Education,10,High,0,0,0,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-250,"Friday, September 8, 2023",E- Commerce,10,Medium,1,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-251,"Saturday, September 9, 2023",E- Commerce,14,Medium,0,1,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-252,"Sunday, September 10, 2023",Education,6,High,1,1,0,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-253,"Monday, September 11, 2023",Education,9,High,0,1,1,0,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-254,"Tuesday, September 12, 2023",Education,11,High,1,0,1,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-255,"Wednesday, September 13, 2023",E- Commerce,14,Medium,1,0,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-256,"Thursday, September 14, 2023",E- Commerce,6,Medium,0,0,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-257,"Friday, September 15, 2023",Health,8,Medium,0,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-258,"Saturday, September 16, 2023",E- Commerce,12,Medium,1,1,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-259,"Sunday, September 17, 2023",Education,8,High,0,1,0,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-260,"Monday, September 18, 2023",Health,5,Medium,0,1,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-261,"Tuesday, September 19, 2023",E- Commerce,8,Medium,1,1,0,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-262,"Wednesday, September 20, 2023",Education,7,High,0,1,1,0,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-263,"Thursday, September 21, 2023",Health,11,Medium,0,0,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-264,"Friday, September 22, 2023",E- Commerce,12,Medium,0,1,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-265,"Saturday, September 23, 2023",E- Commerce,12,Medium,1,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-266,"Sunday, September 24, 2023",Education,4,High,0,1,1,1,Well defined,"175,000.00",Low,10,15,15,25,20,10,5
+FL-267,"Monday, September 25, 2023",E- Commerce,5,Medium,1,1,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-268,"Tuesday, September 26, 2023",E- Commerce,3,Medium,0,0,1,1,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-269,"Wednesday, September 27, 2023",Health,3,Medium,0,0,1,0,Average,"175,000.00",Medium,15,15,20,25,15,5,5
+FL-270,"Thursday, September 28, 2023",Health,7,Medium,0,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-271,"Friday, September 29, 2023",Health,12,Medium,0,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-272,"Saturday, September 30, 2023",Health,7,Medium,1,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-273,"Sunday, October 1, 2023",E- Commerce,7,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-274,"Monday, October 2, 2023",Education,14,High,0,0,1,0,Well defined,"95,875.00",Low,10,15,15,25,20,10,5
+FL-275,"Tuesday, October 3, 2023",Health,6,Medium,0,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-276,"Wednesday, October 4, 2023",Health,9,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-277,"Thursday, October 5, 2023",Education,8,High,1,1,0,1,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-278,"Friday, October 6, 2023",E- Commerce,12,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-279,"Saturday, October 7, 2023",Health,3,Medium,1,1,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-280,"Sunday, October 8, 2023",Education,12,High,1,0,0,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-281,"Monday, October 9, 2023",Education,9,High,0,0,0,1,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-282,"Tuesday, October 10, 2023",E- Commerce,11,Medium,0,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-283,"Wednesday, October 11, 2023",Health,10,Medium,1,1,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-284,"Thursday, October 12, 2023",E- Commerce,8,Medium,0,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-285,"Friday, October 13, 2023",E- Commerce,8,Medium,0,1,0,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-286,"Saturday, October 14, 2023",Health,14,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-287,"Sunday, October 15, 2023",E- Commerce,9,Medium,1,0,0,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-288,"Monday, October 16, 2023",Health,4,Medium,0,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-289,"Tuesday, October 17, 2023",E- Commerce,14,Medium,0,1,0,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-290,"Wednesday, October 18, 2023",Education,8,High,1,1,1,1,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-291,"Thursday, October 19, 2023",E- Commerce,13,Medium,1,0,0,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-292,"Friday, October 20, 2023",Education,8,High,0,0,0,1,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-293,"Saturday, October 21, 2023",Health,9,Medium,1,1,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-294,"Sunday, October 22, 2023",Health,5,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-295,"Monday, October 23, 2023",E- Commerce,5,Medium,1,1,0,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-296,"Tuesday, October 24, 2023",E- Commerce,6,Medium,1,1,1,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-297,"Wednesday, October 25, 2023",Health,7,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-298,"Thursday, October 26, 2023",Health,10,Medium,1,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-299,"Friday, October 27, 2023",Health,4,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-300,"Saturday, October 28, 2023",Education,10,High,1,0,1,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-301,"Sunday, October 29, 2023",Education,4,High,1,0,1,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-302,"Monday, October 30, 2023",Education,10,High,0,1,0,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-303,"Tuesday, October 31, 2023",Education,9,High,0,0,1,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-304,"Wednesday, November 1, 2023",E- Commerce,13,Medium,0,1,1,1,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-305,"Thursday, November 2, 2023",Health,14,Medium,1,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-306,"Friday, November 3, 2023",Education,12,High,1,0,1,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-307,"Saturday, November 4, 2023",E- Commerce,5,Medium,1,0,1,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-308,"Sunday, November 5, 2023",E- Commerce,13,Medium,1,0,0,0,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-309,"Monday, November 6, 2023",Health,6,Medium,0,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-310,"Tuesday, November 7, 2023",E- Commerce,13,Medium,1,0,1,1,Poor,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-311,"Wednesday, November 8, 2023",Health,4,Medium,0,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-312,"Thursday, November 9, 2023",Education,12,High,0,0,1,0,Average,"95,875.00",Low,10,15,15,25,20,10,5
+FL-313,"Friday, November 10, 2023",E- Commerce,3,Low,0,0,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-314,"Saturday, November 11, 2023",Health,5,Medium,0,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-315,"Sunday, November 12, 2023",E- Commerce,3,Low,1,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-316,"Monday, November 13, 2023",Education,4,Medium,1,1,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-317,"Tuesday, November 14, 2023",Health,13,Medium,0,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-318,"Wednesday, November 15, 2023",Health,11,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-319,"Thursday, November 16, 2023",Education,13,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-320,"Friday, November 17, 2023",Education,7,Medium,0,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-321,"Saturday, November 18, 2023",E- Commerce,6,Low,0,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-322,"Sunday, November 19, 2023",Health,6,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-323,"Monday, November 20, 2023",E- Commerce,12,Low,0,1,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-324,"Tuesday, November 21, 2023",Education,14,Medium,1,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-325,"Wednesday, November 22, 2023",Health,11,Medium,0,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-326,"Thursday, November 23, 2023",E- Commerce,6,Low,1,0,0,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-327,"Friday, November 24, 2023",Education,4,Medium,0,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-328,"Saturday, November 25, 2023",Education,9,Medium,0,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-329,"Sunday, November 26, 2023",E- Commerce,14,Low,0,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-330,"Monday, November 27, 2023",Health,6,Medium,1,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-331,"Tuesday, November 28, 2023",Health,5,Medium,1,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-332,"Wednesday, November 29, 2023",Health,4,Medium,1,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-333,"Thursday, November 30, 2023",Health,10,Medium,1,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-334,"Friday, December 1, 2023",E- Commerce,12,Low,0,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-335,"Saturday, December 2, 2023",E- Commerce,14,Low,0,1,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-336,"Sunday, December 3, 2023",Education,9,Medium,0,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-337,"Monday, December 4, 2023",Education,13,Medium,0,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-338,"Tuesday, December 5, 2023",E- Commerce,12,Low,1,1,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-339,"Wednesday, December 6, 2023",E- Commerce,12,Low,0,1,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-340,"Thursday, December 7, 2023",E- Commerce,8,Low,1,1,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-341,"Friday, December 8, 2023",E- Commerce,5,Low,0,1,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-342,"Saturday, December 9, 2023",Education,4,Medium,1,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-343,"Sunday, December 10, 2023",Health,6,Medium,1,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-344,"Monday, December 11, 2023",Education,11,Medium,0,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-345,"Tuesday, December 12, 2023",E- Commerce,3,Low,1,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-346,"Wednesday, December 13, 2023",Education,3,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-347,"Thursday, December 14, 2023",Health,11,Medium,0,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-348,"Friday, December 15, 2023",E- Commerce,4,Low,1,0,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-349,"Saturday, December 16, 2023",Education,14,Medium,0,1,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-350,"Sunday, December 17, 2023",E- Commerce,7,Low,0,0,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-351,"Monday, December 18, 2023",E- Commerce,13,Low,0,0,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-352,"Tuesday, December 19, 2023",Education,7,Medium,0,1,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-353,"Wednesday, December 20, 2023",Health,7,Medium,0,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-354,"Thursday, December 21, 2023",E- Commerce,11,Low,1,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-355,"Friday, December 22, 2023",E- Commerce,8,Low,0,0,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-356,"Saturday, December 23, 2023",Education,11,Medium,0,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-357,"Sunday, December 24, 2023",Education,10,Medium,0,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-358,"Monday, December 25, 2023",E- Commerce,12,Low,1,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-359,"Tuesday, December 26, 2023",Health,12,Medium,1,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-360,"Wednesday, December 27, 2023",Education,6,Medium,1,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-361,"Thursday, December 28, 2023",Education,7,Medium,1,0,1,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-362,"Friday, December 29, 2023",Health,7,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-363,"Saturday, December 30, 2023",Health,9,Medium,1,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-364,"Sunday, December 31, 2023",E- Commerce,7,Low,1,1,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-365,"Monday, January 1, 2024",E- Commerce,12,Low,0,0,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-366,"Tuesday, January 2, 2024",Health,5,Medium,1,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-367,"Wednesday, January 3, 2024",E- Commerce,4,Low,1,1,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-368,"Thursday, January 4, 2024",Education,6,Medium,1,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-369,"Friday, January 5, 2024",E- Commerce,3,Low,1,0,0,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-370,"Saturday, January 6, 2024",E- Commerce,10,Low,1,1,0,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-371,"Sunday, January 7, 2024",E- Commerce,3,Low,1,1,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-372,"Monday, January 8, 2024",Health,6,Medium,0,0,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-373,"Tuesday, January 9, 2024",Health,14,Medium,1,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-374,"Wednesday, January 10, 2024",Education,14,Medium,0,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-375,"Thursday, January 11, 2024",Education,10,Medium,1,0,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-376,"Friday, January 12, 2024",E- Commerce,5,Low,0,1,0,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-377,"Saturday, January 13, 2024",Health,10,Medium,0,1,0,0,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-378,"Sunday, January 14, 2024",Education,7,Medium,1,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-379,"Monday, January 15, 2024",E- Commerce,14,Low,1,0,1,1,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-380,"Tuesday, January 16, 2024",Education,6,Medium,0,1,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-381,"Wednesday, January 17, 2024",E- Commerce,12,Low,0,0,1,0,Poor,"95,875.00",High,15,20,20,20,10,5,10
+FL-382,"Thursday, January 18, 2024",Education,10,Medium,0,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-383,"Friday, January 19, 2024",Education,9,Medium,0,0,1,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-384,"Saturday, January 20, 2024",Education,12,Medium,0,1,0,1,Average,"95,875.00",Medium,15,15,20,25,15,5,5
+FL-385,"Sunday, January 21, 2024",E- Commerce,4,Low,1,0,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-386,"Monday, January 22, 2024",E- Commerce,8,Low,1,0,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-387,"Tuesday, January 23, 2024",Education,9,Medium,1,0,1,1,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-388,"Wednesday, January 24, 2024",E- Commerce,6,Low,0,0,0,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-389,"Thursday, January 25, 2024",E- Commerce,5,Low,1,0,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-390,"Friday, January 26, 2024",Health,7,Medium,0,1,1,1,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-391,"Saturday, January 27, 2024",Health,13,Medium,0,0,0,1,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-392,"Sunday, January 28, 2024",Health,3,Medium,0,1,0,0,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-393,"Monday, January 29, 2024",E- Commerce,7,Low,1,1,0,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-394,"Tuesday, January 30, 2024",E- Commerce,7,Low,1,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-395,"Wednesday, January 31, 2024",E- Commerce,7,Low,0,1,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-396,"Thursday, February 1, 2024",E- Commerce,7,Low,0,0,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-397,"Friday, February 2, 2024",Health,10,Medium,1,1,0,1,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-398,"Saturday, February 3, 2024",Health,13,Medium,1,1,0,1,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-399,"Sunday, February 4, 2024",Education,11,Low,0,0,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-400,"Monday, February 5, 2024",Education,6,Low,0,1,0,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-401,"Tuesday, February 6, 2024",Health,8,Medium,0,1,1,0,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-402,"Wednesday, February 7, 2024",E- Commerce,6,Low,1,1,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-403,"Thursday, February 8, 2024",Health,3,Medium,1,1,1,0,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-404,"Friday, February 9, 2024",Education,13,Low,0,0,1,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-405,"Saturday, February 10, 2024",Health,3,Medium,1,0,1,0,Average,"90,550.00",Medium,15,15,20,25,15,5,5
+FL-406,"Sunday, February 11, 2024",Health,3,Low,0,1,0,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-407,"Monday, February 12, 2024",E- Commerce,13,Low,1,1,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-408,"Tuesday, February 13, 2024",Health,5,Low,0,0,1,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-409,"Wednesday, February 14, 2024",Education,13,Low,1,0,0,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-410,"Thursday, February 15, 2024",Health,9,Low,1,0,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-411,"Friday, February 16, 2024",Health,6,Low,1,0,0,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-412,"Saturday, February 17, 2024",E- Commerce,7,Low,1,1,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-413,"Sunday, February 18, 2024",Education,9,Low,0,1,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-414,"Monday, February 19, 2024",Education,10,Low,1,0,0,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-415,"Tuesday, February 20, 2024",E- Commerce,3,Low,0,1,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-416,"Wednesday, February 21, 2024",Education,8,Low,1,0,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-417,"Thursday, February 22, 2024",E- Commerce,5,Low,1,1,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-418,"Friday, February 23, 2024",Education,5,Low,0,1,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-419,"Saturday, February 24, 2024",Education,13,Low,1,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-420,"Sunday, February 25, 2024",Education,11,Low,1,1,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-421,"Monday, February 26, 2024",Education,7,Low,0,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-422,"Tuesday, February 27, 2024",E- Commerce,12,Low,0,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-423,"Wednesday, February 28, 2024",Education,9,Low,1,0,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-424,"Thursday, February 29, 2024",E- Commerce,8,Low,1,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-425,"Friday, March 1, 2024",E- Commerce,5,Low,0,1,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-426,"Saturday, March 2, 2024",Education,4,Low,1,1,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-427,"Sunday, March 3, 2024",Health,13,Low,0,0,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-428,"Monday, March 4, 2024",Education,3,Low,1,1,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-429,"Tuesday, March 5, 2024",Health,9,Low,0,1,1,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-430,"Wednesday, March 6, 2024",Health,7,Low,0,1,0,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-431,"Thursday, March 7, 2024",Education,4,Low,1,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-432,"Friday, March 8, 2024",Education,7,Low,1,0,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-433,"Saturday, March 9, 2024",Health,10,Low,0,0,1,1,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-434,"Sunday, March 10, 2024",Education,14,Low,1,0,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-435,"Monday, March 11, 2024",Health,4,Low,1,0,0,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-436,"Tuesday, March 12, 2024",E- Commerce,9,Low,0,0,0,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-437,"Wednesday, March 13, 2024",E- Commerce,8,Low,1,0,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-438,"Thursday, March 14, 2024",Education,4,Low,1,1,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-439,"Friday, March 15, 2024",Education,8,Low,0,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-440,"Saturday, March 16, 2024",E- Commerce,6,Low,1,0,0,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-441,"Sunday, March 17, 2024",E- Commerce,12,Low,0,0,1,0,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-442,"Monday, March 18, 2024",Health,10,Low,1,1,0,0,Average,"90,550.00",High,15,20,20,20,10,5,10
+FL-443,"Tuesday, March 19, 2024",E- Commerce,14,Low,0,1,0,0,Poor,"59,994.91",High,15,20,20,20,10,5,10
+FL-444,"Wednesday, March 20, 2024",Health,13,Low,0,1,0,1,Poor,"229,916.89",High,15,20,20,20,10,5,10
+FL-445,"Thursday, March 21, 2024",Education,7,Low,0,1,0,1,Poor,"69,741.42",High,15,20,20,20,10,5,10
+FL-446,"Friday, March 22, 2024",Education,3,Low,0,1,1,1,Poor,"399,585.16",High,15,20,20,20,10,5,10
+FL-447,"Saturday, March 23, 2024",Health,13,Low,1,1,1,0,Poor,"489,581.17",High,15,20,20,20,10,5,10
+FL-448,"Sunday, March 24, 2024",Health,14,Low,1,0,1,0,Poor,"79,292.97",High,15,20,20,20,10,5,10
+FL-449,"Monday, March 25, 2024",Health,11,Low,1,0,1,0,Poor,"119,018.03",High,15,20,20,20,10,5,10
+FL-450,"Tuesday, March 26, 2024",Education,5,Low,1,0,0,1,Poor,"88,987.21",High,15,20,20,20,10,5,10
+FL-451,"Wednesday, March 27, 2024",Health,5,Low,0,1,1,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-452,"Thursday, March 28, 2024",E- Commerce,11,Low,0,0,1,1,Poor,"238,458.79",High,15,20,20,20,10,5,10
+FL-453,"Friday, March 29, 2024",Health,8,Low,1,0,0,1,Poor,"88,430.76",High,15,20,20,20,10,5,10
+FL-454,"Saturday, March 30, 2024",E- Commerce,7,Low,1,1,0,1,Poor,"98,402.23",High,15,20,20,20,10,5,10
+FL-455,"Sunday, March 31, 2024",Health,8,Low,0,0,1,1,Poor,"89,288.67",High,15,20,20,20,10,5,10
+FL-456,"Monday, April 1, 2024",E- Commerce,3,Low,0,0,0,1,Poor,"90,550.00",High,15,20,20,20,10,5,10
+FL-457,"Tuesday, April 2, 2024",Health,9,Low,1,0,1,0,Poor,"78,254.24",High,15,20,20,20,10,5,10
+FL-458,"Wednesday, April 3, 2024",Health,8,Low,1,0,1,1,Poor,"128,229.91",High,15,20,20,20,10,5,10
+FL-459,"Thursday, April 4, 2024",Health,5,Low,0,1,1,1,Poor,"88,227.03",High,15,20,20,20,10,5,10
+FL-460,"Friday, April 5, 2024",Health,12,Low,0,1,1,0,Poor,"187,970.44",High,15,20,20,20,10,5,10
+FL-461,"Saturday, April 6, 2024",E- Commerce,7,Low,0,0,1,1,Poor,"87,956.27",High,15,20,20,20,10,5,10
+FL-462,"Sunday, April 7, 2024",Health,14,Low,1,0,1,0,Poor,"227,821.03",High,15,20,20,20,10,5,10
+FL-463,"Monday, April 8, 2024",E- Commerce,12,Low,0,1,1,1,Poor,"57,810.59",High,15,20,20,20,10,5,10
+FL-464,"Tuesday, April 9, 2024",E- Commerce,4,Low,1,1,1,1,Poor,"257,799.15",High,15,20,20,20,10,5,10
+FL-465,"Wednesday, April 10, 2024",E- Commerce,3,Low,1,0,0,0,Poor,"67,614.14",High,15,20,20,20,10,5,10
+FL-466,"Thursday, April 11, 2024",Education,3,Low,1,1,1,1,Poor,"77,603.00",High,15,20,20,20,10,5,10
+FL-467,"Friday, April 12, 2024",Health,3,Low,1,1,0,1,Poor,"87,594.14",High,15,20,20,20,10,5,10
+FL-468,"Saturday, April 13, 2024",E- Commerce,14,Low,1,0,0,0,Poor,"57,444.94",High,15,20,20,20,10,5,10
+FL-469,"Sunday, April 14, 2024",E- Commerce,7,Low,1,1,0,1,Poor,"57,355.98",High,15,20,20,20,10,5,10
+FL-470,"Monday, April 15, 2024",E- Commerce,10,Low,1,1,1,0,Poor,"67,260.17",High,15,20,20,20,10,5,10
+FL-471,"Tuesday, April 16, 2024",Education,11,Low,0,0,0,1,Poor,"87,249.06",High,15,20,20,20,10,5,10
+FL-472,"Wednesday, April 17, 2024",Health,8,Low,0,1,0,1,Poor,"57,168.37",High,15,20,20,20,10,5,10
+FL-473,"Thursday, April 18, 2024",Health,14,Low,0,0,1,1,Poor,"57,108.34",High,15,20,20,20,10,5,10
+FL-474,"Friday, April 19, 2024",E- Commerce,6,Low,0,0,1,0,Poor,"77,021.01",High,15,20,20,20,10,5,10
+FL-475,"Saturday, April 20, 2024",E- Commerce,4,Low,1,0,0,0,Well defined,"66,975.50",Medium,15,15,20,25,15,5,5
+FL-476,"Sunday, April 21, 2024",E- Commerce,11,Low,0,1,1,0,Average,"67,785.68",High,15,20,20,20,10,5,10
+FL-477,"Monday, April 22, 2024",Education,4,Low,1,0,0,0,Poor,"67,574.82",High,15,20,20,20,10,5,10
+FL-478,"Tuesday, April 23, 2024",Health,11,Low,0,0,0,1,Poor,"67,591.85",High,15,20,20,20,10,5,10
+FL-479,"Wednesday, April 24, 2024",E- Commerce,3,Low,1,0,0,0,Average,"96,620.85",High,15,20,20,20,10,5,10
+FL-480,"Thursday, April 25, 2024",Health,5,Low,0,1,0,0,Poor,"86,620.85",High,15,20,20,20,10,5,10
+FL-481,"Friday, April 26, 2024",Health,3,Low,0,1,0,0,Poor,"76,620.85",High,15,20,20,20,10,5,10
+FL-482,"Saturday, April 27, 2024",Health,12,Low,0,0,1,0,Poor,"66,620.85",High,15,20,20,20,10,5,10
+FL-483,"Sunday, April 28, 2024",Health,6,Low,1,1,1,1,Poor,"56,620.85",High,15,20,20,20,10,5,10
+FL-484,"Monday, April 29, 2024",E- Commerce,3,Low,1,1,1,1,Average,"86,620.85",High,15,20,20,20,10,5,10
+FL-485,"Tuesday, April 30, 2024",E- Commerce,9,Low,0,0,1,0,Poor,"96,620.85",High,15,20,20,20,10,5,10
+FL-486,"Wednesday, May 1, 2024",E- Commerce,4,Low,0,0,1,0,Poor,"55,869.74",High,15,20,20,20,10,5,10
+FL-487,"Thursday, May 2, 2024",Health,12,Low,0,0,1,1,Poor,"65,860.22",High,15,20,20,20,10,5,10
+FL-488,"Friday, May 3, 2024",Health,4,Low,0,0,1,1,Poor,"75,789.86",High,15,20,20,20,10,5,10
+FL-489,"Saturday, May 4, 2024",E- Commerce,13,Low,1,1,0,0,Poor,"85,762.64",High,15,20,20,20,10,5,10
+FL-490,"Sunday, May 5, 2024",Health,9,Low,0,1,0,1,Poor,"95,661.20",High,15,20,20,20,10,5,10
+FL-491,"Monday, May 6, 2024",Health,6,Low,1,0,1,0,Poor,"55,644.19",High,15,20,20,20,10,5,10
+FL-492,"Tuesday, May 7, 2024",Health,9,Low,0,1,0,0,Poor,"65,544.64",High,15,20,20,20,10,5,10
+FL-493,"Wednesday, May 8, 2024",E- Commerce,3,Low,0,1,0,1,Well defined,"75,446.57",Medium,15,15,20,25,15,5,5
+FL-494,"Thursday, May 9, 2024",Health,7,Low,1,1,1,1,Poor,"75,406.73",High,15,20,20,20,10,5,10
+FL-495,"Friday, May 10, 2024",Education,8,Low,0,1,1,0,Poor,"85,398.85",High,15,20,20,20,10,5,10
+FL-496,"Saturday, May 11, 2024",E- Commerce,5,Low,0,0,1,0,Well defined,"85,352.87",Medium,15,15,20,25,15,5,5
+FL-497,"Sunday, May 12, 2024",Education,7,Low,1,0,1,0,Poor,"65,196.35",High,15,20,20,20,10,5,10
+FL-498,"Monday, May 13, 2024",Education,11,Low,0,0,1,1,Poor,"85,171.90",High,15,20,20,20,10,5,10
+FL-499,"Tuesday, May 14, 2024",E- Commerce,5,Low,1,1,1,1,Well defined,"95,060.91",Medium,15,15,20,25,15,5,5
+FL-500,"Wednesday, May 15, 2024",Education,10,Low,1,0,1,0,Poor,"255,006.06",High,15,20,20,20,10,5,10
+FL-501,"Thursday, May 16, 2024",Finance,6,High,1,0,1,1,Well defined,"90,550.00",Low,10,15,15,25,20,10,5
+FL-502,"Friday, May 17, 2024",Finance,7,High,0,1,1,1,Well defined,"90,550.00",Low,10,15,15,25,20,10,5
+FL-503,"Saturday, May 18, 2024",Finance,14,High,0,0,0,1,Well defined,"99,461.62",Low,10,15,15,25,20,10,5
+FL-504,"Sunday, May 19, 2024",Finance,14,High,0,1,1,1,Well defined,"90,550.00",Low,10,15,15,25,20,10,5
+FL-505,"Monday, May 20, 2024",Finance,5,High,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-506,"Tuesday, May 21, 2024",Finance,5,High,1,0,1,0,Well defined,"248,978.86",Low,10,15,15,25,20,10,5
+FL-507,"Wednesday, May 22, 2024",Finance,8,High,1,1,1,1,Well defined,"148,472.14",Low,10,15,15,25,20,10,5
+FL-508,"Thursday, May 23, 2024",Finance,7,High,1,1,0,1,Well defined,"68,251.10",Low,10,15,15,25,20,10,5
+FL-509,"Friday, May 24, 2024",Finance,4,High,1,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-510,"Saturday, May 25, 2024",Finance,3,High,0,1,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-511,"Sunday, May 26, 2024",Finance,9,High,1,1,0,0,Well defined,"148,022.12",Low,10,15,15,25,20,10,5
+FL-512,"Monday, May 27, 2024",Finance,12,High,1,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-513,"Tuesday, May 28, 2024",Finance,14,High,0,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-514,"Wednesday, May 29, 2024",Finance,12,High,1,0,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-515,"Thursday, May 30, 2024",Finance,6,High,0,0,1,0,Well defined,"247,422.59",Low,10,15,15,25,20,10,5
+FL-516,"Friday, May 31, 2024",Finance,10,High,0,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-517,"Saturday, June 1, 2024",Finance,12,High,0,0,0,1,Well defined,"146,678.73",Low,10,15,15,25,20,10,5
+FL-518,"Sunday, June 2, 2024",Finance,3,High,1,0,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-519,"Monday, June 3, 2024",Finance,4,High,0,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-520,"Tuesday, June 4, 2024",Finance,6,High,1,1,1,1,Well defined,"345,925.46",Low,10,15,15,25,20,10,5
+FL-521,"Wednesday, June 5, 2024",Finance,9,High,1,0,1,1,Well defined,"245,234.24",Low,10,15,15,25,20,10,5
+FL-522,"Thursday, June 6, 2024",Finance,5,High,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-523,"Friday, June 7, 2024",Finance,5,High,0,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-524,"Saturday, June 8, 2024",Finance,5,High,0,1,1,1,Well defined,"344,607.05",Low,10,15,15,25,20,10,5
+FL-525,"Sunday, June 9, 2024",Finance,5,High,1,0,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-526,"Monday, June 10, 2024",Finance,5,High,0,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-527,"Tuesday, June 11, 2024",Finance,12,High,1,1,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-528,"Wednesday, June 12, 2024",Finance,3,High,0,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-529,"Thursday, June 13, 2024",Finance,8,High,0,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-530,"Friday, June 14, 2024",Finance,11,High,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-531,"Saturday, June 15, 2024",Finance,9,High,1,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-532,"Sunday, June 16, 2024",Finance,7,High,0,1,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-533,"Monday, June 17, 2024",Finance,14,High,1,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-534,"Tuesday, June 18, 2024",Finance,14,High,1,1,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-535,"Wednesday, June 19, 2024",Finance,14,High,0,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-536,"Thursday, June 20, 2024",Finance,11,High,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-537,"Friday, June 21, 2024",Finance,11,High,1,1,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-538,"Saturday, June 22, 2024",Finance,14,High,0,1,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-539,"Sunday, June 23, 2024",Finance,12,High,1,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-540,"Monday, June 24, 2024",Finance,5,High,1,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-541,"Tuesday, June 25, 2024",Finance,13,High,0,1,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-542,"Wednesday, June 26, 2024",Finance,3,High,0,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-543,"Thursday, June 27, 2024",Finance,10,High,0,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-544,"Friday, June 28, 2024",Finance,9,High,1,1,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-545,"Saturday, June 29, 2024",Finance,6,High,1,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-546,"Sunday, June 30, 2024",Finance,6,High,0,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-547,"Monday, July 1, 2024",Finance,12,Medium,0,0,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-548,"Tuesday, July 2, 2024",Finance,14,Medium,1,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-549,"Wednesday, July 3, 2024",Finance,11,Medium,1,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-550,"Thursday, July 4, 2024",Finance,10,Medium,1,1,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-551,"Friday, July 5, 2024",Finance,4,Medium,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-552,"Saturday, July 6, 2024",Finance,3,Medium,1,1,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-553,"Sunday, July 7, 2024",Finance,9,Medium,0,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-554,"Monday, July 8, 2024",Finance,12,Medium,1,0,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-555,"Tuesday, July 9, 2024",Finance,10,Medium,0,1,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-556,"Wednesday, July 10, 2024",Finance,11,Medium,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-557,"Thursday, July 11, 2024",Finance,6,Medium,0,1,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-558,"Friday, July 12, 2024",Finance,9,Medium,0,1,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-559,"Saturday, July 13, 2024",Finance,8,Medium,1,1,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-560,"Sunday, July 14, 2024",Finance,3,Medium,0,0,0,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-561,"Monday, July 15, 2024",Finance,11,Medium,1,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-562,"Tuesday, July 16, 2024",Finance,3,Medium,1,1,1,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-563,"Wednesday, July 17, 2024",Finance,8,Medium,1,0,0,0,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-564,"Thursday, July 18, 2024",Finance,5,Medium,0,0,1,1,Well defined,"125,000.00",Low,10,15,15,25,20,10,5
+FL-565,"Friday, July 19, 2024",Finance,3,Medium,1,1,0,1,Average,"125,000.00",Medium,15,15,20,25,15,5,5
+FL-566,"Saturday, July 20, 2024",Finance,7,Medium,0,1,1,0,Average,"125,000.00",Medium,15,15,20,25,15,5,5
+FL-567,"Sunday, July 21, 2024",Finance,12,Medium,0,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-568,"Monday, July 22, 2024",Finance,4,Medium,0,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-569,"Tuesday, July 23, 2024",Finance,11,Medium,1,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-570,"Wednesday, July 24, 2024",Finance,10,Medium,1,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-571,"Thursday, July 25, 2024",Finance,10,Medium,1,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-572,"Friday, July 26, 2024",Finance,4,Medium,0,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-573,"Saturday, July 27, 2024",Finance,3,Medium,0,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-574,"Sunday, July 28, 2024",Finance,9,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-575,"Monday, July 29, 2024",Finance,10,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-576,"Tuesday, July 30, 2024",Finance,14,Medium,0,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-577,"Wednesday, July 31, 2024",Finance,14,Medium,1,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-578,"Thursday, August 1, 2024",Finance,6,Medium,0,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-579,"Friday, August 2, 2024",Finance,12,Medium,1,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-580,"Saturday, August 3, 2024",Finance,8,Medium,1,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-581,"Sunday, August 4, 2024",Finance,12,Medium,0,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-582,"Monday, August 5, 2024",Finance,12,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-583,"Tuesday, August 6, 2024",Finance,5,Medium,1,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-584,"Wednesday, August 7, 2024",Finance,3,Medium,0,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-585,"Thursday, August 8, 2024",Finance,7,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-586,"Friday, August 9, 2024",Finance,12,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-587,"Saturday, August 10, 2024",Finance,11,Medium,0,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-588,"Sunday, August 11, 2024",Finance,8,Medium,0,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-589,"Monday, August 12, 2024",Finance,8,Medium,0,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-590,"Tuesday, August 13, 2024",Finance,9,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-591,"Wednesday, August 14, 2024",Finance,14,Medium,0,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-592,"Thursday, August 15, 2024",Finance,13,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-593,"Friday, August 16, 2024",Finance,5,Medium,1,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-594,"Saturday, August 17, 2024",Finance,6,Medium,1,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-595,"Sunday, August 18, 2024",Finance,13,Medium,0,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-596,"Monday, August 19, 2024",Finance,5,Medium,1,0,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-597,"Tuesday, August 20, 2024",Finance,13,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-598,"Wednesday, August 21, 2024",Finance,13,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-599,"Thursday, August 22, 2024",Finance,3,Medium,0,0,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-600,"Friday, August 23, 2024",Finance,3,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-601,"Saturday, August 24, 2024",Finance,6,Medium,0,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-602,"Sunday, August 25, 2024",Finance,12,Medium,0,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-603,"Monday, August 26, 2024",Finance,6,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-604,"Tuesday, August 27, 2024",Finance,14,Medium,0,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-605,"Wednesday, August 28, 2024",Finance,12,Medium,0,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-606,"Thursday, August 29, 2024",Finance,14,Medium,0,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-607,"Friday, August 30, 2024",Finance,12,Medium,1,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-608,"Saturday, August 31, 2024",Finance,12,Medium,0,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-609,"Sunday, September 1, 2024",Finance,8,Medium,1,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-610,"Monday, September 2, 2024",Finance,5,Medium,0,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-611,"Tuesday, September 3, 2024",Finance,3,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-612,"Wednesday, September 4, 2024",Finance,4,Medium,1,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-613,"Thursday, September 5, 2024",Finance,7,Medium,0,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-614,"Friday, September 6, 2024",Finance,13,Medium,0,0,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-615,"Saturday, September 7, 2024",Finance,11,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-616,"Sunday, September 8, 2024",Finance,8,Medium,0,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-617,"Monday, September 9, 2024",Finance,12,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-618,"Tuesday, September 10, 2024",Finance,7,Medium,1,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-619,"Wednesday, September 11, 2024",Finance,12,Medium,0,0,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-620,"Thursday, September 12, 2024",Finance,4,Medium,1,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-621,"Friday, September 13, 2024",Finance,3,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-622,"Saturday, September 14, 2024",Finance,10,Medium,1,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-623,"Sunday, September 15, 2024",Finance,3,Medium,1,1,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-624,"Monday, September 16, 2024",Finance,5,Medium,0,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-625,"Tuesday, September 17, 2024",Finance,14,Medium,1,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-626,"Wednesday, September 18, 2024",Finance,12,Medium,0,0,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-627,"Thursday, September 19, 2024",Finance,4,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-628,"Friday, September 20, 2024",Finance,8,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-629,"Saturday, September 21, 2024",Finance,6,Medium,0,0,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-630,"Sunday, September 22, 2024",Finance,5,Medium,1,0,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-631,"Monday, September 23, 2024",Finance,7,Medium,1,1,0,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-632,"Tuesday, September 24, 2024",Finance,7,Medium,1,0,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-633,"Wednesday, September 25, 2024",Finance,7,Medium,0,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-634,"Thursday, September 26, 2024",Finance,7,Medium,0,0,1,1,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-635,"Friday, September 27, 2024",Finance,6,Medium,1,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-636,"Saturday, September 28, 2024",Finance,13,Medium,1,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-637,"Sunday, September 29, 2024",Finance,7,Medium,1,1,0,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-638,"Monday, September 30, 2024",Finance,3,Medium,0,1,1,0,Average,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-639,"Tuesday, October 1, 2024",Finance,5,Medium,1,1,1,1,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-640,"Wednesday, October 2, 2024",Finance,12,Medium,0,0,1,0,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-641,"Thursday, October 3, 2024",Finance,8,Medium,1,0,1,0,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-642,"Friday, October 4, 2024",Finance,5,Medium,0,1,1,0,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-643,"Saturday, October 5, 2024",Finance,9,Medium,0,0,0,1,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-644,"Sunday, October 6, 2024",Finance,8,Medium,1,0,1,1,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-645,"Monday, October 7, 2024",Finance,6,Medium,1,0,0,0,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-646,"Tuesday, October 8, 2024",Finance,12,Medium,0,0,1,0,Poor,"195,000.00",Medium,15,15,20,25,15,5,5
+FL-647,"Wednesday, October 9, 2024",Finance,14,Medium,0,1,0,0,Poor,"59,994.91",Medium,15,15,20,25,15,5,5
+FL-648,"Thursday, October 10, 2024",Finance,11,Medium,0,0,1,1,Poor,"88,458.79",Medium,15,15,20,25,15,5,5
+FL-649,"Friday, October 11, 2024",Finance,7,Medium,1,1,0,1,Poor,"98,402.23",Medium,15,15,20,25,15,5,5
+FL-650,"Saturday, October 12, 2024",Finance,3,Low,0,0,0,1,Poor,"78,280.58",High,15,20,20,20,10,5,10
+FL-651,"Sunday, October 13, 2024",Finance,7,Low,0,0,1,1,Poor,"77,956.27",High,15,20,20,20,10,5,10
+FL-652,"Monday, October 14, 2024",Finance,12,Low,0,1,1,1,Poor,"87,810.59",High,15,20,20,20,10,5,10
+FL-653,"Tuesday, October 15, 2024",Finance,4,Low,1,1,1,1,Poor,"97,799.15",High,15,20,20,20,10,5,10
+FL-654,"Wednesday, October 16, 2024",Finance,3,Low,1,0,0,0,Poor,"87,614.14",High,15,20,20,20,10,5,10
+FL-655,"Thursday, October 17, 2024",Finance,14,Low,1,0,0,0,Poor,"97,444.94",High,15,20,20,20,10,5,10
+FL-656,"Friday, October 18, 2024",Finance,7,Low,1,1,0,1,Poor,"67,355.98",High,15,20,20,20,10,5,10
+FL-657,"Saturday, October 19, 2024",Finance,10,Low,1,1,1,0,Poor,"87,260.17",High,15,20,20,20,10,5,10
+FL-658,"Sunday, October 20, 2024",Finance,6,Low,0,0,1,0,Poor,"77,021.01",High,15,20,20,20,10,5,10
+FL-659,"Monday, October 21, 2024",Finance,4,Low,1,0,0,0,Poor,"96,975.50",High,15,20,20,20,10,5,10
+FL-660,"Tuesday, October 22, 2024",Finance,11,Low,0,1,1,0,Poor,"56,775.68",High,15,20,20,20,10,5,10
+FL-661,"Wednesday, October 23, 2024",Finance,13,Low,1,0,0,0,Poor,"186,620.85",High,15,20,20,20,10,5,10
+FL-662,"Thursday, October 24, 2024",Finance,13,Low,1,1,1,1,Poor,"226,061.77",High,15,20,20,20,10,5,10
+FL-663,"Friday, October 25, 2024",Finance,12,Low,0,0,1,0,Poor,"296,050.84",High,15,20,20,20,10,5,10
+FL-664,"Saturday, October 26, 2024",Finance,12,Low,0,0,1,0,Poor,"265,869.74",High,15,20,20,20,10,5,10
+FL-665,"Sunday, October 27, 2024",Finance,13,Low,1,1,0,0,Poor,"115,762.64",High,15,20,20,20,10,5,10
+FL-666,"Monday, October 28, 2024",Finance,3,Low,0,1,0,1,Poor,"55,446.57",High,15,20,20,20,10,5,10
+FL-667,"Tuesday, October 29, 2024",Finance,5,Low,0,0,1,0,Poor,"65,352.87",High,15,20,20,20,10,5,10
+FL-668,"Wednesday, October 30, 2024",Finance,11,Low,1,1,1,1,Poor,"225,060.91",High,15,20,20,20,10,5,10
