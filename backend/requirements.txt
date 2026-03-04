@@ -1,13 +1,22 @@
+# Core Flask (your existing)
+flask
+flask_cors
+
+# Data Processing (your existing)
 numpy
-pandas 
+pandas
 openpyxl
+
+# LLM (your existing)
 llama-index
 llama-index-core
 llama-index-llms-openai
-scikit-learn
-flask
-flask_cors
-PyJWT
-# local LLM deps
-# using gpt4all instead of transformers-based models
-gpt4all
+
+# ML & Data Science (NEW - for KPI ML system)
+scikit-learn>=1.4.0
+xgboost>=2.0.0
+
+# Utilities (NEW - for model evaluation)
+joblib>=1.3.0
+matplotlib>=3.8.0
+seaborn>=0.13.0

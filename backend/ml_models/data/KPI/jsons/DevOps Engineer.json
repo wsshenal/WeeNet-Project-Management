@@ -1,0 +1,55 @@
+{
+  "skills": {
+    "Scripting and Automation (Python, Bash)": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Continuous Integration/Continuous Deployment": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Cloud Platforms ( AWS, Azure, GCP)": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Configuration Management Tools": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Monitoring and Logging Tools": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    }
+  },
+  "experience": {
+    "Years of experience in DevOps Engineer": {
+      "1-2 years": 20,
+      "3-5 years": 50,
+      "5+ years": 100
+    },
+    "Experience of related Domain": {
+      "0 - 5": 20,
+      "6 - 14": 50,
+      "15+": 100
+    },
+    "Leadership/Team lead experience": {
+      "Non-Lead": 0,
+      "Leadership": 100
+    }
+  },
+  "education": {
+    "Bachelor's Degree": {
+      "Unrelated": 50,
+      "related": 100
+    },
+    "Master's Degree": {
+      "Unrelated": 50,
+      "related": 100
+    }
+  }
+}
