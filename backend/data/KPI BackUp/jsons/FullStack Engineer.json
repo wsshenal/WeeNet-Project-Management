@@ -1,0 +1,56 @@
+{
+    "skills":{
+       "Proficiency in Frontend Technologies (HTML, CSS, JavaScript)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Proficiency in Backend Technologies (Node.js, Java, Python)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Knowledge of Frontend Frameworks/Libraries (React, Angular, Vue)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Knowledge of Backend Frameworks (Express.js, Spring, Django)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Database Management (SQL, NoSQL)":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       },
+       "API Development and Integration":{
+          "Novice":2,
+          "Intermediate":4,
+          "Advanced":6.6
+       }
+    },
+    "experience":{
+       "Years of Experience in Backend Engineer":{
+          "1-2 years":3,
+          "3-5 years":6,
+          "5+ years":10
+       },
+       "Experience of related domain":{
+          "0 - 5":3,
+          "6 - 14":6,
+          "15+":10
+       }
+    },
+    "education":{
+       "Bachelor's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       },
+       "Master's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       }
+    }
+ }

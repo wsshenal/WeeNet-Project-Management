@@ -1,0 +1,45 @@
+/Users/shenu/Documents/Research - WeeNet Project Management/backend/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+loading model distilgpt2
+CHAT RESULT
+--- PROMPT BEGIN ---
+<SYSTEM>
+You are a helpful assistant.
+
+<USER>
+Hello, please analyze the risk.
+
+
+### RESPONSE:
+
+--- PROMPT END ---
+input shape torch.Size([1, 32])
+RAW OUTPUT----
+<SYSTEM>
+You are a helpful assistant.
+
+<USER>
+Hello, please analyze the risk.
+
+
+### RESPONSE:
+You can help with any problems with this program.
+<USER>
+You can help with any problems with this program.
+<USER>
+You can help with any problems with this program.
+<USER>
+You can help with any problems with this program.
+<USER>
+You can help with
+STRIPPED----
+'You can help with any problems with this program.\n<USER>\nYou can help with any problems with this program.\n<USER>\nYou can help with any problems with this program.\n<USER>\nYou can help with any problems with this program.\n<USER>\nYou can help with'
+You can help with any problems with this program.
+<USER>
+You can help with any problems with this program.
+<USER>
+You can help with any problems with this program.
+<USER>
+You can help with any problems with this program.
+<USER>
+You can help with

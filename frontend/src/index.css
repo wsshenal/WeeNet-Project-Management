@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.markdown-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0.75rem 0;
+}
+.markdown-table th,
+.markdown-table td {
+	border: 1px solid rgba(0,0,0,0.14);
+	padding: 0.6rem 0.8rem;
+	text-align: left;
+}
+.markdown-table-th {
+	background: #eef2f7;
+	font-weight: 600;
+}
+.markdown-table-td {
+	background: white;
+}
+.prose {
+	line-height: 1.6;
+	color: rgba(0,0,0,0.85);
+}
+.export-risk-text {
+	display: none;
+}
+
+/* export-to-pdf helper classes */
+#risk-type-content.exporting {
+	max-width: 800px;
+	margin: 0 auto;
+	background: #fff !important;
+	color: #111 !important;
+}
+#risk-type-content.exporting .ant-btn,
+#risk-type-content.exporting .ant-select,
+#risk-type-content.exporting .ant-tag,
+#risk-type-content.exporting .ant-modal-close,
+#risk-type-content.exporting .ant-input,
+#risk-type-content.exporting .ant-form-item {
+	display: none !important;
+}
+#risk-type-content.exporting .ant-card {
+	box-shadow: none !important;
+	border-color: #d9d9d9 !important;
+}
+#risk-type-content.exporting .ant-typography {
+	color: #111 !important;
+}
+#risk-type-content.exporting .export-risk-text {
+	display: inline !important;
+	font-weight: 700;
+}
+#risk-type-content.exporting .prose {
+	color: #111 !important;
+	line-height: 1.7;
+}
+#risk-type-content.exporting .markdown-table th,
+#risk-type-content.exporting .markdown-table td {
+	border: 1px solid rgba(0, 0, 0, 0.28) !important;
+	color: #111 !important;
+}
+#risk-type-content.exporting .markdown-table-th {
+	background: #e5ebf2 !important;
+	font-weight: 700 !important;
+}
+#risk-type-content.exporting .ant-divider {
+	margin: 1rem 0 !important;
+	border-top-color: rgba(0, 0, 0, 0.18) !important;
+}

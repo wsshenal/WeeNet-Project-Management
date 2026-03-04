@@ -1,0 +1,56 @@
+{
+    "skills":{
+       "Project Management Skills (planning, scheduling)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Leadership and Team Management":{
+          "Novice":2,
+          "Intermediate":4,
+          "Advanced":6.6
+       },
+       "Communication Skills":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Risk Management":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       },
+       "Budgeting and Cost Control":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       },
+       "Knowledge of Project Management Methodologies (Agile, Waterfall)":{
+          "Novice":2,
+          "Intermediate":4,
+          "Advanced":6.6
+       }
+    },
+    "experience":{
+       "Years of Experience in Backend Engineer":{
+          "1-2 years":3,
+          "3-5 years":6,
+          "5+ years":10
+       },
+       "Experience of related domain":{
+          "0 - 5":3,
+          "6 - 14":6,
+          "15+":10
+       }
+    },
+    "education":{
+       "Bachelor's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       },
+       "Master's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       }
+    }
+ }

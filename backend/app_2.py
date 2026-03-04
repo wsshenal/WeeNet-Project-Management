@@ -1,150 +1,23 @@
 import numpy as np
 import pandas as pd
-import os, pickle, json, ast
+import os, pickle, json
 from flask_cors import CORS
 from flask import Flask, request, jsonify
-from functools import wraps
-from datetime import datetime, timedelta, timezone
-from werkzeug.security import generate_password_hash, check_password_hash
-from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
-try:
-    import jwt  # PyJWT
-    HAS_PYJWT = True
-except Exception:
-    jwt = None
-    HAS_PYJWT = False
-# We'll use an open-source model locally rather than calling an external API.
-# `gpt4all` provides a small quantized CPU-friendly chat model.
+from llama_index.llms.openai import OpenAI
 from llama_index.core.llms import ChatMessage, MessageRole
 
-# local model support
-from gpt4all import GPT4All
-
 app = Flask(__name__)
-JWT_SECRET = os.environ.get("JWT_SECRET", "dev-only-change-me")
-JWT_ALGORITHM = "HS256"
-JWT_EXPIRES_HOURS = int(os.environ.get("JWT_EXPIRES_HOURS", "8"))
-token_serializer = URLSafeTimedSerializer(JWT_SECRET)
-ALLOWED_ORIGINS = {
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-}
-CORS(app, resources={r"/*": {"origins": list(ALLOWED_ORIGINS)}})
+CORS(app)
 
-def issue_token(email):
-    if HAS_PYJWT:
-        now = datetime.now(timezone.utc)
-        payload = {
-            "sub": email,
-            "iat": int(now.timestamp()),
-            "exp": int((now + timedelta(hours=JWT_EXPIRES_HOURS)).timestamp()),
-        }
-        return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
-    # Fallback when PyJWT is not installed.
-    return token_serializer.dumps({"sub": email})
+# Do not hardcode secrets in source control.
+# If this legacy file is used, provide OPENAI_API_KEY via environment.
+os.environ['OPENAI_API_KEY'] = os.environ.get('OPENAI_API_KEY', '')
 
-def decode_token(token):
-    if HAS_PYJWT:
-        return jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-    return token_serializer.loads(token, max_age=JWT_EXPIRES_HOURS * 3600)
-
-def _extract_bearer():
-    auth = request.headers.get("Authorization", "")
-    if not auth.startswith("Bearer "):
-        return None
-    return auth.split(" ", 1)[1].strip()
-
-def auth_required(fn):
-    @wraps(fn)
-    def wrapper(*args, **kwargs):
-        # allow CORS preflight
-        if request.method == "OPTIONS":
-            return ("", 204)
-        token = _extract_bearer()
-        if not token:
-            return jsonify({"error": "Missing auth token"}), 401
-        try:
-            claims = decode_token(token)
-            request.user_email = claims.get("sub")
-        except Exception as e:
-            if HAS_PYJWT and isinstance(e, jwt.ExpiredSignatureError):
-                return jsonify({"error": "Token expired"}), 401
-            if HAS_PYJWT and isinstance(e, jwt.InvalidTokenError):
-                return jsonify({"error": "Invalid token"}), 401
-            if isinstance(e, SignatureExpired):
-                return jsonify({"error": "Token expired"}), 401
-            if isinstance(e, BadSignature):
-                return jsonify({"error": "Invalid token"}), 401
-            return jsonify({"error": "Invalid token"}), 401
-        return fn(*args, **kwargs)
-    return wrapper
-
-# mimic the simple .chat interface that llama_index.OpenAI provided
-class LocalLLM:
-    def __init__(self, model):
-        self.model = model
-
-    def chat(self, messages, **kwargs):
-        if len(messages) >= 2:
-            prompt = messages[0].content + "\n" + messages[1].content
-        else:
-            prompt = "\n".join(m.content for m in messages)
-        prompt += "\n\n### RESPONSE:\n"
-
-        # allow more tokens to ensure we capture the mitigation section
-        out = self.model.generate(prompt, max_tokens=1024)
-        text = out or ""
-
-        if "### RESPONSE:" in text:
-            text = text.split("### RESPONSE:", 1)[1].strip()
-        elif text.startswith(prompt):
-            text = text[len(prompt) :]
-
-        if not text.strip():
-            print("Warning: gpt4all produced empty continuation")
-
-        class Dummy:
-            pass
-        response = Dummy()
-        response.message = Dummy()
-        response.message.content = text
-        return response
-
-def load_local_llm():
-    # load only from local disk; do not attempt download at startup
-    local_model_name = os.environ.get("LOCAL_MODEL", "Llama-3.2-1B-Instruct-Q4_0.gguf")
-    local_model_dir = os.environ.get("LOCAL_MODEL_DIR", os.path.join(os.getcwd(), "models"))
-    try:
-        print(
-            f"loading gpt4all model '{local_model_name}' from '{local_model_dir}' "
-            "(downloads disabled)"
-        )
-        model = GPT4All(
-            local_model_name,
-            model_path=local_model_dir,
-            allow_download=False,
-        )
-        return LocalLLM(model)
-    except Exception as e:
-        print(f"GPT4All unavailable; continuing with fallback risk text: {e}")
-        return None
-
-llm = load_local_llm()
-USE_LLM = os.environ.get("USE_LLM", "0").lower() in {"1", "true", "yes"}
-if not USE_LLM:
-    llm = None
-    print("USE_LLM disabled; running deterministic/fallback mode for team consistency.")
-
-@app.after_request
-def add_cors_headers(response):
-    origin = request.headers.get("Origin")
-    if origin in ALLOWED_ORIGINS:
-        response.headers["Access-Control-Allow-Origin"] = origin
-    response.headers["Vary"] = "Origin"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-    return response
-
+llm = OpenAI(
+            engine="gpt-4o",
+            temperature=0.3,
+            max_tokens=1000
+            )
 
 roles = [
         'Business Analyst',
@@ -173,53 +46,36 @@ with open('artifacts/label_encoder_sdlc.pkl', 'rb') as f:
 
 def inference_risk(
                 data_json,
-                # better to return simple risk level names so the frontend can
-                # colour and display them without needing to strip " Risk".
                 class_dict  = {
-                                0 : 'Low', 
-                                1 : 'Medium', 
-                                2 : 'High'
+                                0 : 'Low Risk', 
+                                1 : 'Medium Risk', 
+                                2 : 'High Risk'
                                 },
                 dataset_path = 'data/project_details.xlsx'
                 ):
-    raw_payload = data_json.copy() if isinstance(data_json, dict) else {}
-    domain_norm = {
-        "E-Commerce": "E-commerce",
-        "Ecommerce": "E-commerce",
-    }
-    if isinstance(data_json, dict):
-        data_json = data_json.copy()
-        data_json["Domain"] = domain_norm.get(data_json.get("Domain"), data_json.get("Domain"))
-        # normalize field aliases from frontend payloads
-        if "Project Scope" in data_json and "project_scope" not in data_json:
-            data_json["project_scope"] = data_json.get("Project Scope")
-        if "Requirement specifity" in data_json and "requirement_specifity" not in data_json:
-            data_json["requirement_specifity"] = data_json.get("Requirement specifity")
-        if "Team Experience" in data_json and "team_experience" not in data_json:
-            data_json["team_experience"] = data_json.get("Team Experience")
-        if "ML Components" in data_json and "ML_Components" not in data_json:
-            data_json["ML_Components"] = data_json.get("ML Components")
-        if "Tech Stack" in data_json and "Tech_Stack" not in data_json:
-            data_json["Tech_Stack"] = data_json.get("Tech Stack")
-        if "Core Features" in data_json and "Core_Features" not in data_json:
-            data_json["Core_Features"] = data_json.get("Core Features")
-        if "Expected Team Size" in data_json and "Expected_Team_Size" not in data_json:
-            data_json["Expected_Team_Size"] = data_json.get("Expected Team Size")
-        if "Expected Budget" in data_json and "Expected_Budget" not in data_json:
-            data_json["Expected_Budget"] = data_json.get("Expected Budget")
-        if "ML Components" in raw_payload and "ML_Components" not in raw_payload:
-            raw_payload["ML_Components"] = raw_payload.get("ML Components")
-        if "Tech Stack" in raw_payload and "Tech_Stack" not in raw_payload:
-            raw_payload["Tech_Stack"] = raw_payload.get("Tech Stack")
-        if "Core Features" in raw_payload and "Core_Features" not in raw_payload:
-            raw_payload["Core_Features"] = raw_payload.get("Core Features")
-        if "Project Scope" in raw_payload and "project_scope" not in raw_payload:
-            raw_payload["project_scope"] = raw_payload.get("Project Scope")
-        if "Requirement specifity" in raw_payload and "requirement_specifity" not in raw_payload:
-            raw_payload["requirement_specifity"] = raw_payload.get("Requirement specifity")
-        if "Team Experience" in raw_payload and "team_experience" not in raw_payload:
-            raw_payload["team_experience"] = raw_payload.get("Team Experience")
+    risk_prompt_template = [
+                            ChatMessage(
+                                role=MessageRole.SYSTEM,
+                                content="""
+                                        You are a helpful AI assistant that expertise in project management. You have provided below infomation about the project. The fileds in the data contains the following information
+                                        
+                                        Domain : {1 : E-Commerce, 2 : Health, 3 : Education, 4 : Finance}
+                                        Mobile : {0 : No Mobile App Development, 1 : Mobile App Development Included}
+                                        Desktop : {0 : No Desktop App Development, 1 : Desktop App Development Included}
+                                        Web : {0 : No Web App Development, 1 : Web App Development Included}
+                                        IoT : {0 : No IoT Development, 1 : IoT Development Included}
+                                        Expected Team Size : Expected team size for the project.
+                                        Expected Budget : Expected budget for the project.
+                                        Risk : {0 : Low Risk, 1 : Medium Risk, 2 : High Risk}
 
+                                        Higher Risk means building more than one type of application (Desktop, Web, Mobile, IoT) with lower budget and smaller team size.
+
+                                        Using the provided risk level of the project find the issues / problems that project facing and the ways to mitigate the risk levels in step by step
+                                        """,
+                            ),
+                            ChatMessage(role=MessageRole.USER, content=str(data_json))
+                            ]
+                
     data = pd.DataFrame(data_json, index=[0])
     data = data[[
                 'Domain', 'Mobile', 'Desktop', 
@@ -228,8 +84,8 @@ def inference_risk(
         
     data_json = {k : v for k, v in data_json.items() if k in data.columns}
     data['Domain'] = data['Domain'].map({
-                                        'E-commerce':1,
-                                        'Health':2, 'Education':3,
+                                        'E-Commerce':1, 
+                                        'Health':2, 'Education':3, 
                                         'Finance':4
                                         })
 
@@ -246,154 +102,22 @@ def inference_risk(
                 'Expected Budget']] == data_to_json
     # find the row index that all inndices are true
     match_index = match_flag[match_flag.all(axis=1)].index.values
-    if len(match_index) > 0:
+    if match_index:
         match_index = match_index[0]
         row = df_pj.iloc[match_index]
-        risk = int(row['Risk']) -1
+        risk = int(row['Risk']) - 1
         prediction = class_dict[risk]
 
     else:
+        data['Date_Difference'] = 0
         prediction = xgb.predict(data)[0]
         prediction = class_dict[prediction]
-
+        
     data_json_updated = data_json.copy()
     data_json_updated['Risk'] = prediction
-
-    def build_risk_sections(payload, level):
-        budget = float(
-            payload.get("Expected Budget")
-            or payload.get("Expected_Budget")
-            or 0
-        )
-        team_size = float(
-            payload.get("Expected Team Size")
-            or payload.get("Expected_Team_Size")
-            or 0
-        )
-        platform_count = sum(
-            int(payload.get(k, 0) or 0) for k in ["Mobile", "Desktop", "Web", "IoT"]
-        )
-        domain = str(payload.get("Domain", "") or "").strip()
-        project_scope = str(payload.get("project_scope", "") or "").strip().lower()
-        requirement_specificity = str(payload.get("requirement_specifity", "") or "").strip().lower()
-        team_experience = str(payload.get("team_experience", "") or "").strip().lower()
-        ml_component = str(payload.get("ML_Components", "") or "").strip()
-        tech_stack = str(payload.get("Tech_Stack", "") or "").strip()
-        backend = str(payload.get("Backend", "") or "").strip()
-        frontend = str(payload.get("Frontend", "") or "").strip()
-
-        factors = []
-        actions = []
-
-        # Budget and team capacity
-        if budget and budget <= 20000:
-            factors.append(
-                f"- Budget pressure: expected budget ({int(budget)}) is critically low for delivery risk."
-            )
-            actions.append("- Increase project budget baseline to a realistic level before full-scope execution.")
-            actions.append("- Freeze scope to a strict MVP and defer all non-critical features.")
-            actions.append("- Allocate a hard contingency reserve (10-15%) before starting development.")
-        elif budget and budget < 150000:
-            factors.append(f"- Budget pressure: expected budget ({int(budget)}) may limit contingency.")
-            actions.append("- Prioritize MVP features and stage the roadmap in funded phases.")
-
-        if team_size and team_size <= 2:
-            factors.append(f"- Team capacity: team size ({int(team_size)}) is critically low for scope.")
-            actions.append("- Increase core team size (engineering, QA, and PM coverage) before scaling delivery.")
-            actions.append("- Reduce active workstreams to one platform and one release at a time.")
-            actions.append("- Add minimum external support/part-time specialists for QA and DevOps.")
-        elif team_size and team_size < 25:
-            factors.append(f"- Team capacity: team size ({int(team_size)}) may be tight for scope.")
-            actions.append("- Add weekly capacity checks and rebalance workload by priority.")
-
-        # Platform breadth
-        if platform_count >= 3:
-            factors.append(
-                f"- Platform breadth: {platform_count} platforms increase coordination and testing overhead."
-            )
-            actions.append("- Deliver single-platform MVP first, then expand in sequenced releases.")
-        elif platform_count == 2:
-            factors.append("- Multi-platform scope: two platforms require tighter planning and shared components.")
-            actions.append("- Use shared APIs/components and lock interface contracts early.")
-
-        # Scope, requirements, and experience quality
-        if project_scope in {"wide", "large"}:
-            factors.append("- Scope breadth: wide scope raises delivery and integration complexity.")
-            actions.append("- Split scope into phased milestones with acceptance criteria per phase.")
-
-        if requirement_specificity in {"poor", "unclear"}:
-            factors.append("- Requirement clarity: low specificity can cause rework and late changes.")
-            actions.append("- Run requirement workshops and baseline signed user stories before build.")
-        elif requirement_specificity == "average":
-            factors.append("- Requirement clarity: average specificity still carries moderate rework risk.")
-            actions.append("- Add early prototype reviews and requirement freeze gates.")
-
-        if team_experience in {"low"}:
-            factors.append("- Team experience: lower experience may increase defect leakage and cycle time.")
-            actions.append("- Add senior technical oversight, code reviews, and tighter QA gates.")
-        elif team_experience in {"mixed", "medium"}:
-            factors.append("- Team experience: mixed capability requires stronger coordination and mentoring.")
-            actions.append("- Pair less experienced members with seniors on critical modules.")
-
-        # Technology and domain complexity
-        if ml_component in {"Recommendation Engine", "Classification Model", "Prediction Model"}:
-            factors.append(f"- ML complexity: {ml_component} requires additional validation and monitoring effort.")
-            actions.append("- Plan model validation metrics, drift checks, and staged rollout.")
-
-        if tech_stack in {"Serverless", "MEAN"}:
-            factors.append(f"- Stack adoption: {tech_stack} may increase integration/operational learning curve.")
-            actions.append("- Allocate a technical spike and define architecture guardrails early.")
-
-        if backend and frontend and (
-            (backend == "Spring Boot" and frontend == "Svelte")
-            or (backend == "Django" and frontend == "Angular")
-        ):
-            factors.append("- Cross-stack integration: selected frontend/backend pair may need extra integration effort.")
-            actions.append("- Define API contracts early and validate integration with an end-to-end spike.")
-
-        if domain in {"Finance", "Health"}:
-            factors.append(f"- Domain constraints: {domain} projects typically face stronger compliance and quality demands.")
-            actions.append("- Include compliance/security reviews in every milestone plan.")
-
-        # execution guardrails for strongly constrained projects
-        if budget and budget <= 20000 and team_size and team_size <= 2:
-            actions.append("- Re-baseline timeline and secure stakeholder sign-off on reduced scope.")
-            actions.append("- Add weekly go/no-go checkpoints with explicit risk acceptance decisions.")
-
-        if not factors:
-            factors.append("- Inputs indicate manageable constraints with standard delivery risk.")
-            actions.append("- Maintain standard QA, milestone reviews, and stakeholder updates.")
-
-        # De-duplicate while preserving order
-        factors = list(dict.fromkeys(factors))
-        actions = list(dict.fromkeys(actions))
-
-        analysis = (
-            f"The risk model predicted **{level}** risk. The drivers above are computed from the "
-            "submitted profile (domain, scope, requirements, team experience, stack, ML component, "
-            "platform breadth, budget, and team size)."
-        )
-        risk_section = "\n".join(
-            [
-                "### Risk Factors",
-                *factors,
-                "",
-                "### Analysis",
-                analysis,
-            ]
-        )
-        mitigation_steps = "\n".join(
-            [
-                "### Mitigation Steps",
-                *actions,
-            ]
-        )
-        return risk_section, mitigation_steps
-
-    explain_payload = {**raw_payload, **data_json_updated}
-    risk_section, mitigation_steps = build_risk_sections(explain_payload, prediction)
-
-    return risk_section, prediction, mitigation_steps
+    response = llm.chat(risk_prompt_template)
+    response = str(response.message.content)
+    return response, prediction
 
 def load_json_files(data_path = 'data/KPI/jsons/'):
     json_arr = {}
@@ -443,7 +167,7 @@ def load_csv_files(data_path = 'data/KPI/weights/'):
             excel_path = os.path.join(data_path, file)
             with open(excel_path, 'r') as f:
                 df = pd.read_excel(excel_path)
-                df = df[['Criteria', 'Weight','Type','Level']]
+                df = df[['Criteria', 'Weight','Type']]
                 role = file.split('.')[0]
                 df_arr[role] = df
     return df_arr
@@ -513,8 +237,9 @@ def apply_kpi_level(
         json_role_updated=None
 ):
     weight = row['Weight']
-    criteria = row['Criteria'].replace('\\/', '-').replace('\\', '').replace('/', '-')
+    criteria = row['Criteria'].replace('\\/', '-').replace('\\', '').replace('\/', '-')
     level = row['Level']
+    print(level, criteria, weight)
 
     # List of criteria to skip calculation
     skip_criteria = ["Name", "Phone Number", "Home Town", "Age"]
@@ -531,9 +256,13 @@ def apply_kpi_level_2(
                     row, 
                     json_role_updated=None
                     ):
+    print("awa2")
     weight = row['Weight']
-    criteria = row['Criteria'].replace('\\/', '-').replace('\\', '').replace('/', '-')
+    print("awa3")
+    criteria = row['Criteria'].replace('\\/', '-').replace('\\', '').replace('\/', '-')
+    print("awa4",row["Criteria"])
     level = row['Level']
+    print(level,criteria,weight)
     value = json_role_updated[criteria][level]
     return value * weight
 
@@ -544,30 +273,42 @@ def calculate_kpi_value(
                         ):
 
     df_arr = load_csv_files()
+    print("awa3")
         
     json_arr = load_json_files()
+    print("awa4")
 
     df_role = df_arr[role]
+    print("awa5")
     df_role['Criteria'] = df_role['Criteria'].str.replace('\\/', '-').str.replace('\\', '').str.replace('/', '-')
+    print("awa6")
     json_role = json_arr[role][0]
+    print("awa7")
     json_role_updated = {}
     for _, value in json_role.items():
         for k, v in value.items():
             json_role_updated[k] = v
+    print("awa8")
     criteria_df = pd.DataFrame(
                                 criteria_json, 
                                 index=[0]
                                 ).T
+    print("awa9")
     criteria_df = criteria_df.reset_index()
+    print("awa10")
     criteria_df.columns = ['Criteria', 'Level']
+    print("awa11")
     criteria_df['Criteria'] = criteria_df['Criteria'].str.strip()
+    print("awa12")
     criteria_df['Level'] = criteria_df['Level'].str.strip()
+    print("awa13")
     criteria_df = criteria_df.merge(
                                     df_role, 
                                     on = 'Criteria', 
                                     how = 'left'
                                     )
     criteria_df['Weight'] = criteria_df['Weight'].fillna(0)
+    print(criteria_df['Weight'])
     criteria_df['KPI'] = criteria_df.apply(apply_kpi_level, axis = 1, json_role_updated=json_role_updated)
     kpi_value = criteria_df['KPI'].sum()
     return kpi_value
@@ -587,8 +328,10 @@ def calculate_kpi_sheet(
                                     sheet_name=role
                                     )
     df_role_values = df_role_values[df_role_values['Domain'] == domain]
+    print("awa1.1")
     df_role_values.reset_index(drop=True, inplace=True)
 
+    print("awa1.2")
     for i in range(df_role_values.shape[0]):
 
         criteria_json = eval(df_role_values.loc[i, :].to_json())
@@ -596,7 +339,7 @@ def calculate_kpi_sheet(
         for key in ['Name', 'Home Town', 'Phone Number', 'Age']:
             if key in criteria_json:
                 del criteria_json[key]
-        criteria_json = {k.replace('\\/', '-').replace('\\', '').replace('/', '-'): v for k, v in criteria_json.items()}
+        criteria_json = {k.replace('\\/', '-').replace('\\', '').replace('\/', '-'): v for k, v in criteria_json.items()}
         emp_id = criteria_json['EMP ID']
         domain = criteria_json['Domain']
         del criteria_json['EMP ID'], criteria_json['Domain']
@@ -605,6 +348,7 @@ def calculate_kpi_sheet(
                                         role,
                                         criteria_json
                                         )
+        print(kpi_value)
         df_kpi['KPI'].append(kpi_value)
         df_kpi['Domain'].append(domain)
         df_kpi['EmpID'].append(emp_id)
@@ -619,16 +363,6 @@ def calculate_kpi_sheet(
     return df_kpi
         
 def inference_complexity(data_json):
-    # Normalize known UI variants before encoding.
-    # Encoder classes expect "E-commerce" (lowercase c), while UI uses "E-Commerce".
-    domain_norm = {
-        "E-Commerce": "E-commerce",
-        "Ecommerce": "E-commerce",
-    }
-    if isinstance(data_json, dict):
-        data_json = data_json.copy()
-        data_json["Domain"] = domain_norm.get(data_json.get("Domain"), data_json.get("Domain"))
-
     complexity_prompt_template = [
                             ChatMessage(
                                 role=MessageRole.SYSTEM,
@@ -695,36 +429,17 @@ def inference_complexity(data_json):
 
     del df_unoccupied['IsOccupied']
 
-    max_retries = 3
-    last_error = None
-    for attempt in range(1, max_retries + 1):
+    while True:
         try:
-            if llm is None:
-                total_team = int(data_json.get("Expected Team Size", 8) or 8)
-                total_team = max(8, total_team)
-                selected_team = {
-                    "Business Analyst": 1,
-                    "Backend Engineer": max(1, int(total_team * 0.2)),
-                    "DevOps Engineer": 1,
-                    "Frontend Engineer": max(1, int(total_team * 0.2)),
-                    "FullStack Engineer": max(1, int(total_team * 0.2)),
-                    "Project Manager": 1,
-                    "Quality Assurance Engineer": max(1, int(total_team * 0.15)),
-                    "Tech Lead": 1,
-                }
-            else:
-                response = llm.chat(complexity_prompt_template)
-                raw_team = str(response.message.content).strip()
-                try:
-                    selected_team = json.loads(raw_team)
-                except Exception:
-                    selected_team = ast.literal_eval(raw_team)
+            response = llm.chat(complexity_prompt_template)
+            selected_team = eval(response.message.content)
 
             selected_employees = []
             for role, count in selected_team.items():
                 df_unoccupied_role = df_unoccupied[df_unoccupied['role'] == role]
                 del df_unoccupied_role['role']
                 unoccupied_empids = list(df_unoccupied_role['EMP ID'])
+                print("awa1.1")
                 df_kpi_role = calculate_kpi_sheet(role, domain)
                 df_kpi_role = df_kpi_role[df_kpi_role['EmpID'].isin(unoccupied_empids)]
                 df_kpi_role = df_kpi_role.sort_values(by = 'KPI', ascending = False)
@@ -742,23 +457,8 @@ def inference_complexity(data_json):
                     selected_employees.append(emp_dict_temp)
 
             return selected_team, selected_employees, prediction
-        except Exception as e:
-            last_error = e
-            print(f"[complexity] attempt {attempt}/{max_retries} failed: {e}")
-
-    # graceful fallback after bounded retries
-    print(f"[complexity] all retries failed; returning empty allocation. last_error={last_error}")
-    fallback_team = {
-        "Business Analyst": 1,
-        "Backend Engineer": 1,
-        "DevOps Engineer": 1,
-        "Frontend Engineer": 1,
-        "FullStack Engineer": 1,
-        "Project Manager": 1,
-        "Quality Assurance Engineer": 1,
-        "Tech Lead": 1,
-    }
-    return fallback_team, [], prediction
+        except:
+            print("Error occured, trying again...")
 
 def kpi_for_employee(
                     emp_id, role,
@@ -767,21 +467,25 @@ def kpi_for_employee(
     df_employee = pd.read_excel(employee_file_path, sheet_name=role)
     df_employee = df_employee[df_employee['EMP ID'] == emp_id]
     df_employee.reset_index(drop=True, inplace=True)
+    print("awa1")
     kpis = []
     for i in range(df_employee.shape[0]):
         criteria_json = eval(df_employee.loc[i, :].to_json())
-        criteria_json = {k.replace('\\/', '-').replace('\\', '').replace('/', '-'): v for k, v in criteria_json.items()}
+        criteria_json = {k.replace('\\/', '-').replace('\\', '').replace('\/', '-'): v for k, v in criteria_json.items()}
         emp_id = criteria_json['EMP ID']
         domain = criteria_json['Domain']
         name = criteria_json.get('Name')  # Added
         age = criteria_json.get('Age')  # Added
         hometown = criteria_json.get('Home Town')  # Added
         phone_number = criteria_json.get('Phone Number')  # Added
+        print("awa2")
         del criteria_json['EMP ID'], criteria_json['Domain']
+        print("awa3")
         kpi_value = calculate_kpi_value(
                                         role,
                                         criteria_json
                                         )
+        print("awa4")
         kpis.append({
                     'KPI': kpi_value,
                     'Domain': domain,
@@ -901,18 +605,6 @@ def recalc_time_with_risk(
                                         )
                             ]
     
-    if llm is None:
-        base_total = sum(base_time_dict.values())
-        est_delay = max(1, int(base_total * 0.1))
-        est_saved = max(1, int(base_total * 0.06))
-        return (
-            "LLM unavailable, generated heuristic timeline summary.\n\n"
-            f"Base SDLC total: {base_total} days\n"
-            f"Estimated delay from risk factors: {est_delay} days\n"
-            f"Estimated time saved after mitigation: {est_saved} days\n"
-            f"Estimated final total: {base_total + est_delay - est_saved} days"
-        )
-
     response = llm.chat(recal_prompt_template)
     response = str(response.message.content)
     return response
@@ -923,14 +615,14 @@ def sdlc_pipeline(data_json):
     data_json_sdlc = data_json.copy()
     data_json_sdlc["Complexity"] = complexity_level
     sdlc_dict = inference_sdlc(data_json_sdlc)
-
     data_json_risk = data_json_sdlc.copy()
     data_json_risk['Risk'] = risk_level
     response = recalc_time_with_risk(
                                     mitigation = sdlc_dict, 
                                     base_time_dict = sdlc_dict
                                     )
-    return response
+    # print(sdlc_dict)
+    return response,sdlc_dict
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -944,7 +636,7 @@ def register():
                 "firstname" : f"{firstname}",
                 "lastname" : f"{lastname}",
                 "email" : f"{email}",
-                "password" : generate_password_hash(f"{password}")
+                "password" : f"{password}"
                 }
     
     if not os.path.exists('data/users.json'):
@@ -980,23 +672,10 @@ def login():
         users = json.load(f)
 
     for user in users:
-        stored_pw = user.get('password', '')
-        pw_ok = False
-        # Backward compatibility for existing plain-text users.
-        if isinstance(stored_pw, str) and stored_pw.startswith("pbkdf2:"):
-            pw_ok = check_password_hash(stored_pw, password)
-        else:
-            pw_ok = stored_pw == password
-        if user['email'] == email and pw_ok:
+        if user['email'] == email and user['password'] == password:
             return jsonify({
                             "response" : "User Logged In Successfully !!!",
-                            "status" : 200,
-                            "token": issue_token(email),
-                            "user": {
-                                "email": email,
-                                "firstname": user.get("firstname", ""),
-                                "lastname": user.get("lastname", "")
-                            }
+                            "status" : 200
                             })
 
     return jsonify({
@@ -1005,20 +684,15 @@ def login():
                     })
         
 @app.route('/risk', methods=['POST'])
-@auth_required
 def risk():
     data_json = request.json
-    response_risk, prediction_risk, mitigation_steps = inference_risk(data_json)
+    response_risk, prediction_risk = inference_risk(data_json)
     return jsonify({
                     'risk' : response_risk,
-                    'mitigation' : prediction_risk,
-                    # mitigation_steps contains only the portion of the LLM reply under the
-                    # "Mitigation Steps" heading so the front end can render it separately.
-                    'mitigation_steps': mitigation_steps
+                    'mitigation' : prediction_risk
                     })
 
 @app.route('/employee/all', methods=['GET'])
-@auth_required
 def employee_all():
     all_emp_dict = {}
     all_emp_dict['Emp ID'] = []
@@ -1041,7 +715,6 @@ def employee_all():
                     })
 
 @app.route('/complexity', methods=['POST'])
-@auth_required
 def complexity():
     data_json = request.json
     selected_team, selected_employees, prediction_complexity= inference_complexity(data_json)
@@ -1052,16 +725,20 @@ def complexity():
                     })
 
 @app.route('/sdlc', methods=['POST'])
-@auth_required
 def sdlc():
     data_json = request.json
-    response_sdlc = sdlc_pipeline(data_json)
+    response_sdlc, sdlc_dict = sdlc_pipeline(data_json)
+    
+    # Convert int64 objects to native Python int
+    sdlc_dict = {key: int(value) if isinstance(value, (np.int64, int)) else value for key, value in sdlc_dict.items()}
+
+    print(sdlc_dict)
     return jsonify({
-                    'sdlc' : response_sdlc
-                    })
+        'sdlc': response_sdlc,
+        'base_time': sdlc_dict
+    })
 
 @app.route('/kpi/crud', methods=['POST'])
-@auth_required
 def kpi_crud():
     crud_json_data = request.json
     response = crud_kpi_criterias(
@@ -1073,38 +750,7 @@ def kpi_crud():
                     "response" : response
                     })
 
-
-@app.route('/delete-row', methods=['DELETE'])
-@auth_required
-def delete_row():
-    try:
-        # Get the name from the request args
-        name_to_delete = request.args.get('name')
-        role_to_delete = request.args.get('role')
-        
-        if not name_to_delete:
-            return jsonify({'error': 'Name is required'}), 400
-
-        # Read the Excel file
-        df = pd.read_excel(f'./data/KPI/weights/{role_to_delete}.xlsx')
-
-        # Check if the name exists
-        if name_to_delete not in df['Criteria'].values:
-            return jsonify({'error': 'Name not found'}), 404
-
-        # Drop the row(s) that match the name criteria
-        df = df[df['Criteria'] != name_to_delete]
-
-        # Save the updated DataFrame back to Excel
-        df.to_excel(f'./data/kpi/weights/{role_to_delete}.xlsx',index=False)
-
-        return jsonify({'message': f'Skill Deleted'}), 200
-
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
 @app.route('/kpi/role', methods=['POST'])
-@auth_required
 def kpi_sheet():
     data_json = request.json
     df_kpi = calculate_kpi_sheet(
@@ -1117,9 +763,9 @@ def kpi_sheet():
                     })
 
 @app.route('/kpi/employee', methods=['POST'])
-@auth_required
 def kpi_employee():
     data_json = request.json
+    print("awa0")
     kpis = kpi_for_employee(
                             data_json['emp_id'],
                             data_json['role']
@@ -1129,7 +775,6 @@ def kpi_employee():
                     })
 
 @app.route('/employee/insert', methods=['POST'])
-@auth_required
 def employee_insert():
     data_json = request.json
     insert_employee(data_json['insert_json'], data_json['role'])
@@ -1140,7 +785,6 @@ def employee_insert():
 EXCEL_FILE_PATH = './data/KPI/projects.xlsx'
 
 @app.route('/save-data', methods=['POST'])
-@auth_required
 def update_or_save_data():
     try:
         # Get JSON data from request
@@ -1198,7 +842,6 @@ def read_excel_file(file_name):
         return None
     
 @app.route('/get-data', methods=['GET'])
-@auth_required
 def get_data():
     file_name = request.args.get('file_name')  # Get the file name from query params
     
@@ -1213,7 +856,6 @@ def get_data():
         return jsonify({'error': f'File {file_name} not found'}), 404
     
 @app.route('/get-projects', methods=['GET'])
-@auth_required
 def get_projects():
     try:
         # Check if the file exists
@@ -1234,5 +876,5 @@ def get_projects():
 if __name__ == '__main__':
     app.run(
             debug=True, 
-            port=5001
+            port=5000
             )
