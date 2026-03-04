@@ -86,7 +86,7 @@ const Projects = () => {
       <div className="text-2xl pb-10">Admin Approve Status</div>
       <div>
         {error && <div style={{ color: "red" }}>{error}</div>}
-        <Table columns={columns} dataSource={data} loading={loading} />
+        <Table columns={columns} dataSource={data} loading={loading} rowKey={(record) => record.Name || record.id || Math.random()} />
       </div>
     </div>
   );

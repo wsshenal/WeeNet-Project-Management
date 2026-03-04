@@ -15,6 +15,11 @@ import { AuthGuard, ProtectedRoute } from "../guards/Authguard";
 import Projects from "../pages/Content/Projects";
 import SDLC from "../pages/Content/SDLC";
 
+// NEW ML IMPORTS
+import MLPrediction from "../pages/Content/MLPrediction";
+import MLRecommendations from "../pages/Content/MLRecommendations";
+import MLTeamPrediction from "../pages/Content/MLTeamPrediction";
+
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -121,6 +126,30 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <SDLC />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "ml-prediction",
+        element: (
+          <ProtectedRoute>
+            <MLPrediction />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "ml-recommendations",
+        element: (
+          <ProtectedRoute>
+            <MLRecommendations />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "ml-team",
+        element: (
+          <ProtectedRoute>
+            <MLTeamPrediction />
           </ProtectedRoute>
         ),
       },
