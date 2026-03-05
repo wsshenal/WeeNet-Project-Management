@@ -1,0 +1,858 @@
+{
+	"info": {
+		"_postman_id": "a3b8c203-5b7c-478d-98d5-761f43259ab7",
+		"name": "PM Pulse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33227276",
+		"_collection_link": "https://grey-shadow-237843.postman.co/workspace/TalentSyncHackthon~8a77308e-ff17-40f5-bf38-2ca681b29f6d/collection/33227276-a3b8c203-5b7c-478d-98d5-761f43259ab7?action=share&source=collection_link&creator=33227276"
+	},
+	"item": [
+		{
+			"name": "risk",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Domain\":\"Finance\",\n    \"ML Components\":\"Prediction Model\",\n    \"Backend\":\"Node.js\",\n    \"Frontend\":\"React\",\n    \"Core Features\":\"User Management\",\n    \"Tech Stack\":\"MERN\",\n    \"Mobile\":1,\n    \"Desktop\":1,\n    \"Web\":1,\n    \"IoT\":0,\n    \"Date_Difference\":-10,\n    \"Expected Team Size\":22,\n    \"Expected Budget\":101450\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/risk",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"risk"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "risk",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Domain\":\"Financial\",\n    \"ML Components\":\"Prediction Model\",\n    \"Backend\":\"Node.js\",\n    \"Frontend\":\"React\",\n    \"Core Features\":\"User Management\",\n    \"Tech Stack\":\"MERN\",\n    \"Mobile\":1,\n    \"Desktop\":1,\n    \"Web\":1,\n    \"IoT\":0,\n    \"Date_Difference\":-10,\n    \"Expected Team Size\":22,\n    \"Expected Budget\":101450\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/risk",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"risk"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 08:12:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2728"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mitigation\": \"Low Risk\",\n    \"risk\": \"Based on the information provided, the project falls under the \\\"Financial\\\" domain with a MERN tech stack, involving the development of a prediction model with Node.js backend and React frontend. The project includes the development of mobile, desktop, and web applications but does not involve IoT development. The expected team size is 22 members, and the expected budget is 101,450 units.\\n\\nGiven the project details and the risk level, which is not explicitly mentioned but can be inferred based on the information provided, we can assume it falls under a medium to high-risk category due to the complexity of building multiple types of applications with a relatively smaller team size and budget.\\n\\n### Issues/Problems the Project May Face:\\n1. **Resource Constraints**: With a team size of 22 members, there might be resource constraints in handling the development of multiple applications simultaneously.\\n   \\n2. **Budget Limitations**: The expected budget of 101,450 units may not be sufficient to cover the development costs of building mobile, desktop, and web applications.\\n\\n3. **Time Constraints**: The negative date difference of -10 indicates that the project has already exceeded the planned end date, which could lead to further delays and impact project delivery.\\n\\n### Ways to Mitigate the Risk Levels:\\n1. **Prioritize Features**: Identify and prioritize core features essential for the project's success. Focus on developing key functionalities first to ensure a minimum viable product (MVP) can be delivered within the constraints.\\n\\n2. **Iterative Development**: Adopt an iterative development approach where each application (mobile, desktop, web) is developed incrementally, allowing for continuous feedback and improvements.\\n\\n3. **Cross-Functional Teams**: Encourage collaboration and communication among team members working on different applications to ensure alignment and efficient use of resources.\\n\\n4. **Optimize Tech Stack**: Evaluate the tech stack to ensure it aligns with the project requirements and allows for efficient development across multiple platforms.\\n\\n5. **Risk Monitoring**: Regularly monitor project progress, budget utilization, and team performance to identify potential risks early and take corrective actions promptly.\\n\\n6. **Stakeholder Communication**: Maintain transparent communication with stakeholders regarding project status, challenges faced, and any adjustments made to mitigate risks.\\n\\nBy addressing these issues and implementing the mitigation strategies, the project can reduce the risk levels associated with building multiple applications with a limited budget and team size in the financial domain.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "complexity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Domain\":\"Finance\",\n    \"ML Components\":\"Prediction Model\",\n    \"Backend\":\"Node.js\",\n    \"Frontend\":\"React\",\n    \"Core Features\":\"User Management\",\n    \"Tech Stack\":\"MERN\",\n    \"Mobile\":1,\n    \"Desktop\":1,\n    \"Web\":1,\n    \"IoT\":0,\n    \"Date_Difference\":-10,\n    \"Expected Team Size\":22,\n    \"Expected Budget\":101450\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/complexity",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"complexity"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "complexity",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Domain\":\"Financial\",\n    \"ML Components\":\"Prediction Model\",\n    \"Backend\":\"Node.js\",\n    \"Frontend\":\"React\",\n    \"Core Features\":\"User Management\",\n    \"Tech Stack\":\"MERN\",\n    \"Mobile\":1,\n    \"Desktop\":1,\n    \"Web\":1,\n    \"IoT\":0,\n    \"Date_Difference\":-10,\n    \"Expected Team Size\":22,\n    \"Expected Budget\":101450\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/complexity",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"complexity"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 08:15:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "463"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"complexity\": \"High\",\n    \"selected_employees\": [\n        \"BA1\",\n        \"BE1\",\n        \"BE6\",\n        \"BE9\",\n        \"BE10\",\n        \"DE1\",\n        \"DE9\",\n        \"FE1\",\n        \"FE6\",\n        \"FE4\",\n        \"FE9\",\n        \"PM1\",\n        \"QA1\",\n        \"QA9\"\n    ],\n    \"selected_team\": {\n        \"Backend Engineer\": 4,\n        \"Business Analyst\": 1,\n        \"DevOps Engineer\": 2,\n        \"Frontend Engineer\": 4,\n        \"Full Stack Engineer\": 4,\n        \"Project Manager\": 1,\n        \"Quality Assurance Engineer\": 2,\n        \"Technical Lead\": 4\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "crud",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"operation\" : \"add\",\n\"role\" : \"Business Analyst\",\n\"crud_json\" : {\n            \"type\" : \"skills\",\n            \"criteria\" : \"Analytical Skills NEWWWW\",\n            \"level\" : {\n                    \"Novice\":10,\n                    \"Intermediate\":30,\n                    \"Advanced\":50\n                    },\n            \"weight\" : 0.20\n            }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/kpi/crud",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"kpi",
+						"crud"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "crud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"operation\" : \"add\",\n\"role\" : \"Business Analyst\",\n\"crud_json\" : {\n            \"type\" : \"skills\",\n            \"criteria\" : \"Analytical Skills NEWWWW\",\n            \"level\" : {\n                    \"Novice\":10,\n                    \"Intermediate\":30,\n                    \"Advanced\":50\n                    },\n            \"weight\" : 0.20\n            }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/kpi/crud",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"kpi",
+								"crud"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 14:30:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"CRUD Operation Successful !!!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"role\" : \"Business Analyst\",\n    \"domain\" : \"Finance\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/kpi/role",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"kpi",
+						"role"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "role",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\" : \"Business Analyst\",\n    \"domain\" : \"Finance\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/kpi/employee",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"kpi",
+								"employee"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 17:24:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "545"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"kpis\": [\n        {\n            \"EmpID\": \"BA1\",\n            \"KPI\": 10\n        },\n        {\n            \"EmpID\": \"BA2\",\n            \"KPI\": 7.2\n        },\n        {\n            \"EmpID\": \"BA3\",\n            \"KPI\": 3\n        },\n        {\n            \"EmpID\": \"BA4\",\n            \"KPI\": 7.8\n        },\n        {\n            \"EmpID\": \"BA5\",\n            \"KPI\": 4.85\n        },\n        {\n            \"EmpID\": \"BA6\",\n            \"KPI\": 7.1\n        },\n        {\n            \"EmpID\": \"BA7\",\n            \"KPI\": 5.6\n        },\n        {\n            \"EmpID\": \"BA8\",\n            \"KPI\": 7.05\n        },\n        {\n            \"EmpID\": \"BA9\",\n            \"KPI\": 7.35\n        },\n        {\n            \"EmpID\": \"BA10\",\n            \"KPI\": 5.95\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"role\" : \"Business Analyst\",\n    \"emp_id\" : \"BA1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/kpi/employee",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"kpi",
+						"employee"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "employee",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\" : \"Business Analyst\",\n    \"emp_id\" : \"BA1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/kpi/employee",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"kpi",
+								"employee"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 17:36:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "253"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"kpis\": [\n        {\n            \"Domain\": \"E-Commerce\",\n            \"KPI\": 10\n        },\n        {\n            \"Domain\": \"Health\",\n            \"KPI\": 9.6\n        },\n        {\n            \"Domain\": \"Education\",\n            \"KPI\": 9.3\n        },\n        {\n            \"Domain\": \"Finance\",\n            \"KPI\": 10\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "recal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Domain\":\"Finance\",\n    \"ML Components\":\"Prediction Model\",\n    \"Backend\":\"Node.js\",\n    \"Frontend\":\"React\",\n    \"Core Features\":\"User Management\",\n    \"Tech Stack\":\"MERN\",\n    \"Mobile\":1,\n    \"Desktop\":1,\n    \"Web\":1,\n    \"IoT\":0,\n    \"Date_Difference\":-10,\n    \"Expected Team Size\":22,\n    \"Expected Budget\":101450\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/risk/recal",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"risk",
+						"recal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "recal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Domain\":\"Finance\",\n    \"ML Components\":\"Prediction Model\",\n    \"Backend\":\"Node.js\",\n    \"Frontend\":\"React\",\n    \"Core Features\":\"User Management\",\n    \"Tech Stack\":\"MERN\",\n    \"Mobile\":1,\n    \"Desktop\":1,\n    \"Web\":1,\n    \"IoT\":0,\n    \"Date_Difference\":-10,\n    \"Expected Team Size\":22,\n    \"Expected Budget\":101450\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/risk/recal",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"risk",
+								"recal"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 17:26:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2497"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"Based on the identified potential issues and mitigation strategies provided, let's analyze the impact on the project's timeline and Software Development Life Cycle (SDLC):\\n\\n1. **Time Delay because of the Risks/Issues**:\\n   - Complexity of Multiple Platforms: Addressing this issue may initially require some additional time for planning and coordination.\\n   - Resource Allocation and Team Coordination: Implementing clear roles and responsibilities, regular meetings, and team restructuring may cause a slight delay as the team adjusts to the new processes.\\n   - Budget Constraints: Prioritizing features and exploring cost-saving measures might impact the development timeline initially.\\n\\n2. **Areas that Risks Affect on SDLC**:\\n   - Complexity of Multiple Platforms: This risk affects the planning and design phases of the SDLC as additional considerations need to be made for multiple platforms.\\n   - Resource Allocation and Team Coordination: This risk impacts the execution and monitoring phases of the SDLC as team coordination and progress tracking are crucial during development.\\n   - Budget Constraints: This risk affects the planning and monitoring phases of the SDLC as budget considerations need to be factored into feature prioritization and expense tracking.\\n\\n3. **Time Delay because of the Effect on SDLC**:\\n   - Complexity of Multiple Platforms: Initial planning and design adjustments may cause a delay of around 3-5 days.\\n   - Resource Allocation and Team Coordination: Implementing new team structures and coordination processes may cause a delay of around 2-3 days.\\n   - Budget Constraints: Prioritization and cost-saving measures may cause a delay of around 2-4 days.\\n\\n4. **Time Saved based on the Mitigation Plan**:\\n   - By effectively prioritizing tasks, improving communication, and utilizing cross-platform development tools, the project can potentially save around 5-7 days in overall development time.\\n   - Implementing clear roles, regular meetings, and team restructuring can save around 2-3 days by improving efficiency and reducing duplication of efforts.\\n   - Prioritizing features and exploring cost-saving measures can save around 3-5 days by optimizing resource utilization and avoiding budget overruns.\\n\\nBy implementing these mitigation strategies effectively, the project can potentially save a total of 10-15 days in development time, thereby offsetting the initial delays and improving the overall project timeline.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n    \"role\" : \"Business Analyst\",\n    \"insert_json\" : {\n    \"Analytical Skills\":\"Advanced \",\n    \"Technical Proficiency\":\"Advanced \",\n    \"Communication Skills\":\"Advanced \",\n    \"Problem Solving Skills\":\"Advanced \",\n    \"Years of experience in Business Analysis\":\"5+ years\",\n    \"Experience of related Domain\":[{\n                                    \"Domain\":\"E-Commerce\",\n                                    \"Years\":\"15+\"\n                                    },\n                                    {\n                                    \"Domain\":\"Health\",\n                                    \"Years\":\"15+\"\n                                    },\n                                    {\n                                    \"Domain\":\"Finance\",\n                                    \"Years\":\"15+\"\n                                    },\n                                    {\n                                    \"Domain\":\"Education\",\n                                    \"Years\":\"15+\"\n                                    }\n                                    ], \n    \"Leadership/Team lead experience\":\"Leadership\",\n    \"Bachelor's Degree\":\"related\",\n    \"Master's Degree\":\"related\"\n    }}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/employee/insert",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"employee",
+						"insert"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "insert",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \"role\" : \"Business Analyst\",\n    \"insert_json\" : {\n    \"Analytical Skills\":\"Advanced \",\n    \"Technical Proficiency\":\"Advanced \",\n    \"Communication Skills\":\"Advanced \",\n    \"Problem Solving Skills\":\"Advanced \",\n    \"Years of experience in Business Analysis\":\"5+ years\",\n    \"Experience of related Domain\":[{\n                                    \"Domain\":\"E-Commerce\",\n                                    \"Years\":\"15+\"\n                                    },\n                                    {\n                                    \"Domain\":\"Health\",\n                                    \"Years\":\"15+\"\n                                    },\n                                    {\n                                    \"Domain\":\"Finance\",\n                                    \"Years\":\"15+\"\n                                    },\n                                    {\n                                    \"Domain\":\"Education\",\n                                    \"Years\":\"15+\"\n                                    }\n                                    ], \n    \"Leadership/Team lead experience\":\"Leadership\",\n    \"Bachelor's Degree\":\"related\",\n    \"Master's Degree\":\"related\"\n    }}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/employee/insert",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employee",
+								"insert"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 07 Sep 2024 19:39:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"Employee Inserted Successfully !!!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Kasun\",\n    \"lastname\" : \"Thiwanka\",\n    \"email\" : \"kasun.thiwanka@gmail.com\",\n    \"password\" : \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\" : \"Kasun\",\n    \"lastname\" : \"Thiwanka\",\n    \"email\" : \"kasun.thiwanka@gmail.com\",\n    \"password\" : \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Sep 2024 02:21:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"User Registered Successfully !!!\",\n    \"status\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"kasun.thiwanka@gmail.com\",\n    \"password\" : \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"kasun.thiwanka@gmail.com\",\n    \"password\" : \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.10.14"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Sep 2024 02:23:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"User Logged In Successfully !!!\",\n    \"status\": 200\n}"
+				}
+			]
+		}
+	]
+}

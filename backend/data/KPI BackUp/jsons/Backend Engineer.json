@@ -1,0 +1,51 @@
+{
+    "skills":{
+       "Proficiency in Programming Languages (Java, Python, Ruby)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Database Management (SQL, NoSQL)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "API Development and Integration":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Knowledge of Frameworks (Spring, Django, Flask)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Understanding of Microservices Architecture":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       }
+    },
+    "experience":{
+       "Years of Experience in Backend Engineer":{
+          "1-2 years":2,
+          "3-5 years":4,
+          "5+ years":6.6
+       },
+       "Experience of related domain":{
+          "0 - 5":3,
+          "6 - 14":6,
+          "15+":10
+       }
+    },
+    "education":{
+       "Bachelor's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       },
+       "Master's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       }
+    }
+ }

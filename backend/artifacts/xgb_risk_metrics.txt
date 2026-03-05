@@ -1,0 +1,3 @@
+features: Domain, Mobile, Desktop, Web, IoT, Expected Team Size, Expected Budget
+accuracy: 0.716763
+macro_f1: 0.614027

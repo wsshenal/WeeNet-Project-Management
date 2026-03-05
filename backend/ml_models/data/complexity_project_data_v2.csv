@@ -1,0 +1,801 @@
+Project Name,Domain,Login/Registration,ML Components,Backend,Frontend,Core Features,Tech Stack,Complexity Level,Project Scope
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project A,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project B,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project C,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project D,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project E,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project A,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project B,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project C,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium
+Project D,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Low,Wide
+Project E,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,High,Wide
+Project A,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Medium,Medium
+Project B,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Low,Medium
+Project C,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,High,Wide
+Project D,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Medium,Wide
+Project E,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,Low,Medium
+Project A,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,High,Medium
+Project B,Finance,Yes,Prediction Model,Node.js,React,User Management,MERN,Medium,Wide
+Project C,Education,Yes,Recommendation Engine,Django,Angular,Payment Gateway,MEAN,Low,Wide
+Project D,E-commerce,Yes,Classification Model,Spring Boot,Vue.js,Product Catalog,LAMP,High,Medium
+Project E,Health,Yes,Clustering Algorithm,Flask,Svelte,Appointment Booking,Serverless,Medium,Medium

@@ -1,0 +1,50 @@
+{
+    "skills":{
+       "Excellent communication":{
+          "Novice":6,
+          "Intermediate":12,
+          "Advanced":20
+       },
+       "Test Automation":{
+          "Novice":1,
+          "Intermediate":3,
+          "Advanced":5
+       },
+       "Knowledge of Testing Methodologies (Agile, Waterfall)":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       },
+       "Bug Tracking and Reporting":{
+          "Novice":3,
+          "Intermediate":6,
+          "Advanced":10
+       }
+    },
+    "experience":{
+       "Years of Experience in QA":{
+          "1-2 years":3,
+          "3-5 years":6,
+          "5+ years":10
+       },
+       "Experience of related domain":{
+          "0 - 5":3,
+          "6 - 14":6,
+          "15+":10
+       },
+       "Leadership/Team lead experience":{
+          "Non-Lead":0,
+          "Leadership":20
+       }
+    },
+    "education":{
+       "Bachelor's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       },
+       "Master's Degree":{
+          "Unrelated field":5,
+          "related field":10
+       }
+    }
+ }
