@@ -7,8 +7,8 @@ import axios from "../../../apis/axiosInstance";
 const { Option } = Select;
 
 const FrontendEngineer = () => {
-  const [loading, setLoading] = useState(false); // Added loading state
-  const [form] = Form.useForm(); // Form instance for resetting
+  const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
   const [selectedDomains, setSelectedDomains] = useState([]);
 
   const onFinish = async (values) => {
@@ -16,7 +16,7 @@ const FrontendEngineer = () => {
     console.log(values);
     try {
       const res = await axios.post("employee/insert", {
-        role: "FrontEnd Engineer",
+        role: "Frontend Engineer", // Fixed: was "FrontEnd Engineer"
         insert_json: {
           Name: values.name,
           Age: values.age,
@@ -40,9 +40,18 @@ const FrontendEngineer = () => {
       console.log(res);
       Swal.fire(res.data.response, "", "success");
       form.resetFields();
+      setSelectedDomains([]); // Clear selected domains on success
     } catch (error) {
       console.error("Error fetching data:", error);
-      Swal.fire("Details Not Saved", "", "error");
+      if (error.response) {
+        Swal.fire(
+          "Details Not Saved",
+          error.response.data.error || "An error occurred",
+          "error"
+        );
+      } else {
+        Swal.fire("Details Not Saved", "Server connection error", "error");
+      }
     } finally {
       setLoading(false);
     }
@@ -53,10 +62,10 @@ const FrontendEngineer = () => {
     newSelectedDomains[index] = value;
     setSelectedDomains(newSelectedDomains);
   };
+
   return (
     <div>
       <div className="mt-10">
-        {/* Bind the form instance to the Form component */}
         <Form form={form} name="common" onFinish={onFinish} autoComplete="off">
           <div className="text-2xl mb-8">Personal Details</div>
           <div className="flex flex-row justify-between">
@@ -235,7 +244,7 @@ const FrontendEngineer = () => {
           </div>
 
           <div className="pb-3 text-md">
-            Experience of Related Domain (Add all 4)
+            Experience of Related Domain (Add 1-4 domains)
           </div>
           <div>
             <Form.List name="experience">
@@ -245,7 +254,8 @@ const FrontendEngineer = () => {
               ) => (
                 <>
                   {experienceFields.map((experienceField, experienceIndex) => (
-                    <div key={experienceField.key}>
+                    // FIX: Use a unique combination for the key
+                    <div key={`exp-${experienceField.key}-${experienceIndex}`}>
                       <div className="flex justify-between items-center pb-3">
                         <h4>Experience {experienceIndex + 1}</h4>
                         {experienceFields.length > 1 && (
@@ -263,7 +273,6 @@ const FrontendEngineer = () => {
                       <Form.Item
                         {...experienceField}
                         name={[experienceField.name, "Domain"]}
-                        fieldKey={[experienceField.fieldKey, "Domain"]}
                         rules={[
                           {
                             required: true,
@@ -277,12 +286,13 @@ const FrontendEngineer = () => {
                           onChange={(value) =>
                             handleDomainChange(value, experienceIndex)
                           }
-                          value={selectedDomains[experienceIndex]}
                         >
                           {["Health", "Finance", "E-Commerce", "Education"]
                             .filter(
-                              (domain) => !selectedDomains.includes(domain)
-                            ) // Filter out already selected domains
+                              (domain) =>
+                                !selectedDomains.includes(domain) ||
+                                selectedDomains[experienceIndex] === domain
+                            )
                             .map((domain) => (
                               <Option key={domain} value={domain}>
                                 {domain}
@@ -294,7 +304,6 @@ const FrontendEngineer = () => {
                       <Form.Item
                         {...experienceField}
                         name={[experienceField.name, "Years"]}
-                        fieldKey={[experienceField.fieldKey, "Years"]}
                         rules={[
                           {
                             required: true,
@@ -316,7 +325,7 @@ const FrontendEngineer = () => {
                       type="dashed"
                       onClick={() => addExperience()}
                       icon={<PlusOutlined />}
-                      disabled={experienceFields.length >= 4} // Disable the button if 4 or more fields are added
+                      disabled={experienceFields.length >= 4}
                     >
                       Add Experience
                     </Button>

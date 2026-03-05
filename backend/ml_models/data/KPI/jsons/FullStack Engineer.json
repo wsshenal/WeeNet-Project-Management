@@ -1,0 +1,56 @@
+{
+  "skills": {
+    "Proficiency in Frontend Technologies": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Proficiency in Backend Technologies": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Knowledge of Frontend Frameworks": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Knowledge of Backend Frameworks": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Database Management (SQL, NoSQL)": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "API Development and Integration": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    }
+  },
+  "experience": {
+    "Years of experience in Fullstack engineer": {
+      "1-2 years": 20,
+      "3-5 years": 50,
+      "5+ years": 100
+    },
+    "Experience of related Domain": {
+      "0 - 5": 20,
+      "6 - 14": 50,
+      "15+": 100
+    }
+  },
+  "education": {
+    "Bachelor's Degree": {
+      "Unrelated": 5,
+      "related": 10
+    },
+    "Master's Degree": {
+      "Unrelated": 50,
+      "related": 100
+    }
+  }
+}
