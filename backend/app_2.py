@@ -5,13 +5,15 @@ from flask_cors import CORS
 from flask import Flask, request, jsonify
 from llama_index.llms.openai import OpenAI
 from llama_index.core.llms import ChatMessage, MessageRole
+from dotenv import load_dotenv
+
+# Load environment variables from .env (excluded from source control)
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-# Do not hardcode secrets in source control.
-# If this legacy file is used, provide OPENAI_API_KEY via environment.
-os.environ['OPENAI_API_KEY'] = os.environ.get('OPENAI_API_KEY', '')
+# OPENAI_API_KEY is now loaded from .env via load_dotenv() above
 
 llm = OpenAI(
             engine="gpt-4o",
@@ -102,15 +104,19 @@ def inference_risk(
                 'Expected Budget']] == data_to_json
     # find the row index that all inndices are true
     match_index = match_flag[match_flag.all(axis=1)].index.values
-    if match_index:
+    if len(match_index) > 0:
         match_index = match_index[0]
         row = df_pj.iloc[match_index]
         risk = int(row['Risk']) - 1
         prediction = class_dict[risk]
 
     else:
-        data['Date_Difference'] = 0
-        prediction = xgb.predict(data)[0]
+        # XGBoost model expects exactly these 7 features — do NOT add Date_Difference
+        xgb_features = [
+            'Domain', 'Mobile', 'Desktop',
+            'Web', 'IoT', 'Expected Team Size', 'Expected Budget'
+        ]
+        prediction = xgb.predict(data[xgb_features])[0]
         prediction = class_dict[prediction]
         
     data_json_updated = data_json.copy()
@@ -566,7 +572,14 @@ def inference_sdlc(
     data = data[input_columns]
     data_cat = data.select_dtypes(include=['object'])
     data_num = data.select_dtypes(exclude=['object'])
-    data_cat_encoded = data_cat.apply(lambda x: encoder_dict_sdlc[x.name].transform(x))
+    def safe_encode(series):
+        """Encode a categorical series, mapping unseen labels to the first known class."""
+        enc = encoder_dict_sdlc[series.name]
+        known = set(enc.classes_)
+        mapped = series.map(lambda v: v if v in known else enc.classes_[0])
+        return enc.transform(mapped)
+
+    data_cat_encoded = data_cat.apply(safe_encode)
     data = pd.concat([data_num, data_cat_encoded], axis=1)
     data = data.reindex(columns=input_columns)
     P = xgb_sdlc.predict(data).squeeze()
@@ -876,5 +889,5 @@ def get_projects():
 if __name__ == '__main__':
     app.run(
             debug=True, 
-            port=5000
+            port=5001
             )

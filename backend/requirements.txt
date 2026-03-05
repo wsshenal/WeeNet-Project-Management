@@ -8,6 +8,7 @@ scikit-learn
 flask
 flask_cors
 PyJWT
+xgboost
 # local LLM deps
 # using gpt4all instead of transformers-based models
 gpt4all
