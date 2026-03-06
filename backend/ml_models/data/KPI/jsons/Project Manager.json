@@ -1,0 +1,56 @@
+{
+  "skills": {
+    "planning & scheduling": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Leadership and Team Management": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Communication Skills": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Risk Management": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Budgeting and Cost Control": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    },
+    "Knowledge of Project Management Methodologies": {
+      "Novice": 20,
+      "Intermediate": 50,
+      "Advanced": 100
+    }
+  },
+  "experience": {
+    "Years of experience in Fullstack engineer": {
+      "1-2 years": 20,
+      "3-5 years": 50,
+      "5+ years": 100
+    },
+    "Experience of related Domain": {
+      "0 - 5": 20,
+      "6 - 14": 50,
+      "15+": 100
+    }
+  },
+  "education": {
+    "Bachelor's Degree": {
+      "Unrelated": 50,
+      "related": 100
+    },
+    "Master's Degree": {
+      "Unrelated": 50,
+      "related": 100
+    }
+  }
+}
