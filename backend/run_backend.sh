@@ -24,8 +24,8 @@ export USE_LLM
 export JWT_EXPIRES_HOURS
 
 # stop any running backend
-pkill -f "python app.py" || true
+pkill -f "python3 app.py" || true
 
 # start backend in background and log output
-nohup python app.py > backend_run.log 2>&1 &
+nohup python3 app.py > backend_run.log 2>&1 &
 printf "started backend with LOCAL_MODEL=%s USE_LLM=%s JWT_EXPIRES_HOURS=%s (PID=%s)\n" "$LOCAL_MODEL" "$USE_LLM" "$JWT_EXPIRES_HOURS" "$!"

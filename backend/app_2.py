@@ -6,7 +6,11 @@ from flask_cors import CORS
 from flask import Flask, request, jsonify
 from llama_index.llms.openai import OpenAI
 from llama_index.core.llms import ChatMessage, MessageRole
+from dotenv import load_dotenv
 import traceback
+
+# Load environment variables from .env (excluded from source control)
+load_dotenv()
 
 # Add ML models path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'ml_models', 'scripts'))
@@ -25,7 +29,7 @@ except Exception as e:
 app = Flask(__name__)
 CORS(app)
 
-os.environ['OPENAI_API_KEY'] = 'sk-rJ_uMKww7cpSlQKY4r02nTb2-2JO3egWmLky0pciQOT3BlbkFJyfF7cP5_t_KUvG_AFz_q-eBTtk4N1GI1fZ9H-kUzcA'
+# OPENAI_API_KEY is loaded from .env via load_dotenv() above
 
 llm = OpenAI(
             engine="gpt-4o",
@@ -116,14 +120,18 @@ def inference_risk(
                 'Web', 'IoT', 'Expected Team Size',
                 'Expected Budget']] == data_to_json
     match_index = match_flag[match_flag.all(axis=1)].index.values
-    if match_index:
+    if len(match_index) > 0:
         match_index = match_index[0]
         row = df_pj.iloc[match_index]
         risk = int(row['Risk']) - 1
         prediction = class_dict[risk]
     else:
-        data['Date_Difference'] = 0
-        prediction = xgb.predict(data)[0]
+        # XGBoost model expects exactly these 7 features — do NOT add Date_Difference
+        xgb_features = [
+            'Domain', 'Mobile', 'Desktop',
+            'Web', 'IoT', 'Expected Team Size', 'Expected Budget'
+        ]
+        prediction = xgb.predict(data[xgb_features])[0]
         prediction = class_dict[prediction]
         
     data_json_updated = data_json.copy()
@@ -401,7 +409,14 @@ def inference_sdlc(data_json, input_columns = ['Domain', 'Expected Team Size', '
     data = data[input_columns]
     data_cat = data.select_dtypes(include=['object'])
     data_num = data.select_dtypes(exclude=['object'])
-    data_cat_encoded = data_cat.apply(lambda x: encoder_dict_sdlc[x.name].transform(x))
+    def safe_encode(series):
+        """Encode a categorical series, mapping unseen labels to the first known class."""
+        enc = encoder_dict_sdlc[series.name]
+        known = set(enc.classes_)
+        mapped = series.map(lambda v: v if v in known else enc.classes_[0])
+        return enc.transform(mapped)
+
+    data_cat_encoded = data_cat.apply(safe_encode)
     data = pd.concat([data_num, data_cat_encoded], axis=1)
     data = data.reindex(columns=input_columns)
     P = xgb_sdlc.predict(data).squeeze()
@@ -761,4 +776,7 @@ if __name__ == '__main__':
     print("\nExisting Endpoints: /register, /login, /risk, /complexity, /sdlc, /kpi/*, /employee/*")
     print("  GET  /health - Health check")
     print("="*80 + "\n")
-    app.run(debug=True, port=5000)
+    app.run(
+            debug=True,
+            port=5001
+            )
