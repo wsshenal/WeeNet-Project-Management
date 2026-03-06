@@ -519,7 +519,12 @@ def login():
         users = json.load(f)
     for user in users:
         if user['email'] == data_json['email'] and user['password'] == data_json['password']:
-            return jsonify({"response" : "User Logged In Successfully !!!", "status" : 200})
+            return jsonify({
+                "response": "User Logged In Successfully !!!", 
+                "status": 200,
+                "token": "dummy-token-for-app2",
+                "user": user
+            })
     return jsonify({"response" : "Invalid Credentials !!!", "status" : 400})
         
 @app.route('/risk', methods=['POST'])
@@ -777,6 +782,6 @@ if __name__ == '__main__':
     print("  GET  /health - Health check")
     print("="*80 + "\n")
     app.run(
-            debug=True,
-            port=5001
+            debug=False,
+            port=5002
             )
