@@ -43,14 +43,20 @@ const MLPrediction = () => {
     setComparison(null);
 
     try {
-      // Prepare employee data - use exact field names
+      // ✅ FIXED: Field names now match exactly what predictor.py expects
       const employeeData = {
-        "Role": values.role,
-        "Domain": values.domain,
-        "Analytical Skills": values.analyticalSkills,
-        "Technical Proficiency": values.technicalProficiency,
-        "Years of experience in Business Analysis": values.yearsOfExperience,
-        "Experience of related Domain": values.domainExperience,
+        role: values.role,
+        domain: values.domain,
+        analytical_skills: values.analyticalSkills,
+        technical_proficiency: values.technicalProficiency,
+        communication_skills: values.communicationSkills,
+        problem_solving: values.problemSolving,
+        domain_expertise: values.domainExpertise,
+        years_experience: values.yearsOfExperience,
+        domain_experience: values.domainExperience,
+        leadership_experience: values.leadershipExperience,
+        bachelors_degree: values.bachelorsDegree,
+        masters_degree: values.mastersDegree,
       };
 
       // Store debug info
@@ -64,7 +70,7 @@ const MLPrediction = () => {
 
       // Get ML prediction
       const mlRes = await axios.post("/ml/predict_kpi", employeeData);
-      
+
       console.log("✅ ML Response received:");
       console.log(JSON.stringify(mlRes.data, null, 2));
 
@@ -87,12 +93,10 @@ const MLPrediction = () => {
           }
         } catch (compareError) {
           console.warn("⚠️ Comparison failed (non-critical):", compareError);
-          // Don't show error to user - comparison is optional
         }
       } else {
         throw new Error("Unexpected response format from server");
       }
-
     } catch (err) {
       console.error("❌ Error occurred:");
       console.error(err);
@@ -101,7 +105,6 @@ const MLPrediction = () => {
       let errorDetails = null;
 
       if (err.response) {
-        // Server responded with error
         console.error("Response status:", err.response.status);
         console.error("Response data:", err.response.data);
 
@@ -112,16 +115,18 @@ const MLPrediction = () => {
           traceback: err.response.data.traceback,
         };
 
-        if (err.response.status === 500 && 
-            err.response.data.message?.includes("ML models not loaded")) {
-          errorMessage = "ML models are not loaded on the server. Please check server logs.";
+        if (
+          err.response.status === 500 &&
+          err.response.data.message?.includes("ML models not loaded")
+        ) {
+          errorMessage =
+            "ML models are not loaded on the server. Please check server logs.";
         }
       } else if (err.request) {
-        // Request made but no response
-        errorMessage = "Server is not responding. Please check if Flask server is running.";
+        errorMessage =
+          "Server is not responding. Please check if Flask server is running.";
         errorDetails = { error: "No response from server" };
       } else {
-        // Something else happened
         errorMessage = err.message;
         errorDetails = { error: err.message };
       }
@@ -162,15 +167,17 @@ const MLPrediction = () => {
                   <summary style={{ cursor: "pointer", color: "#096dd9" }}>
                     <BugOutlined /> View technical details
                   </summary>
-                  <pre style={{ 
-                    marginTop: 8, 
-                    padding: 12, 
-                    background: "#f5f5f5",
-                    borderRadius: 4,
-                    overflow: "auto",
-                    maxHeight: 200,
-                    fontSize: 12
-                  }}>
+                  <pre
+                    style={{
+                      marginTop: 8,
+                      padding: 12,
+                      background: "#f5f5f5",
+                      borderRadius: 4,
+                      overflow: "auto",
+                      maxHeight: 200,
+                      fontSize: 12,
+                    }}
+                  >
                     {JSON.stringify(debugInfo.error, null, 2)}
                   </pre>
                 </details>
@@ -187,29 +194,6 @@ const MLPrediction = () => {
         />
       )}
 
-      {/* Debug Info (only in development) */}
-      {/* {process.env.NODE_ENV === 'development' && debugInfo && !error && (
-        <Alert
-          message="Debug Information"
-          description={
-            <details>
-              <summary style={{ cursor: "pointer" }}>View sent data</summary>
-              <pre style={{ 
-                marginTop: 8, 
-                padding: 12, 
-                background: "#f5f5f5",
-                borderRadius: 4,
-                fontSize: 12
-              }}>
-                {JSON.stringify(debugInfo.sentData, null, 2)}
-              </pre>
-            </details>
-          }
-          type="info"
-          style={{ maxWidth: 900, margin: "0 auto 24px", borderRadius: 12 }}
-        />
-      )} */}
-
       {/* Input Form */}
       <Card
         style={{
@@ -221,6 +205,7 @@ const MLPrediction = () => {
       >
         <Form form={form} onFinish={onFinish} layout="vertical">
           <Row gutter={16}>
+            {/* --- Role & Domain --- */}
             <Col span={12}>
               <Form.Item
                 name="role"
@@ -257,6 +242,7 @@ const MLPrediction = () => {
               </Form.Item>
             </Col>
 
+            {/* --- Skills --- */}
             <Col span={12}>
               <Form.Item
                 name="analyticalSkills"
@@ -287,6 +273,49 @@ const MLPrediction = () => {
 
             <Col span={12}>
               <Form.Item
+                name="communicationSkills"
+                label="Communication Skills"
+                rules={[{ required: true, message: "Please select communication skills" }]}
+              >
+                <Select placeholder="Select level" size="large">
+                  <Option value="Novice">Novice</Option>
+                  <Option value="Intermediate">Intermediate</Option>
+                  <Option value="Advanced">Advanced</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+              <Form.Item
+                name="problemSolving"
+                label="Problem Solving"
+                rules={[{ required: true, message: "Please select problem solving level" }]}
+              >
+                <Select placeholder="Select level" size="large">
+                  <Option value="Novice">Novice</Option>
+                  <Option value="Intermediate">Intermediate</Option>
+                  <Option value="Advanced">Advanced</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+              <Form.Item
+                name="domainExpertise"
+                label="Domain Expertise"
+                rules={[{ required: true, message: "Please select domain expertise" }]}
+              >
+                <Select placeholder="Select level" size="large">
+                  <Option value="Novice">Novice</Option>
+                  <Option value="Intermediate">Intermediate</Option>
+                  <Option value="Advanced">Advanced</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            {/* --- Experience --- */}
+            <Col span={12}>
+              <Form.Item
                 name="yearsOfExperience"
                 label="Years of Experience"
                 rules={[{ required: true, message: "Please select years of experience" }]}
@@ -309,6 +338,46 @@ const MLPrediction = () => {
                   <Option value="0 - 5">0-5 years</Option>
                   <Option value="6 - 14">6-14 years</Option>
                   <Option value="15+">15+ years</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+              <Form.Item
+                name="leadershipExperience"
+                label="Leadership Experience"
+                rules={[{ required: true, message: "Please select leadership experience" }]}
+              >
+                <Select placeholder="Select level" size="large">
+                  <Option value="Non-Lead">Non-Lead</Option>
+                  <Option value="Leadership">Leadership</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            {/* --- Education --- */}
+            <Col span={12}>
+              <Form.Item
+                name="bachelorsDegree"
+                label="Bachelor's Degree"
+                rules={[{ required: true, message: "Please select bachelor's degree relevance" }]}
+              >
+                <Select placeholder="Select relevance" size="large">
+                  <Option value="related">Related</Option>
+                  <Option value="Unrelated">Unrelated</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+              <Form.Item
+                name="mastersDegree"
+                label="Master's Degree"
+                rules={[{ required: true, message: "Please select master's degree relevance" }]}
+              >
+                <Select placeholder="Select relevance" size="large">
+                  <Option value="related">Related</Option>
+                  <Option value="Unrelated">Unrelated</Option>
                 </Select>
               </Form.Item>
             </Col>
@@ -411,37 +480,42 @@ const MLPrediction = () => {
           <Divider />
 
           {/* Feature Importance */}
-          {prediction.top_contributing_factors && 
-           prediction.top_contributing_factors.length > 0 && (
-            <>
-              <Title level={4} style={{ color: "#4D6F2F", marginTop: 24 }}>
-                Top Contributing Factors
-              </Title>
-              <Space direction="vertical" style={{ width: "100%" }}>
-                {prediction.top_contributing_factors.slice(0, 5).map((factor, i) => (
-                  <Card key={i} style={{ borderRadius: 12, background: "#F6FAF3" }}>
-                    <Row justify="space-between" align="middle">
-                      <Col>
-                        <Text strong>{factor.feature}</Text>
-                        <br />
-                        <Text type="secondary" style={{ fontSize: 12 }}>
-                          Current: {factor.value}
-                        </Text>
-                      </Col>
-                      <Col>
-                        <Progress
-                          type="circle"
-                          percent={Math.round(factor.importance * 100)}
-                          width={60}
-                          strokeColor="#6A953F"
-                        />
-                      </Col>
-                    </Row>
-                  </Card>
-                ))}
-              </Space>
-            </>
-          )}
+          {prediction.top_contributing_factors &&
+            prediction.top_contributing_factors.length > 0 && (
+              <>
+                <Title level={4} style={{ color: "#4D6F2F", marginTop: 24 }}>
+                  Top Contributing Factors
+                </Title>
+                <Space direction="vertical" style={{ width: "100%" }}>
+                  {prediction.top_contributing_factors
+                    .slice(0, 5)
+                    .map((factor, i) => (
+                      <Card
+                        key={i}
+                        style={{ borderRadius: 12, background: "#F6FAF3" }}
+                      >
+                        <Row justify="space-between" align="middle">
+                          <Col>
+                            <Text strong>{factor.feature}</Text>
+                            <br />
+                            <Text type="secondary" style={{ fontSize: 12 }}>
+                              Current: {factor.value}
+                            </Text>
+                          </Col>
+                          <Col>
+                            <Progress
+                              type="circle"
+                              percent={Math.round(factor.importance * 100)}
+                              width={60}
+                              strokeColor="#6A953F"
+                            />
+                          </Col>
+                        </Row>
+                      </Card>
+                    ))}
+                </Space>
+              </>
+            )}
         </Card>
       )}
 
@@ -481,9 +555,7 @@ const MLPrediction = () => {
           </Row>
 
           <Alert
-            message={`Difference: ${comparison.difference.toFixed(
-              2
-            )} points (${comparison.percentage_difference.toFixed(1)}%)`}
+            message={`Difference: ${comparison.difference.toFixed(2)} points (${comparison.percentage_difference.toFixed(1)}%)`}
             type={comparison.percentage_difference < 5 ? "success" : "warning"}
             showIcon
             style={{ marginTop: 16, borderRadius: 12 }}
