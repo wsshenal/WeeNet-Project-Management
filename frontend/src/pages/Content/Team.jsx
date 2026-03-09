@@ -339,12 +339,8 @@ const Team = () => {
             <RightOutlined style={{ color: '#ccc', fontSize: 10 }} />
             <Tag color="success" icon={<CheckCircleOutlined />}>Team Allocated</Tag>
             <RightOutlined style={{ color: '#ccc', fontSize: 10 }} />
-            <Tag color={workflowStatus.complexityComplete ? "success" : "default"} style={{ cursor: 'pointer' }} onClick={() => navigate('/complexity')}>
-              Complexity {workflowStatus.complexityComplete ? "✓" : "Pending"}
-            </Tag>
-            <RightOutlined style={{ color: '#ccc', fontSize: 10 }} />
             <Tag color={workflowStatus.sdlcComplete ? "success" : "default"} style={{ cursor: 'pointer' }} onClick={() => navigate('/sdlc')}>
-              SDLC Tracking {workflowStatus.sdlcComplete ? "✓" : ""}
+              SDLC Tracking {workflowStatus.sdlcComplete ? "✓" : "Pending"}
             </Tag>
           </div>
         </Card>
@@ -498,9 +494,9 @@ const Team = () => {
                   )}
 
                   <div style={{ marginTop: 24, textAlign: "center" }}>
-                    <Button type="primary" size="large" onClick={() => navigate('/complexity')}
+                    <Button type="primary" size="large" onClick={() => navigate('/sdlc')}
                       style={{ background: colors.dark, padding: "0 32px", height: 44, borderRadius: 8 }}>
-                      Proceed to Complexity Analysis <RightOutlined />
+                      Proceed to SDLC Tracking <RightOutlined />
                     </Button>
                   </div>
 

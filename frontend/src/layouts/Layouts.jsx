@@ -78,9 +78,9 @@ const AppLayout = () => {
             <Menu.Item key="7" icon={<TbUsersGroup />}>
               <Link to="/team">Team</Link>
             </Menu.Item>
-            <Menu.Item key="8" icon={<TbTopologyComplex />}>
+            {/* <Menu.Item key="8" icon={<TbTopologyComplex />}>
               <Link to="/complexity">Complexity</Link>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="9" icon={<RiShoppingBasket2Fill />}>
               <Link to="/projects">Project Details</Link>
             </Menu.Item>
@@ -91,7 +91,7 @@ const AppLayout = () => {
               <Link to="/sdlc">SDLC</Link>
             </Menu.Item>
             <Menu.Item key="12" icon={<ExperimentOutlined />}>
-            <Link to="/ml-prediction">ML KPI Prediction</Link>
+              <Link to="/ml-prediction">ML KPI Prediction</Link>
             </Menu.Item>
             {/* <Menu.Item key="13" icon={<BulbOutlined />}>
               <Link to="/ml-recommendations">AI Career Advisor</Link>
