@@ -41,7 +41,7 @@ except Exception as e:
 app = Flask(__name__)
 CORS(app)
 
-os.environ['OPENAI_API_KEY'] = 'sk-rJ_uMKww7cpSlQKY4r02nTb2-2JO3egWmLky0pciQOT3BlbkFJyfF7cP5_t_KUvG_AFz_q-eBTtk4N1GI1fZ9H-kUzcA'
+os.environ['OPENAI_API_KEY'] = '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'
 
 llm = OpenAI(
             engine="gpt-4o",
