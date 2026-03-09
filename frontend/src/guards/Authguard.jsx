@@ -1,28 +1,17 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export const AuthGuard = ({ children }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const userLoggedIn = Boolean(localStorage.getItem("token"));
-    if (userLoggedIn) {
-      navigate("/requirement");
-    }
-  }, [navigate]);
-
+  const userLoggedIn = Boolean(localStorage.getItem("token"));
+  if (userLoggedIn) {
+    return <Navigate to="/requirement" replace />;
+  }
   return children;
 };
 
 export const ProtectedRoute = ({ children }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const userLoggedIn = Boolean(localStorage.getItem("token"));
-    if (!userLoggedIn) {
-      navigate("/login");
-    }
-  }, [navigate]);
-
+  const userLoggedIn = Boolean(localStorage.getItem("token"));
+  if (!userLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
   return children;
 };

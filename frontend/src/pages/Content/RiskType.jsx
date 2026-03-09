@@ -8,6 +8,16 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Cell,
+} from "recharts";
 
 const RiskType = () => {
   const navigate = useNavigate();
@@ -114,6 +124,7 @@ const RiskType = () => {
       console.error("Input element for PDF generation not found.");
     }
   };
+
   const reCalculate = () => {
     const payloadLocal = localStorage.getItem("SearchPayload");
 
@@ -321,6 +332,71 @@ const RiskType = () => {
     return text.replace(pattern, "").trim();
   };
 
+  const normalizeRiskLabel = (label) => {
+    const raw = String(label || "").toLowerCase();
+    if (raw.includes("high")) return "High";
+    if (raw.includes("low")) return "Low";
+    return "Medium";
+  };
+
+  const getSectionContent = (markdown, heading) => {
+    if (!markdown) return "";
+    const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const sectionRegex = new RegExp(
+      `#{1,6}\\s*${escaped}\\s*\\n([\\s\\S]*?)(?=\\n#{1,6}\\s+|$)`,
+      "i"
+    );
+    const match = markdown.match(sectionRegex);
+    return match ? match[1] : "";
+  };
+
+  const extractBulletItems = (markdown) => {
+    if (!markdown) return [];
+    const matches = [...markdown.matchAll(/^\s*(?:[-*]|\d+\.)\s+(.+)$/gm)];
+    return matches.map((m) => m[1].trim()).filter(Boolean);
+  };
+
+  const getDriverWeight = (factorText) => {
+    const text = factorText.toLowerCase();
+    if (text.includes("budget")) return 34;
+    if (text.includes("team")) return 30;
+    if (text.includes("platform")) return 22;
+    if (text.includes("requirement")) return 18;
+    if (text.includes("experience")) return 16;
+    if (text.includes("ml")) return 14;
+    if (text.includes("integration")) return 13;
+    if (text.includes("domain")) return 12;
+    if (text.includes("stack")) return 11;
+    return 9;
+  };
+
+  const truncateLabel = (text, maxLen = 36) =>
+    text.length <= maxLen ? text : `${text.slice(0, maxLen - 1)}…`;
+
+  const riskFactorsMarkdown = getSectionContent(data?.risk || "", "Risk Factors");
+  const riskFactors = extractBulletItems(riskFactorsMarkdown).slice(0, 6);
+  const topDriversData = riskFactors
+    .map((factor) => ({
+      factor,
+      short: truncateLabel(factor, 40),
+      impact: getDriverWeight(factor),
+    }))
+    .sort((a, b) => b.impact - a.impact);
+
+  const mitigationItems = extractBulletItems(data?.mitigation_steps || "");
+  const riskScoreMap = { Low: 28, Medium: 62, High: 86 };
+  const riskLevel = normalizeRiskLabel(data?.mitigation);
+  const currentRiskScore = riskScoreMap[riskLevel];
+  const estimatedReduction = Math.min(
+    34,
+    Math.max(8, mitigationItems.length * 4 + Math.round(topDriversData.length * 1.2))
+  );
+  const postMitigationScore = Math.max(18, currentRiskScore - estimatedReduction);
+  const mitigationImpactData = [
+    { name: "Current", score: currentRiskScore, fill: "#ef4444" },
+    { name: "Post-Mitigation (Est.)", score: postMitigationScore, fill: "#22c55e" },
+  ];
+
   // Added: helper to determine risk level and mitigation (hard-coded rules)
   const getRiskInfo = () => {
     const payload =
@@ -514,6 +590,51 @@ const RiskType = () => {
                 {data.mitigation}
               </Tag>
             </Typography.Title>
+            {topDriversData.length > 0 && (
+              <>
+                <Divider />
+                <Typography.Title level={5}>Top Drivers</Typography.Title>
+                <div style={{ width: "100%", height: 260 }}>
+                  <ResponsiveContainer>
+                    <BarChart
+                      data={topDriversData}
+                      layout="vertical"
+                      margin={{ top: 8, right: 24, left: 24, bottom: 8 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis type="number" domain={[0, 40]} />
+                      <YAxis type="category" dataKey="short" width={220} />
+                      <Tooltip formatter={(value, _name, props) => [value, props.payload.factor]} />
+                      <Bar dataKey="impact" fill="#f59e0b" name="Impact" radius={[0, 8, 8, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </>
+            )}
+            {mitigationItems.length > 0 && (
+              <>
+                <Divider />
+                <Typography.Title level={5}>Mitigation Impact</Typography.Title>
+                <div style={{ width: "100%", height: 250 }}>
+                  <ResponsiveContainer>
+                    <BarChart data={mitigationImpactData} margin={{ top: 8, right: 24, left: 4, bottom: 8 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis domain={[0, 100]} />
+                      <Tooltip />
+                      <Bar dataKey="score" name="Risk Score" radius={[8, 8, 0, 0]}>
+                        {mitigationImpactData.map((entry) => (
+                          <Cell key={entry.name} fill={entry.fill} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                <Typography.Text type="secondary">
+                  Post-mitigation value is an estimate based on recommended steps.
+                </Typography.Text>
+              </>
+            )}
             <Divider />
             <Typography.Title level={5}>Analysis</Typography.Title>
             <Typography.Paragraph>

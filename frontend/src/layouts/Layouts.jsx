@@ -30,12 +30,14 @@ const greenColors = {
 };
 const AppLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const isLoggedIn = Boolean(localStorage.getItem("token"));
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   const navigate = useNavigate();
   const logout = () => {
+    localStorage.removeItem("token");
     localStorage.removeItem("SearchPayload");
     localStorage.removeItem("user");
     localStorage.removeItem("team");
@@ -137,7 +139,7 @@ const AppLayout = () => {
                   </div>
                 </div>
                 <div>
-                  {localStorage.getItem("user") === "true" ? (
+                  {isLoggedIn ? (
                     <Button
                       type="primary"
                       className="mt-5 cursor-pointer"
