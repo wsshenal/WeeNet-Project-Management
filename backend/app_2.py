@@ -7,15 +7,10 @@ from flask import Flask, request, jsonify
 from llama_index.llms.openai import OpenAI
 from llama_index.core.llms import ChatMessage, MessageRole
 import traceback
-import pickle
 
+# Add ML models path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'ml_models', 'scripts'))
-sys.path.append(os.path.join(os.path.dirname(__file__), 'ml_models', 'scripts', 'ml_models'))
 
-# ── Must import CareerAdviceEngine here so pickle can deserialize it ──
-
-
-# Try to import ML predictor
 # Try to import ML predictor
 try:
     from ml_prediction_service import KPIMLPredictor
@@ -26,17 +21,6 @@ except Exception as e:
     print(f"⚠ Warning: Could not load ML models: {e}")
     ml_predictor = None
     ML_AVAILABLE = False
-
-# Load Career Advice Engine
-try:
-    from career_advice_trainer import CareerAdviceEngine 
-    career_advice_service = CareerAdviceService()
-    print("✓ Career Advice Engine loaded successfully!")
-    CAREER_ADVICE_AVAILABLE = True
-except Exception as e:
-    print(f"⚠ Warning: Could not load Career Advice Engine: {e}")
-    career_advice_service = None
-    CAREER_ADVICE_AVAILABLE = False
 
 app = Flask(__name__)
 CORS(app)
@@ -498,25 +482,6 @@ def read_excel_file(file_name):
     else:
         return None
 
-
-@app.route('/ml/career_advice', methods=['POST'])
-def career_advice():
-    try:
-        from career_advice_service import CareerAdviceService
-        svc = CareerAdviceService()
-        data          = request.json
-        employee_data = data.get('employee_data', {})
-        kpi_score     = float(data.get('kpi_score', 0))
-        category      = data.get('category', 'Low')
-        advice = svc.get_advice(employee_data, kpi_score, category)
-        return jsonify({'status': 'success', 'advice': advice}), 200
-    except Exception as e:
-        return jsonify({
-            'status':    'error',
-            'message':   str(e),
-            'traceback': traceback.format_exc()
-        }), 400
-    
 @app.route('/register', methods=['POST'])
 def register():
     data_json = request.json
@@ -567,11 +532,47 @@ def employee_all():
     all_emp_df = all_emp_df[['Emp ID', 'Role']]
     return jsonify({'employees' : eval(all_emp_df.to_json(orient='records'))})
 
+@app.route('/employee/by-role', methods=['POST'])
+def employee_by_role():
+    """Return list of {emp_id, name} for a given role, for dropdown display."""
+    try:
+        data_json = request.json
+        role = data_json.get('role')
+        if not role:
+            return jsonify({'status': 'error', 'message': 'role is required'}), 400
+        df_role = pd.read_excel('data/KPI/employees.xlsx', sheet_name=role, engine='openpyxl')
+        # Get unique employees (one row per emp_id is enough for the name)
+        df_unique = df_role.drop_duplicates(subset=['EMP ID'])
+        result = []
+        for _, row in df_unique.iterrows():
+            emp_id = row.get('EMP ID', '')
+            name   = row.get('Name', None)
+            # Show "Name (ID)" if name exists, else just the ID
+            display = str(name) + ' (' + str(emp_id) + ')' if (name and str(name) not in ['nan', 'None', '']) else str(emp_id)
+            result.append({'emp_id': emp_id, 'name': str(name) if (name and str(name) not in ['nan', 'None', '']) else '', 'display': display})
+        return jsonify({'status': 'success', 'employees': result}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 400
+
 @app.route('/complexity', methods=['POST'])
 def complexity():
     data_json = request.json
     selected_team, selected_employees, prediction_complexity= inference_complexity(data_json)
     return jsonify({'selected_team' : selected_team, 'selected_employees' : selected_employees, 'complexity' : prediction_complexity})
+
+@app.route('/sdlc', methods=['POST'])
+def sdlc():
+    data_json = request.json
+    response_sdlc, sdlc_dict = sdlc_pipeline(data_json)
+    sdlc_dict = {key: int(value) if isinstance(value, (np.int64, int)) else value for key, value in sdlc_dict.items()}
+    return jsonify({'sdlc': response_sdlc, 'base_time': sdlc_dict})
+
+@app.route('/kpi/crud', methods=['POST'])
+def kpi_crud():
+    crud_json_data = request.json
+    response = crud_kpi_criterias(crud_json_data['crud_json'], crud_json_data['role'], operation = crud_json_data['operation'])
+    return jsonify({"response" : response})
+
 
 @app.route('/kpi/employee/detail', methods=['POST'])
 def kpi_employee_detail():
@@ -653,19 +654,6 @@ def kpi_employee_detail():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e), 'traceback': traceback.format_exc()}), 400
 
-@app.route('/sdlc', methods=['POST'])
-def sdlc():
-    data_json = request.json
-    response_sdlc, sdlc_dict = sdlc_pipeline(data_json)
-    sdlc_dict = {key: int(value) if isinstance(value, (np.int64, int)) else value for key, value in sdlc_dict.items()}
-    return jsonify({'sdlc': response_sdlc, 'base_time': sdlc_dict})
-
-@app.route('/kpi/crud', methods=['POST'])
-def kpi_crud():
-    crud_json_data = request.json
-    response = crud_kpi_criterias(crud_json_data['crud_json'], crud_json_data['role'], operation = crud_json_data['operation'])
-    return jsonify({"response" : response})
-
 @app.route('/kpi/role', methods=['POST'])
 def kpi_sheet():
     data_json = request.json
@@ -718,13 +706,145 @@ def get_projects():
         return jsonify({'error': str(e)}), 500
 
 # NEW ML ENDPOINTS
+
+# Maps frontend generic payload → rule-based criteria_json keys per role
+# Used to compute the rule-based KPI from the same payload AddEmployee sends
+FRONTEND_ROLE_CRITERIA = {
+    'Business Analyst': {
+        'Analytical Skills':                        'analytical_skills',
+        'Technical Proficiency':                    'technical_proficiency',
+        'Communication Skills':                     'communication_skills',
+        'Problem Solving Skills':                   'problem_solving',
+        'Years of experience in Business Analysis': 'years_experience',
+        'Leadership-Team lead experience':          'leadership_experience',
+        "Bachelor's Degree":                        'bachelors_degree',
+        "Master's Degree":                          'masters_degree',
+        'Experience of related Domain':             'domain_experience',
+    },
+    'Backend Engineer': {
+        'Proficiency in Programming Languages':        'technical_proficiency',
+        'Database Management (SQL, NoSQL)':            'technical_proficiency',
+        'API Development and Integration':             'technical_proficiency',
+        'Knowledge of Frameworks':                     'technical_proficiency',
+        'Understanding of Microservices Architecture': 'analytical_skills',
+        'Years of experience in Bacend Engineer':      'years_experience',
+        "Bachelor's Degree":                           'bachelors_degree',
+        "Master's Degree":                             'masters_degree',
+        'Experience of related Domain':                'domain_experience',
+    },
+    'DevOps Engineer': {
+        'Scripting and Automation (Python, Bash)':        'technical_proficiency',
+        'Continuous Integration-Continuous Deployment':   'technical_proficiency',
+        'Cloud Platforms ( AWS, Azure, GCP)':             'technical_proficiency',
+        'Configuration Management Tools':                 'technical_proficiency',
+        'Monitoring and Logging Tools':                   'analytical_skills',
+        'Years of experience in DevOps Engineer':         'years_experience',
+        'Leadership/Team lead experience':                'leadership_experience',
+        "Bachelor's Degree":                              'bachelors_degree',
+        "Master's Degree":                                'masters_degree',
+        'Experience of related Domain':                   'domain_experience',
+    },
+    'Frontend Engineer': {
+        'Proficiency in HTML/CSS':                           'technical_proficiency',
+        'Proficiency in JavaScript/TypeScript':              'technical_proficiency',
+        'Knowledge of Frontend Frameworks/Libraries':        'technical_proficiency',
+        'UI/UX Design Principles':                           'analytical_skills',
+        'Responsive Design and Cross-Browser Compatibility': 'technical_proficiency',
+        'Years of experience in FrontEnd engineer':          'years_experience',
+        "Bachelor's Degree":                                 'bachelors_degree',
+        "Master's Degree":                                   'masters_degree',
+        'Experience of related Domain':                      'domain_experience',
+    },
+    'FullStack Engineer': {
+        'Proficiency in Frontend Technologies':      'technical_proficiency',
+        'Proficiency in Backend Technologies':       'technical_proficiency',
+        'Knowledge of Frontend Frameworks':          'technical_proficiency',
+        'Knowledge of Backend Frameworks':           'technical_proficiency',
+        'Database Management (SQL, NoSQL)':          'technical_proficiency',
+        'API Development and Integration':           'technical_proficiency',
+        'Years of experience in Fullstack engineer': 'years_experience',
+        "Bachelor's Degree":                         'bachelors_degree',
+        "Master's Degree":                           'masters_degree',
+        'Experience of related Domain':              'domain_experience',
+    },
+    'Project Manager': {
+        'planning & scheduling':                         'analytical_skills',
+        'Leadership and Team Management':                'leadership_experience',
+        'Communication Skills':                          'communication_skills',
+        'Risk Management':                               'problem_solving',
+        'Budgeting and Cost Control':                    'analytical_skills',
+        'Knowledge of Project Management Methodologies': 'technical_proficiency',
+        'Years of experience in Fullstack engineer':     'years_experience',
+        "Bachelor's Degree":                             'bachelors_degree',
+        "Master's Degree":                               'masters_degree',
+        'Experience of related Domain':                  'domain_experience',
+    },
+    'Quality Assurance Engineer': {
+        'Excellent communication ':           'communication_skills',
+        'Test Automation':                    'technical_proficiency',
+        'Knowledge of testing methodologies': 'analytical_skills',
+        'Bug tracking and reporting':         'technical_proficiency',
+        'Years of experience in QA':          'years_experience',
+        'Leadership/Team lead experience':    'leadership_experience',
+        "Bachelor's Degree":                  'bachelors_degree',
+        "Master's Degree":                    'masters_degree',
+        'Experience of related Domain':       'domain_experience',
+    },
+    'Tech Lead': {
+        'Technical Expertise':                 'technical_proficiency',
+        'Leadership and Team Management':      'leadership_experience',
+        'Project Management Skills':           'analytical_skills',
+        'Problem-Solving and Decision-Making': 'problem_solving',
+        'Communication and Collaboration':     'communication_skills',
+        'Years of experience in Tech Lead':    'years_experience',
+        "Bachelor's Degree":                   'bachelors_degree',
+        "Master's Degree":                     'masters_degree',
+        'Experience of related Domain':        'domain_experience',
+    },
+}
+
+def build_criteria_from_payload(role, data):
+    """Convert the /ml/predict_kpi payload into criteria_json for rule-based KPI calc."""
+    col_map = FRONTEND_ROLE_CRITERIA.get(role, {})
+    criteria = {}
+    for col, generic_key in col_map.items():
+        criteria[col] = data.get(generic_key, '')
+    return criteria
+
 @app.route('/ml/predict_kpi', methods=['POST'])
 def predict_employee_kpi():
     if not ML_AVAILABLE or ml_predictor is None:
         return jsonify({'status': 'error', 'message': 'ML models not loaded'}), 500
     try:
         data = request.json
-        prediction = ml_predictor.predict_kpi_score(data)
+        ml_prediction = ml_predictor.predict_kpi_score(data)
+
+        # Also compute rule-based KPI (same formula used by ViewEmployee)
+        # so AddEmployee shows the identical score the employee will see later
+        role = data.get('role', '')
+        try:
+            criteria_json = build_criteria_from_payload(role, data)
+            rule_kpi = round(float(calculate_kpi_value(role, criteria_json)), 2)
+        except Exception:
+            rule_kpi = ml_prediction['predicted_kpi_score']
+
+        # Determine category from rule-based score (thresholds: >60 High, >30 Medium)
+        if rule_kpi > 60:
+            rule_category = 'High'
+        elif rule_kpi > 30:
+            rule_category = 'Medium'
+        else:
+            rule_category = 'Low'
+
+        # Return rule-based as primary score (what will be stored & shown in ViewEmployee)
+        prediction = {
+            **ml_prediction,
+            'predicted_kpi_score':  rule_kpi,
+            'performance_category': rule_category,
+            'confidence_lower':     round(max(0,   rule_kpi - 5.0), 2),
+            'confidence_upper':     round(min(100, rule_kpi + 5.0), 2),
+            'ml_score':             ml_prediction['predicted_kpi_score'],
+        }
         return jsonify({'status': 'success', 'prediction': prediction}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e), 'traceback': traceback.format_exc()}), 400
@@ -760,6 +880,102 @@ def recommend_improvements():
         return jsonify({'status': 'success', 'recommendations': recommendations}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e), 'traceback': traceback.format_exc()}), 400
+
+
+@app.route('/ml/career_advice', methods=['POST'])
+def career_advice():
+    if not ML_AVAILABLE or ml_predictor is None:
+        return jsonify({'status': 'error', 'message': 'ML models not loaded'}), 500
+    try:
+        import re as _re
+        data          = request.json
+        employee_data = data.get('employee_data', {})
+        kpi_score     = data.get('kpi_score', 0)
+        category      = data.get('category', 'Low')
+        role          = employee_data.get('role', 'Unknown')
+        domain        = employee_data.get('domain', 'Unknown')
+
+        # Step 1: ML gap analysis
+        recommendations = ml_predictor.recommend_improvements(employee_data)
+
+        # Step 2: Build readable gap lines
+        if recommendations:
+            gap_parts = []
+            for i, r in enumerate(recommendations[:5]):
+                gap_parts.append(
+                    "  {}. {}: currently '{}' -> next level '{}' (KPI gain: +{} pts, priority: {})".format(
+                        i + 1,
+                        r['feature'],
+                        r['current_level'],
+                        r['recommended_level'],
+                        r['potential_kpi_increase'],
+                        r['priority']
+                    )
+                )
+            recs_lines = "\n".join(gap_parts)
+        else:
+            recs_lines = "  All skills already at maximum level."
+
+        # Step 3: Build prompt without f-string to avoid brace conflicts
+        json_schema = (
+            '{\n'
+            '  "summary": "One motivational sentence",\n'
+            '  "focus_areas": [\n'
+            '    {\n'
+            '      "area": "Skill area name",\n'
+            '      "current_level": "current level",\n'
+            '      "target_level": "next level",\n'
+            '      "kpi_gain": 0,\n'
+            '      "why_it_matters": "Why this matters for this role",\n'
+            '      "actions": ["Action 1", "Action 2", "Action 3"],\n'
+            '      "timeline": "e.g. 2-3 months",\n'
+            '      "difficulty": "Easy | Medium | Hard"\n'
+            '    }\n'
+            '  ],\n'
+            '  "quick_wins": ["Quick win 1", "Quick win 2", "Quick win 3"]\n'
+            '}'
+        )
+
+        prompt = (
+            "You are a specialist career coach helping a " + str(role) +
+            " in the " + str(domain) + " industry improve their KPI.\n\n"
+            "CURRENT STATUS:\n"
+            "- Role: " + str(role) + "\n"
+            "- Domain: " + str(domain) + "\n"
+            "- KPI Score: " + str(kpi_score) + "/100 (" + str(category) + " performance)\n"
+            "- Target: reach 61/100 (High performance tier)\n"
+            "- Gap to target: " + str(max(0, 61 - int(kpi_score))) + " points needed\n\n"
+            "ML-CALCULATED IMPROVEMENT GAPS (sorted by highest KPI gain):\n" +
+            recs_lines + "\n\n"
+            "YOUR TASK:\n"
+            "For each of the top 3 gaps, give concrete role-specific advice "
+            "for a " + str(role) + " working in " + str(domain) + ". "
+            "Name actual tools, certifications, frameworks.\n\n"
+            "Respond ONLY with valid JSON matching this exact schema (no markdown, no extra text):\n" +
+            json_schema
+        )
+
+        # Step 4: Call GPT-4o
+        response = llm.chat([
+            ChatMessage(
+                role=MessageRole.SYSTEM,
+                content="You are a specialist HR career coach. Respond with valid JSON only. No markdown, no extra text."
+            ),
+            ChatMessage(role=MessageRole.USER, content=prompt)
+        ])
+
+        raw    = str(response.message.content)
+        clean  = _re.sub(r'```json|```', '', raw).strip()
+        advice = json.loads(clean)
+
+        return jsonify({'status': 'success', 'advice': advice}), 200
+
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'traceback': traceback.format_exc()
+        }), 400
 
 @app.route('/ml/compare_methods', methods=['POST'])
 def compare_prediction_methods():
@@ -866,32 +1082,9 @@ def get_feature_importance():
 def health_check():
     return jsonify({'status': 'healthy', 'ml_models_loaded': ML_AVAILABLE and ml_predictor is not None, 'api_version': '2.0 with ML'}), 200
 
-
-@app.route('/employee/by-role', methods=['POST'])
-def employee_by_role():
-    """Return list of {emp_id, name} for a given role, for dropdown display."""
-    try:
-        data_json = request.json
-        role = data_json.get('role')
-        if not role:
-            return jsonify({'status': 'error', 'message': 'role is required'}), 400
-        df_role = pd.read_excel('data/KPI/employees.xlsx', sheet_name=role, engine='openpyxl')
-        # Get unique employees (one row per emp_id is enough for the name)
-        df_unique = df_role.drop_duplicates(subset=['EMP ID'])
-        result = []
-        for _, row in df_unique.iterrows():
-            emp_id = row.get('EMP ID', '')
-            name   = row.get('Name', None)
-            # Show "Name (ID)" if name exists, else just the ID
-            display = str(name) + ' (' + str(emp_id) + ')' if (name and str(name) not in ['nan', 'None', '']) else str(emp_id)
-            result.append({'emp_id': emp_id, 'name': str(name) if (name and str(name) not in ['nan', 'None', '']) else '', 'display': display})
-        return jsonify({'status': 'success', 'employees': result}), 200
-    except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 400
-    
 if __name__ == '__main__':
     print("\n" + "="*80)
-    print("Weenet API - KPI Management System with ML Integration")
+    print("PM PULSE API - KPI Management System with ML Integration")
     print("="*80)
     print(f"ML Models Status: {'✓ Loaded' if ML_AVAILABLE and ml_predictor else '✗ Not Loaded'}")
     if ML_AVAILABLE and ml_predictor:
@@ -906,4 +1099,4 @@ if __name__ == '__main__':
     print("\nExisting Endpoints: /register, /login, /risk, /complexity, /sdlc, /kpi/*, /employee/*")
     print("  GET  /health - Health check")
     print("="*80 + "\n")
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=5000)
