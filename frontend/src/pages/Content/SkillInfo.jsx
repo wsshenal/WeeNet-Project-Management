@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Table, Select } from "antd";
 import axios from "../../apis/axiosInstance";
-import axios2 from "axios";
 
 const { Option } = Select;
 
@@ -59,8 +58,8 @@ const SkillInfo = () => {
     setError(null);
     try {
       // Assuming there's an API endpoint to delete the record
-      const res = await axios2.delete(
-        `http://localhost:5001/delete-row?name=${record.Criteria}&&role=${role}`
+      const res = await axios.delete(
+        `/delete-row?name=${record.Criteria}&&role=${role}`
       );
 
       // Show the success message from the response

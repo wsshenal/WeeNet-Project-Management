@@ -37,7 +37,7 @@ WeeNet Project Management is an AI-powered project planning and tracking platfor
 ### Prerequisites
 - Node.js & npm (for frontend)
 - Python 3.10+ (for backend)
-- OpenAI API Key
+- OpenAI API Key (only if using OpenAI mode)
 
 ### Backend Setup
 1. Navigate to the `backend` directory.
@@ -50,11 +50,27 @@ WeeNet Project Management is an AI-powered project planning and tracking platfor
    ```bash
    pip install -r requirements.txt
    ```
-4. Create a `.env` file in the `backend` directory and add your OpenAI API key:
+4. Create a `.env` file in the `backend` directory.
+   - OpenAI mode:
    ```
+   LLM_PROVIDER="openai"
    OPENAI_API_KEY="your-api-key-here"
    ```
-5. Run the server (runs on port `5001`):
+   - Local model mode (GPT4All):
+   ```
+   LLM_PROVIDER="local"
+   LOCAL_MODEL="Llama-3.2-1B-Instruct-Q4_0.gguf"
+   LOCAL_MODEL_DIR="./models"
+   LOCAL_ALLOW_DOWNLOAD="0"
+   ```
+   - Auto mode (try OpenAI first, then local):
+   ```
+   LLM_PROVIDER="auto"
+   OPENAI_API_KEY="your-api-key-here"
+   LOCAL_MODEL="Llama-3.2-1B-Instruct-Q4_0.gguf"
+   LOCAL_MODEL_DIR="./models"
+   ```
+5. Run the server (runs on port `5002`):
    ```bash
    python app_2.py
    ```
@@ -65,8 +81,20 @@ WeeNet Project Management is an AI-powered project planning and tracking platfor
    ```bash
    npm install
    ```
-3. Run the development server:
+3. Create frontend env from template (no code edits needed):
+   ```bash
+   cp .env.example .env
+   ```
+   - If backend is `app_2.py`, keep:
+   ```
+   VITE_API_BASE_URL="http://127.0.0.1:5002"
+   ```
+   - If backend is `app.py`, set:
+   ```
+   VITE_API_BASE_URL="http://127.0.0.1:5001"
+   ```
+4. Run the development server:
    ```bash
    npm run dev
    ```
-4. Access the application at `http://localhost:5173`.
+5. Access the application at `http://localhost:5173`.

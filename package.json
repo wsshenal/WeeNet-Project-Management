@@ -1,0 +1,7 @@
+{
+  "name": "weenet-project-management",
+  "private": true,
+  "scripts": {
+    "start": "./run_all.sh"
+  }
+}
