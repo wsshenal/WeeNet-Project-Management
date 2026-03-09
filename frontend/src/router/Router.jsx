@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import AppLayout from "../layouts/Layouts";
 import Team from "../pages/Content/Team";
 import Complexity from "../pages/Content/Complexity";
@@ -19,6 +19,11 @@ import SDLC from "../pages/Content/SDLC";
 import MLPrediction from "../pages/Content/MLPrediction";
 import MLRecommendations from "../pages/Content/MLRecommendations";
 import MLTeamPrediction from "../pages/Content/MLTeamPrediction";
+
+const RootRedirect = () => {
+  const userLoggedIn = Boolean(localStorage.getItem("token"));
+  return <Navigate to={userLoggedIn ? "/requirement" : "/login"} replace />;
+};
 
 const router = createBrowserRouter([
   {
@@ -41,6 +46,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
+      {
+        index: true,
+        element: <RootRedirect />,
+      },
       {
         path: "requirement",
         element: (
