@@ -25,10 +25,12 @@ import {
   DollarOutlined,
   ProjectOutlined,
   ThunderboltOutlined,
-
   WarningOutlined,
 } from "@ant-design/icons";
-// Recharts retained for possible future charts (Tooltip, etc.)
+import {
+  PieChart, Pie, Cell, Tooltip as RechartsTooltip, ResponsiveContainer,
+  RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend
+} from "recharts";
 // Gantt chart is rendered as custom SVG/div — no extra library needed.
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -128,10 +130,9 @@ const SDLC = () => {
     setWorkflowStatus(workflow);
 
     // Warn user if previous steps are not completed
-    if (!workflow || !workflow.teamComplete || !workflow.complexityComplete) {
+    if (!workflow || !workflow.teamComplete) {
       const missingSteps = [];
       if (!workflow?.teamComplete) missingSteps.push("Team Allocation");
-      if (!workflow?.complexityComplete) missingSteps.push("Complexity Analysis");
 
       setWorkflowWarning({
         message: "Recommended Steps Not Completed",
@@ -178,7 +179,6 @@ const SDLC = () => {
         const updatedWorkflow = workflow || {
           requirementComplete: true,
           teamComplete: false,
-          complexityComplete: false,
           sdlcComplete: false,
         };
         updatedWorkflow.sdlcComplete = true;
@@ -498,12 +498,7 @@ const SDLC = () => {
             >
               Team {workflowStatus.teamComplete ? "✓" : "Pending"}
             </Tag>
-            <Tag
-              icon={workflowStatus.complexityComplete ? <CheckCircleOutlined /> : <ClockCircleOutlined />}
-              color={workflowStatus.complexityComplete ? "success" : "default"}
-            >
-              Complexity {workflowStatus.complexityComplete ? "✓" : "Pending"}
-            </Tag>
+
             <Tag
               icon={workflowStatus.sdlcComplete ? <CheckCircleOutlined /> : <ClockCircleOutlined />}
               color={workflowStatus.sdlcComplete ? "success" : "processing"}
@@ -524,241 +519,333 @@ const SDLC = () => {
           </Card>
         ) : data ? (
           <div>
-            {/* Project Details Card */}
-            {projectInfo && (
-              <Card
-                title={
-                  <span style={{ color: colors.dark }}>
-                    <FileTextOutlined style={{ marginRight: 8 }} />
-                    Project Overview
-                  </span>
-                }
-                style={{
-                  marginBottom: 24,
-                  borderRadius: 12,
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                }}
-              >
-                <Row gutter={[24, 16]}>
-                  <Col xs={12} md={4}>
-                    <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
-                      <ProjectOutlined /> Project Name
-                    </div>
-                    <div style={{ fontWeight: 600, fontSize: 15 }}>
-                      {projectInfo.name}
-                    </div>
-                  </Col>
-                  <Col xs={12} md={4}>
-                    <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
-                      Domain
-                    </div>
-                    <Tag color="blue">{projectInfo.domain}</Tag>
-                  </Col>
-                  <Col xs={12} md={4}>
-                    <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
-                      <TeamOutlined /> Team Size
-                    </div>
-                    <div style={{ fontWeight: 600, fontSize: 15 }}>
-                      {projectInfo.teamSize} members
-                    </div>
-                  </Col>
-                  <Col xs={12} md={4}>
-                    <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
-                      <DollarOutlined /> Budget
-                    </div>
-                    <div style={{ fontWeight: 600, fontSize: 15 }}>
-                      ${projectInfo.budget?.toLocaleString()}
-                    </div>
-                  </Col>
-                  <Col xs={12} md={4}>
-                    <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
-                      Tech Stack
-                    </div>
-                    <div style={{ fontWeight: 500, fontSize: 13 }}>
-                      {projectInfo.techStack}
-                    </div>
-                  </Col>
-                  <Col xs={12} md={4}>
-                    <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
-                      Team Experience
-                    </div>
-                    <Tag color={
-                      projectInfo.teamExperience === "High" ? "green" :
-                        projectInfo.teamExperience === "Medium" ? "orange" : "red"
-                    }>
-                      {projectInfo.teamExperience}
-                    </Tag>
-                  </Col>
-                </Row>
-              </Card>
-            )}
+            {(() => {
+              const gantt = getGanttData();
+              const totalBaseDays = gantt.reduce((acc, curr) => acc + curr.baseDur, 0);
+              const totalAdjDays = gantt.reduce((acc, curr) => acc + curr.adjDur, 0);
+              const bufferAdded = totalAdjDays - totalBaseDays;
+              const criticalPhase = [...gantt].sort((a, b) => b.adjDur - a.adjDur)[0];
 
-            {/* ── Gantt Chart ── */}
-            <Card
-              title={
-                <span style={{ color: colors.dark }}>
-                  <ProjectOutlined style={{ marginRight: 8 }} />
-                  SDLC Timeline — Gantt Chart (Days)
-                </span>
-              }
-              extra={
-                <div className="flex gap-4">
-                  <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13 }}>
-                    <span style={{ width: 14, height: 14, borderRadius: 3, background: colors.primary, display: "inline-block" }} />
-                    Base Estimate
-                  </span>
-                  <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13 }}>
-                    <span style={{ width: 14, height: 14, borderRadius: 3, background: "#fa8c16", display: "inline-block", opacity: 0.7 }} />
-                    Risk-Adjusted
-                  </span>
-                </div>
-              }
-              style={{ marginBottom: 24, borderRadius: 12, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
-            >
-              {(() => {
-                const gantt = getGanttData();
-                if (!gantt.length) return null;
-                const totalDays = gantt.reduce((s, g) => s + g.baseDur, 0);
-                const ROW_H = 52;
-                return (
-                  <div style={{ overflowX: "auto" }}>
-                    {/* Day ruler */}
-                    <div style={{ display: "flex", marginLeft: 160, marginBottom: 4, position: "relative" }}>
-                      {[0, 25, 50, 75, 100].map((pct) => (
-                        <span key={pct} style={{
-                          position: "absolute", left: `${pct}%`,
-                          fontSize: 11, color: "#999", transform: "translateX(-50%)"
-                        }}>
-                          {Math.round((pct / 100) * totalDays)}d
+              return (
+                <>
+                  {/* Project Details Card */}
+                  {projectInfo && (
+                    <Card
+                      title={
+                        <span style={{ color: colors.dark }}>
+                          <FileTextOutlined style={{ marginRight: 8 }} />
+                          Project Overview
                         </span>
-                      ))}
-                    </div>
-                    {/* Phase rows */}
-                    {gantt.map((g, idx) => {
-                      const baseLeft = (g.startDay / totalDays) * 100;
-                      const baseWidth = (g.baseDur / totalDays) * 100;
-                      const adjWidth = (g.adjDur / totalDays) * 100;
-                      const rowBg = idx % 2 === 0 ? "#fafafa" : "#fff";
-                      return (
-                        <div key={g.phase} title={`${g.phase}: Day ${g.startDay} → ${g.endDay} (${g.baseDur} days base${g.adjDur !== g.baseDur ? `, ${g.adjDur}d adjusted` : ""})`}
-                          style={{
-                            display: "flex", alignItems: "center",
-                            height: ROW_H, background: rowBg,
-                            borderBottom: "1px solid #f0f0f0", cursor: "default",
-                          }}
-                        >
-                          {/* Phase label */}
-                          <div style={{
-                            width: 160, minWidth: 160, paddingRight: 12,
-                            fontSize: 12, fontWeight: 500, color: colors.dark,
-                            textAlign: "right", lineHeight: 1.3,
-                          }}>
-                            {g.phase}
+                      }
+                      style={{
+                        marginBottom: 24,
+                        borderRadius: 12,
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                      }}
+                    >
+                      <Row gutter={[24, 16]}>
+                        <Col xs={12} md={4}>
+                          <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
+                            <ProjectOutlined /> Project Name
                           </div>
+                          <div style={{ fontWeight: 600, fontSize: 15 }}>
+                            {projectInfo.name}
+                          </div>
+                        </Col>
+                        <Col xs={12} md={4}>
+                          <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
+                            Domain
+                          </div>
+                          <Tag color="blue">{projectInfo.domain}</Tag>
+                        </Col>
+                        <Col xs={12} md={4}>
+                          <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
+                            <TeamOutlined /> Team Size
+                          </div>
+                          <div style={{ fontWeight: 600, fontSize: 15 }}>
+                            {projectInfo.teamSize} members
+                          </div>
+                        </Col>
+                        <Col xs={12} md={4}>
+                          <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
+                            <DollarOutlined /> Budget
+                          </div>
+                          <div style={{ fontWeight: 600, fontSize: 15 }}>
+                            ${projectInfo.budget?.toLocaleString()}
+                          </div>
+                        </Col>
+                        <Col xs={12} md={4}>
+                          <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
+                            Tech Stack
+                          </div>
+                          <div style={{ fontWeight: 500, fontSize: 13 }}>
+                            {projectInfo.techStack}
+                          </div>
+                        </Col>
+                        <Col xs={12} md={4}>
+                          <div style={{ color: "#666", fontSize: 12, marginBottom: 4 }}>
+                            Team Experience
+                          </div>
+                          <Tag color={
+                            projectInfo.teamExperience === "High" ? "green" :
+                              projectInfo.teamExperience === "Medium" ? "orange" : "red"
+                          }>
+                            {projectInfo.teamExperience}
+                          </Tag>
+                        </Col>
+                      </Row>
+                    </Card>
+                  )}
 
-                          {/* Bar track */}
-                          <div style={{ flex: 1, position: "relative", height: 28 }}>
-                            {/* Grid lines */}
-                            {[25, 50, 75].map((p) => (
-                              <div key={p} style={{
-                                position: "absolute", left: `${p}%`, top: 0,
-                                height: "100%", borderLeft: "1px dashed #e8e8e8",
-                              }} />
-                            ))}
+                  {/* KPI Stat Cards */}
+                  <Row gutter={[24, 24]} style={{ marginBottom: 24 }}>
+                    <Col xs={24} md={8}>
+                      <Card style={{ borderRadius: 12, borderLeft: `6px solid ${colors.primary}`, boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+                        <div style={{ color: "#666", fontSize: 13, marginBottom: 8 }}>Total Estimated Duration</div>
+                        <div style={{ fontSize: 28, fontWeight: 700, color: colors.dark }}>
+                          {totalAdjDays} <span style={{ fontSize: 16, fontWeight: 500, color: "#888" }}>days</span>
+                        </div>
+                      </Card>
+                    </Col>
+                    <Col xs={24} md={8}>
+                      <Card style={{ borderRadius: 12, borderLeft: `6px solid #fa8c16`, boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+                        <div style={{ color: "#666", fontSize: 13, marginBottom: 8 }}>Risk-Adjusted Buffer</div>
+                        <div style={{ fontSize: 28, fontWeight: 700, color: "#fa8c16" }}>
+                          +{bufferAdded} <span style={{ fontSize: 16, fontWeight: 500, color: "#888" }}>days</span>
+                        </div>
+                      </Card>
+                    </Col>
+                    <Col xs={24} md={8}>
+                      <Card style={{ borderRadius: 12, borderLeft: `6px solid #cf1322`, boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+                        <div style={{ color: "#666", fontSize: 13, marginBottom: 8 }}>Most Critical Phase</div>
+                        <div style={{ fontSize: 20, fontWeight: 700, color: "#cf1322", lineHeight: 1.2 }}>
+                          {criticalPhase?.phase} <br />
+                          <span style={{ fontSize: 14, fontWeight: 500, color: "#888" }}>({criticalPhase?.adjDur} days)</span>
+                        </div>
+                      </Card>
+                    </Col>
+                  </Row>
 
-                            {/* Risk-adjusted bar (behind, orange) */}
-                            {g.adjDur !== g.baseDur && (
+                  {/* ── Gantt Chart ── */}
+                  <Card
+                    title={
+                      <span style={{ color: colors.dark }}>
+                        <ProjectOutlined style={{ marginRight: 8 }} />
+                        SDLC Timeline — Gantt Chart (Days)
+                      </span>
+                    }
+                    extra={
+                      <div className="flex gap-4">
+                        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13 }}>
+                          <span style={{ width: 14, height: 14, borderRadius: 3, background: colors.primary, display: "inline-block" }} />
+                          Base Estimate
+                        </span>
+                        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13 }}>
+                          <span style={{ width: 14, height: 14, borderRadius: 3, background: "#fa8c16", display: "inline-block", opacity: 0.7 }} />
+                          Risk-Adjusted
+                        </span>
+                      </div>
+                    }
+                    style={{ marginBottom: 24, borderRadius: 12, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
+                  >
+                    {gantt.length > 0 && (
+                      <div style={{ overflowX: "auto" }}>
+                        {/* Day ruler */}
+                        <div style={{ display: "flex", marginLeft: 160, marginBottom: 4, position: "relative" }}>
+                          {[0, 25, 50, 75, 100].map((pct) => (
+                            <span key={pct} style={{
+                              position: "absolute", left: `${pct}%`,
+                              fontSize: 11, color: "#999", transform: "translateX(-50%)"
+                            }}>
+                              {Math.round((pct / 100) * totalBaseDays)}d
+                            </span>
+                          ))}
+                        </div>
+                        {/* Phase rows */}
+                        {gantt.map((g, idx) => {
+                          const baseLeft = (g.startDay / totalBaseDays) * 100;
+                          const baseWidth = (g.baseDur / totalBaseDays) * 100;
+                          const adjWidth = (g.adjDur / totalBaseDays) * 100;
+                          const rowBg = idx % 2 === 0 ? "#fafafa" : "#fff";
+                          const ROW_H = 52;
+                          return (
+                            <div key={g.phase} title={`${g.phase}: Day ${g.startDay} → ${g.endDay} (${g.baseDur} days base${g.adjDur !== g.baseDur ? `, ${g.adjDur}d adjusted` : ""})`}
+                              style={{
+                                display: "flex", alignItems: "center",
+                                height: ROW_H, background: rowBg,
+                                borderBottom: "1px solid #f0f0f0", cursor: "default",
+                              }}
+                            >
+                              {/* Phase label */}
                               <div style={{
-                                position: "absolute",
-                                left: `${baseLeft}%`,
-                                width: `${adjWidth}%`,
-                                top: 0, height: "100%",
-                                background: "#fa8c16",
-                                opacity: 0.35,
-                                borderRadius: 4,
-                              }} />
+                                width: 160, minWidth: 160, paddingRight: 12,
+                                fontSize: 12, fontWeight: 500, color: colors.dark,
+                                textAlign: "right", lineHeight: 1.3,
+                              }}>
+                                {g.phase}
+                              </div>
+
+                              {/* Bar track */}
+                              <div style={{ flex: 1, position: "relative", height: 28 }}>
+                                {/* Grid lines */}
+                                {[25, 50, 75].map((p) => (
+                                  <div key={p} style={{
+                                    position: "absolute", left: `${p}%`, top: 0,
+                                    height: "100%", borderLeft: "1px dashed #e8e8e8",
+                                  }} />
+                                ))}
+
+                                {/* Risk-adjusted bar (behind, orange) */}
+                                {g.adjDur !== g.baseDur && (
+                                  <div style={{
+                                    position: "absolute",
+                                    left: `${baseLeft}%`,
+                                    width: `${adjWidth}%`,
+                                    top: "10%", height: "80%",
+                                    background: "rgba(250, 140, 22, 0.15)",
+                                    border: "1px dashed #fa8c16",
+                                    borderRadius: 4,
+                                    display: "flex", alignItems: "center", justifyContent: "flex-end",
+                                    zIndex: 0,
+                                  }}>
+                                    {(g.adjDur - g.baseDur) > 0 && (
+                                      <span style={{ fontSize: 11, color: "#d46b08", fontWeight: 700, paddingRight: "6px" }}>
+                                        +{(g.adjDur - g.baseDur).toFixed(0)}d Delay
+                                      </span>
+                                    )}
+                                  </div>
+                                )}
+
+                                {/* Base bar (primary green) */}
+                                <div style={{
+                                  position: "absolute",
+                                  left: `${baseLeft}%`,
+                                  width: `${baseWidth}%`,
+                                  top: "15%", height: "70%",
+                                  background: `linear-gradient(90deg, ${colors.dark}, ${colors.primary})`,
+                                  borderRadius: 4,
+                                  display: "flex", alignItems: "center", justifyContent: "center",
+                                  overflow: "hidden",
+                                  transition: "opacity 0.2s",
+                                  zIndex: 1,
+                                }}>
+                                  {baseWidth > 8 && (
+                                    <span style={{ fontSize: 11, color: "#fff", fontWeight: 600, whiteSpace: "nowrap", padding: "0 6px" }}>
+                                      {g.baseDur}d
+                                    </span>
+                                  )}
+                                </div>
+
+                                {/* Start/End day labels */}
+                                <div style={{
+                                  position: "absolute",
+                                  left: `calc(${baseLeft + (g.adjDur > g.baseDur ? adjWidth : baseWidth)}% + 8px)`,
+                                  top: "50%", transform: "translateY(-50%)",
+                                  fontSize: 11, color: "#aaa", whiteSpace: "nowrap",
+                                  display: "flex", alignItems: "center", gap: "8px",
+                                  zIndex: 2,
+                                }}>
+                                  <span>↦ Day {g.startDay}–{g.endDay}</span>
+                                  {g.adjDur > g.baseDur && (
+                                    <span style={{ color: "#cf1322", fontWeight: 600 }}>
+                                      (Risk Adjusted: {g.adjDur}d)
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+
+                        {/* Total bar */}
+                        <div style={{
+                          display: "flex", alignItems: "center", marginTop: 12,
+                          padding: "8px 0", borderTop: `2px solid ${colors.light}`,
+                        }}>
+                          <div style={{ width: 160, minWidth: 160, paddingRight: 12, textAlign: "right" }}>
+                            <span style={{ fontWeight: 700, color: colors.dark, fontSize: 13 }}>Total</span>
+                          </div>
+                          <div style={{ flex: 1 }}>
+                            <span style={{ fontSize: 15, fontWeight: 700, color: colors.primary }}>
+                              {totalBaseDays} days
+                            </span>
+                            {bufferAdded > 0 && (
+                              <span style={{ fontSize: 12, color: "#fa8c16", marginLeft: 12 }}>
+                                ({totalAdjDays}d risk-adjusted)
+                              </span>
                             )}
-
-                            {/* Base bar (primary green) */}
-                            <div style={{
-                              position: "absolute",
-                              left: `${baseLeft}%`,
-                              width: `${baseWidth}%`,
-                              top: "15%", height: "70%",
-                              background: `linear-gradient(90deg, ${colors.dark}, ${colors.primary})`,
-                              borderRadius: 4,
-                              display: "flex", alignItems: "center", justifyContent: "center",
-                              overflow: "hidden",
-                              transition: "opacity 0.2s",
-                            }}>
-                              {baseWidth > 8 && (
-                                <span style={{ fontSize: 11, color: "#fff", fontWeight: 600, whiteSpace: "nowrap", padding: "0 6px" }}>
-                                  {g.baseDur}d
-                                </span>
-                              )}
-                            </div>
-
-                            {/* Start/End day labels */}
-                            <div style={{
-                              position: "absolute",
-                              left: `calc(${baseLeft}% + ${baseWidth}% + 4px)`,
-                              top: "50%", transform: "translateY(-50%)",
-                              fontSize: 11, color: "#aaa", whiteSpace: "nowrap",
-                            }}>
-                              ↦ Day {g.startDay}–{g.endDay}
-                            </div>
                           </div>
                         </div>
-                      );
-                    })}
-
-                    {/* Total bar */}
-                    <div style={{
-                      display: "flex", alignItems: "center", marginTop: 12,
-                      padding: "8px 0", borderTop: `2px solid ${colors.light}`,
-                    }}>
-                      <div style={{ width: 160, minWidth: 160, paddingRight: 12, textAlign: "right" }}>
-                        <span style={{ fontWeight: 700, color: colors.dark, fontSize: 13 }}>Total</span>
                       </div>
-                      <div style={{ flex: 1 }}>
-                        <span style={{ fontSize: 15, fontWeight: 700, color: colors.primary }}>
-                          {totalDays} days
-                        </span>
-                        {gantt.some(g => g.adjDur !== g.baseDur) && (
-                          <span style={{ fontSize: 12, color: "#fa8c16", marginLeft: 12 }}>
-                            ({gantt.reduce((s, g) => s + g.adjDur, 0)}d risk-adjusted)
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })()}
-            </Card>
+                    )}
+                  </Card>
 
-            {/* SDLC Details - AI Analysis */}
-            <Card
-              title={
-                <span style={{ color: colors.dark }}>
-                  <FileTextOutlined style={{ marginRight: 8 }} />
-                  AI Analysis & Recommendations
-                </span>
-              }
-              style={{ borderRadius: 12, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
-            >
-              <div
-                style={{
-                  padding: "20px",
-                  background: colors.background,
-                  borderRadius: 12,
-                  lineHeight: 1.9,
-                  fontSize: 14,
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: data.sdlc ? formatSDLCData(data.sdlc) : "No SDLC Data Available",
-                }}
-              />
-            </Card>
+                  <Row gutter={[24, 24]} style={{ marginBottom: 24 }}>
+                    <Col xs={24} md={12}>
+                      <Card title="Phase Time Distribution" style={{ borderRadius: 12, height: '100%', boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
+                        <div style={{ height: 320 }}>
+                          <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                              <Pie data={gantt} dataKey="adjDur" nameKey="phase" cx="50%" cy="50%" innerRadius={60} outerRadius={100} label>
+                                {gantt.map((entry, index) => (
+                                  <Cell key={`cell-${index}`} fill={[colors.primary, colors.secondary, colors.light, colors.dark, "#82ca9d", "#8884d8", "#fa8c16"][index % 7]} />
+                                ))}
+                              </Pie>
+                              <RechartsTooltip formatter={(value) => `${value} days`} />
+                              <Legend />
+                            </PieChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </Card>
+                    </Col>
+                    <Col xs={24} md={12}>
+                      <Card title="Complexity & Effort Radar" style={{ borderRadius: 12, height: '100%', boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
+                        <div style={{ height: 320 }}>
+                          <ResponsiveContainer width="100%" height="100%">
+                            <RadarChart cx="50%" cy="50%" outerRadius={100} data={gantt}>
+                              <PolarGrid />
+                              <PolarAngleAxis dataKey="phase" tick={{ fontSize: 11 }} />
+                              <PolarRadiusAxis angle={30} domain={[0, 'auto']} />
+                              <Radar name="Base Days" dataKey="baseDur" stroke={colors.primary} fill={colors.light} fillOpacity={0.6} />
+                              <Radar name="With Risk" dataKey="adjDur" stroke="#fa8c16" fill="#ffd591" fillOpacity={0.4} />
+                              <Legend />
+                              <RechartsTooltip />
+                            </RadarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </Card>
+                    </Col>
+                  </Row>
+
+                  {/* SDLC Details - AI Analysis */}
+                  <Card
+                    title={
+                      <span style={{ color: colors.dark, fontSize: 18 }}>
+                        <RocketOutlined style={{ marginRight: 8 }} />
+                        Smart Recommendations & AI Analysis
+                      </span>
+                    }
+                    style={{ borderRadius: 12, boxShadow: "0 4px 12px rgba(0,0,0,0.08)", border: "none", marginBottom: 24 }}
+                  >
+                    <div
+                      className="ai-analysis-content"
+                      style={{
+                        padding: "24px",
+                        background: "#f9fcf7",
+                        borderRadius: 8,
+                        lineHeight: 1.8,
+                        fontSize: 15,
+                        color: "#333",
+                        borderLeft: `4px solid ${colors.primary}`,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: data.sdlc ? formatSDLCData(data.sdlc) : "No SDLC Data Available",
+                      }}
+                    />
+                  </Card>
+                </>
+              );
+            })()}
           </div>
         ) : (
           <Card
