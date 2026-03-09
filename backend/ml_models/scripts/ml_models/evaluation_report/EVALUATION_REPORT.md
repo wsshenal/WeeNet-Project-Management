@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-This report presents a comprehensive evaluation of machine learning models developed for the PM Pulse KPI Management System. The models predict employee KPI scores and classify performance categories based on various skill, experience, and education criteria.
+This report presents a comprehensive evaluation of machine learning models developed for the Weenet KPI Management System. The models predict employee KPI scores and classify performance categories based on various skill, experience, and education criteria.
 
 ## 1. Model Architecture
 
@@ -150,7 +150,7 @@ The ML-based KPI prediction system demonstrates excellent performance with an R�
 ✓ Accurate predictions with confidence intervals
 ✓ Automated feature importance analysis
 ✓ Scalable and adaptable framework
-✓ Integration with existing PM Pulse system
+✓ Integration with existing Weenet system
 
 The system enhances traditional rule-based approaches while maintaining interpretability and practical applicability for real-world project management scenarios.
 

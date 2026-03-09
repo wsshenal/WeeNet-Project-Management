@@ -1,4 +1,4 @@
-# PM-Pulse Backend Setup
+# weenet Backend Setup
 
 ## Prerequisites
 - Python 3.9 or higher

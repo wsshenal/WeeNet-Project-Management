@@ -1,40 +1,77 @@
 """
-ML Prediction Service - WORKING VERSION FOR VIVA
+ML Prediction Service - FINAL CORRECT VERSION
 
-Root cause: SVR model predicts constant 39.32 for all inputs because
-StandardScaler was fitted with named DataFrame but SVR receives numpy array,
-and RBF kernel SVR degenerates to predicting training mean on sparse 'nan' data.
+How the model was trained (data_preparation.py):
+- 500 samples per role, combined into one DataFrame
+- Each row only has its own role's features filled in
+- All OTHER roles' features = NaN → converted to string 'nan' via astype(str)
+- Role and Domain columns included as features
+- LabelEncoder + StandardScaler applied
 
-Fix: Use the rule-based KPI calculation (calculate_kpi_value) which correctly
-reads the JSON weights and gives different results for different inputs.
-The SVC classification model is still used for performance category.
-
-This is the SAME underlying formula the training data was generated from,
-so predictions are fully consistent with the ML system's intent.
+So for a correct prediction:
+1. Role  → actual role string  (e.g. 'Tech Lead')
+2. Domain → actual domain string (e.g. 'Health')
+3. Features belonging to THIS role → mapped from the 12 frontend generic fields
+4. Features belonging to OTHER roles → string 'nan'  ← THIS is the key fix
+5. Shared features (Experience of related Domain, Bachelor's Degree, Master's Degree)
+   → always mapped from frontend
 """
 
 import pandas as pd
 import numpy as np
 import pickle
-import json
 import os
 from typing import Dict, Any, List
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Map frontend generic field names → role-specific criteria names in JSON files
+# EXACT feature names from each role's JSON file
+# Maps model_feature_name → which frontend generic field to use
+# 'nan' means this feature is not used for this role (other-role feature)
 # ─────────────────────────────────────────────────────────────────────────────
-ROLE_CRITERIA_MAP = {
+
+# Shared across all roles
+SHARED_FEATURES = {
+    'Experience of related Domain': 'domain_experience',
+    "Bachelor's Degree":            'bachelors_degree',
+    "Master's Degree":              'masters_degree',
+}
+
+# Generic frontend field → model value mappings
+FRONTEND_TO_MODEL = {
+    # skills
+    'analytical_skills':     lambda v: v,
+    'technical_proficiency': lambda v: v,
+    'communication_skills':  lambda v: v,
+    'problem_solving':       lambda v: v,
+    'domain_expertise':      lambda v: v,
+    # experience
+    'years_experience':      lambda v: v,
+    'domain_experience':     lambda v: v,
+    'leadership_experience': lambda v: v,
+    # education
+    'bachelors_degree':      lambda v: v,
+    'masters_degree':        lambda v: v,
+    # identity
+    'role':                  lambda v: v,
+    'domain':                lambda v: v,
+}
+
+# Per-role feature map: model_feature_name → frontend_generic_key
+# Only features that BELONG to this role. All others get 'nan'.
+ROLE_FEATURE_MAP = {
     'Business Analyst': {
         'Analytical Skills':                        'analytical_skills',
         'Technical Proficiency':                    'technical_proficiency',
         'Communication Skills':                     'communication_skills',
         'Problem Solving Skills':                   'problem_solving',
+        # junk/test features in the JSON — map to analytical as best guess
+        'test':                                     'analytical_skills',
+        'dafedaf':                                  'analytical_skills',
+        'lkjdhfdghj':                               'analytical_skills',
         'Years of experience in Business Analysis': 'years_experience',
-        'Experience of related Domain':             'domain_experience',
         'Leadership-Team lead experience':          'leadership_experience',
-        "Bachelor's Degree":                        'bachelors_degree',
-        "Master's Degree":                          'masters_degree',
+        'etset':                                    'leadership_experience',
     },
     'Backend Engineer': {
         'Proficiency in Programming Languages':         'technical_proficiency',
@@ -43,9 +80,6 @@ ROLE_CRITERIA_MAP = {
         'Knowledge of Frameworks':                      'technical_proficiency',
         'Understanding of Microservices Architecture':  'analytical_skills',
         'Years of experience in Bacend Engineer':       'years_experience',
-        'Experience of related Domain':                 'domain_experience',
-        "Bachelor's Degree":                            'bachelors_degree',
-        "Master's Degree":                              'masters_degree',
     },
     'DevOps Engineer': {
         'Scripting and Automation (Python, Bash)':          'technical_proficiency',
@@ -54,10 +88,7 @@ ROLE_CRITERIA_MAP = {
         'Configuration Management Tools':                   'technical_proficiency',
         'Monitoring and Logging Tools':                     'analytical_skills',
         'Years of experience in DevOps Engineer':           'years_experience',
-        'Experience of related Domain':                     'domain_experience',
         'Leadership/Team lead experience':                  'leadership_experience',
-        "Bachelor's Degree":                                'bachelors_degree',
-        "Master's Degree":                                  'masters_degree',
     },
     'Frontend Engineer': {
         'Proficiency in HTML/CSS':                              'technical_proficiency',
@@ -66,9 +97,6 @@ ROLE_CRITERIA_MAP = {
         'UI/UX Design Principles':                              'analytical_skills',
         'Responsive Design and Cross-Browser Compatibility':    'technical_proficiency',
         'Years of experience in FrontEnd engineer':             'years_experience',
-        'Experience of related Domain':                         'domain_experience',
-        "Bachelor's Degree":                                    'bachelors_degree',
-        "Master's Degree":                                      'masters_degree',
     },
     'FullStack Engineer': {
         'Proficiency in Frontend Technologies':     'technical_proficiency',
@@ -78,9 +106,6 @@ ROLE_CRITERIA_MAP = {
         'Database Management (SQL, NoSQL)':         'technical_proficiency',
         'API Development and Integration':          'technical_proficiency',
         'Years of experience in Fullstack engineer':'years_experience',
-        'Experience of related Domain':             'domain_experience',
-        "Bachelor's Degree":                        'bachelors_degree',
-        "Master's Degree":                          'masters_degree',
     },
     'Project Manager': {
         'planning & scheduling':                            'analytical_skills',
@@ -89,10 +114,8 @@ ROLE_CRITERIA_MAP = {
         'Risk Management':                                  'problem_solving',
         'Budgeting and Cost Control':                       'analytical_skills',
         'Knowledge of Project Management Methodologies':    'technical_proficiency',
-        'Years of experience in Fullstack engineer':        'years_experience',   # typo in JSON kept
-        'Experience of related Domain':                     'domain_experience',
-        "Bachelor's Degree":                                'bachelors_degree',
-        "Master's Degree":                                  'masters_degree',
+        # Note: PM JSON has 'Years of experience in Fullstack engineer' — typo in JSON kept as-is
+        'Years of experience in Fullstack engineer':        'years_experience',
     },
     'Quality Assurance Engineer': {
         'Excellent communication':              'communication_skills',
@@ -100,10 +123,7 @@ ROLE_CRITERIA_MAP = {
         'Knowledge of testing methodologies':   'analytical_skills',
         'Bug tracking and reporting':           'technical_proficiency',
         'Years of experience in QA':            'years_experience',
-        'Experience of related Domain':         'domain_experience',
         'Leadership/Team lead experience':      'leadership_experience',
-        "Bachelor's Degree":                    'bachelors_degree',
-        "Master's Degree":                      'masters_degree',
     },
     'Tech Lead': {
         'Technical Expertise':                  'technical_proficiency',
@@ -112,93 +132,14 @@ ROLE_CRITERIA_MAP = {
         'Problem-Solving and Decision-Making':  'problem_solving',
         'Communication and Collaboration':      'communication_skills',
         'Years of experience in Tech Lead':     'years_experience',
-        'Experience of related Domain':         'domain_experience',
-        "Bachelor's Degree":                    'bachelors_degree',
-        "Master's Degree":                      'masters_degree',
     },
 }
-
-# Path to KPI JSON files (relative to this script)
-JSON_BASE_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'KPI', 'jsons')
-WEIGHTS_BASE_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'KPI', 'weights')
-
-
-def _load_kpi_json(role: str) -> Dict:
-    """Load the KPI JSON config for a role."""
-    filename = role.replace(' ', '_') + '.json'
-    path = os.path.join(JSON_BASE_PATH, filename)
-    if not os.path.exists(path):
-        # Try without underscore replacement
-        for f in os.listdir(JSON_BASE_PATH):
-            if f.lower().replace('_', ' ').replace('.json', '').lower() == role.lower():
-                path = os.path.join(JSON_BASE_PATH, f)
-                break
-    with open(path, 'r') as f:
-        return json.load(f)
-
-
-def _load_weights(role: str) -> pd.DataFrame:
-    """Load the weights Excel for a role."""
-    filename = role + '.xlsx'
-    path = os.path.join(WEIGHTS_BASE_PATH, filename)
-    return pd.read_excel(path)
-
-
-def _calculate_kpi_from_criteria(role: str, criteria_json: Dict) -> float:
-    """
-    Calculate KPI score using the same formula as app_2.py calculate_kpi_value.
-    criteria_json: { 'Criterion Name': 'Level', ... }
-    """
-    try:
-        config    = _load_kpi_json(role)
-        df_weights = _load_weights(role)
-
-        # Flatten all criteria → level → score
-        flat_config = {}
-        for category, criteria_dict in config.items():
-            for criterion, levels in criteria_dict.items():
-                crit_clean = criterion.replace('/', '-')
-                flat_config[crit_clean] = levels
-
-        weights_dict = dict(zip(df_weights['Criteria'], df_weights['Weight']))
-
-        total_score = 0.0
-        for criterion, level in criteria_json.items():
-            crit_clean = criterion.replace('/', '-')
-            if crit_clean in flat_config and crit_clean in weights_dict:
-                score  = flat_config[crit_clean].get(str(level), 0)
-                weight = weights_dict[crit_clean]
-                try:
-                    total_score += float(score) * float(weight)
-                except (ValueError, TypeError):
-                    pass
-
-        return round(total_score, 2)
-
-    except Exception as e:
-        print(f"   ⚠ Rule-based KPI calculation failed: {e}")
-        return None
-
-
-def _map_frontend_to_criteria(role: str, employee_data: Dict) -> Dict:
-    """
-    Convert the 12 generic frontend fields into role-specific criteria names
-    with their values, ready for KPI calculation.
-    """
-    criteria_map = ROLE_CRITERIA_MAP.get(role, {})
-    criteria_json = {}
-
-    for criterion_name, generic_key in criteria_map.items():
-        value = employee_data.get(generic_key)
-        if value:
-            criteria_json[criterion_name] = value
-
-    return criteria_json
 
 
 class KPIMLPredictor:
     def __init__(self):
         self.models_path = os.path.join(os.path.dirname(__file__), 'ml_models', 'trained_models')
+        self.regression_model     = None
         self.classification_model = None
         self.scaler               = None
         self.label_encoders       = None
@@ -207,18 +148,10 @@ class KPIMLPredictor:
 
     def load_models(self):
         try:
-            # Regression model (SVR) - loaded but not used for prediction
-            # (SVR degenerates to constant on this sparse feature space)
-            reg_path = os.path.join(self.models_path, 'kpi_regression_model.pkl')
-            if os.path.exists(reg_path):
-                with open(reg_path, 'rb') as f:
-                    self._svr = pickle.load(f)
-
-            # Classification model (SVC) - used for performance category
-            cls_path = os.path.join(self.models_path, 'kpi_classification_model.pkl')
-            if os.path.exists(cls_path):
-                with open(cls_path, 'rb') as f:
-                    self.classification_model = pickle.load(f)
+            with open(os.path.join(self.models_path, 'kpi_regression_model.pkl'), 'rb') as f:
+                self.regression_model = pickle.load(f)
+            with open(os.path.join(self.models_path, 'kpi_classification_model.pkl'), 'rb') as f:
+                self.classification_model = pickle.load(f)
 
             scaler_path = os.path.join(self.models_path, 'scaler.pkl')
             if os.path.exists(scaler_path):
@@ -230,115 +163,140 @@ class KPIMLPredictor:
                 with open(encoders_path, 'rb') as f:
                     self.label_encoders = pickle.load(f)
 
-            if hasattr(self._svr, 'feature_names_in_'):
-                self.expected_features = list(self._svr.feature_names_in_)
+            # Detect actual feature order the model was trained on
+            if hasattr(self.regression_model, 'feature_names_in_'):
+                self.expected_features = list(self.regression_model.feature_names_in_)
             elif self.scaler and hasattr(self.scaler, 'feature_names_in_'):
                 self.expected_features = list(self.scaler.feature_names_in_)
             elif self.label_encoders:
                 self.expected_features = list(self.label_encoders.keys())
+            else:
+                self.expected_features = []
 
             print(f"\n✅ Models loaded")
+            print(f"   Regression    : {type(self.regression_model).__name__}")
             print(f"   Classification: {type(self.classification_model).__name__}")
-            print(f"   Total features: {len(self.expected_features) if self.expected_features else 'unknown'}\n")
+            print(f"   Total features: {len(self.expected_features)}")
+            print(f"   Feature list  : {self.expected_features}\n")
 
         except Exception as e:
             raise Exception(f"Failed to load models: {str(e)}")
 
-    def _get_performance_category_from_score(self, kpi_score: float) -> str:
-        """Determine category from KPI score thresholds used in training."""
-        # Matches data_preparation.py: bins=[0, 30, 60, 100] → Low/Medium/High
-        if kpi_score > 60:
-            return "High"
-        elif kpi_score > 30:
-            return "Medium"
-        else:
-            return "Low"
+    def _build_model_row(self, employee_data: Dict) -> Dict:
+        """
+        Build one row with ALL model features in the correct order.
+        - Role/Domain columns → actual values
+        - This role's features  → mapped from frontend generic fields
+        - Other roles' features → string 'nan' (matches training data encoding)
+        - Shared features       → always mapped from frontend
+        """
+        role   = employee_data.get('role', employee_data.get('Role', 'Business Analyst'))
+        domain = employee_data.get('domain', employee_data.get('Domain', 'Finance'))
 
-    def _get_feature_importance(self, role: str) -> List[Dict]:
-        """Return top contributing factors for this role."""
-        criteria_map = ROLE_CRITERIA_MAP.get(role, {})
-        # Show the role-specific criteria as contributing factors
-        factors = []
-        generic_display = {
-            'technical_proficiency': 'Technical Proficiency',
-            'analytical_skills':     'Analytical Skills',
-            'years_experience':      'Years of Experience',
-            'leadership_experience': 'Leadership Experience',
-            'domain_experience':     'Domain Experience',
-            'communication_skills':  'Communication Skills',
-            'problem_solving':       'Problem Solving',
-        }
-        seen = set()
-        for criterion, generic_key in criteria_map.items():
-            if generic_key not in seen and generic_key in generic_display:
-                seen.add(generic_key)
-                factors.append({
-                    'feature':    generic_display[generic_key],
-                    'importance': round(1.0 / max(len(seen), 1), 2),
-                    'value':      'N/A',
-                })
-        return factors[:5]
+        role_map = ROLE_FEATURE_MAP.get(role, {})
+        row = {}
+
+        for feature in self.expected_features:
+            # 1. Role column
+            if feature == 'Role':
+                row[feature] = role
+
+            # 2. Domain column
+            elif feature == 'Domain':
+                row[feature] = domain
+
+            # 3. Shared features (experience of domain, degrees)
+            elif feature in SHARED_FEATURES:
+                generic_key = SHARED_FEATURES[feature]
+                row[feature] = employee_data.get(generic_key, 'nan')
+
+            # 4. This role's own features
+            elif feature in role_map:
+                generic_key = role_map[feature]
+                row[feature] = employee_data.get(generic_key, 'Intermediate')
+
+            # 5. All other roles' features → 'nan' (exactly as in training)
+            else:
+                row[feature] = 'nan'
+
+        return row
+
+    def preprocess_employee_data(self, employee_data: Dict) -> np.ndarray:
+        row = self._build_model_row(employee_data)
+
+        print(f"\n📋 Model row for role='{employee_data.get('role', '?')}':")
+        for k, v in row.items():
+            marker = '' if v == 'nan' else ' ←'
+            print(f"   {k}: {v}{marker}")
+
+        df = pd.DataFrame([row])[self.expected_features]
+        df_encoded = self._encode_features(df)
+        return self.scaler.transform(df_encoded) if self.scaler else df_encoded.values
+
+    def _encode_features(self, df: pd.DataFrame) -> pd.DataFrame:
+        df_enc = df.copy()
+        if self.label_encoders:
+            for col in df_enc.columns:
+                if col in self.label_encoders:
+                    try:
+                        df_enc[col] = self.label_encoders[col].transform(df_enc[col].astype(str))
+                    except ValueError as e:
+                        # Value unseen during training — use the 'nan' encoding index
+                        print(f"   ⚠ Encoding error '{col}': {e} → using 0")
+                        df_enc[col] = 0
+        else:
+            from sklearn.preprocessing import LabelEncoder
+            for col in df_enc.columns:
+                if df_enc[col].dtype == 'object':
+                    df_enc[col] = LabelEncoder().fit_transform(df_enc[col].astype(str))
+        return df_enc
 
     def predict_kpi_score(self, employee_data: Dict[str, Any]) -> Dict[str, Any]:
         print(f"\n🔍 Incoming: {employee_data}")
+        X = self.preprocess_employee_data(employee_data)
 
-        role = employee_data.get('role', employee_data.get('Role', 'Business Analyst'))
+        kpi_score = round(float(min(100.0, max(0.0, self.regression_model.predict(X)[0]))), 2)
 
-        # ── Step 1: Map frontend fields → role-specific criteria ──────────────
-        criteria_json = _map_frontend_to_criteria(role, employee_data)
-        print(f"   Mapped criteria for '{role}': {criteria_json}")
-
-        # ── Step 2: Calculate KPI using rule-based formula ────────────────────
-        kpi_score = _calculate_kpi_from_criteria(role, criteria_json)
-
-        if kpi_score is None:
-            # Last resort fallback: weighted average of skill levels
-            skill_map = {'Novice': 20, 'Intermediate': 50, 'Advanced': 100,
-                         '1-2 years': 20, '3-5 years': 50, '5+ years': 100,
-                         '0 - 5': 20, '6 - 14': 50, '15+': 100,
-                         'Non-Lead': 0, 'Leadership': 100,
-                         'Unrelated': 50, 'related': 100}
-            scores = [skill_map.get(v, 50) for v in criteria_json.values()]
-            kpi_score = round(float(np.mean(scores)), 2) if scores else 50.0
-
-        kpi_score = round(min(100.0, max(0.0, kpi_score)), 2)
-
-        # ── Step 3: Performance category from score thresholds ────────────────
-        performance_category = self._get_performance_category_from_score(kpi_score)
-
-        # ── Step 4: Build contributing factors with actual values ─────────────
-        criteria_map = ROLE_CRITERIA_MAP.get(role, {})
-        top_factors = []
-        seen_generic = set()
-        generic_labels = {
-            'technical_proficiency': 'Technical Proficiency',
-            'analytical_skills':     'Analytical Skills',
-            'years_experience':      'Years of Experience',
-            'leadership_experience': 'Leadership Experience',
-            'domain_experience':     'Domain Experience',
-            'communication_skills':  'Communication Skills',
-            'problem_solving':       'Problem Solving',
-            'bachelors_degree':      "Bachelor's Degree",
-            'masters_degree':        "Master's Degree",
-        }
-        for criterion, generic_key in criteria_map.items():
-            if generic_key not in seen_generic and generic_key in generic_labels:
-                seen_generic.add(generic_key)
-                top_factors.append({
-                    'feature':    generic_labels[generic_key],
-                    'importance': round(1.0 / 7, 2),
-                    'value':      str(employee_data.get(generic_key, 'N/A')),
-                })
+        try:
+            cat_code = int(self.classification_model.predict(X)[0])
+            performance_category = {0: "Low", 1: "Medium", 2: "High"}.get(cat_code, "Medium")
+        except Exception:
+            performance_category = "High" if kpi_score >= 80 else "Medium" if kpi_score >= 60 else "Low"
 
         print(f"✅ KPI={kpi_score}  Category={performance_category}")
-
         return {
             'predicted_kpi_score':      kpi_score,
             'performance_category':     performance_category,
             'confidence_lower':         float(max(0,   kpi_score - 5.0)),
             'confidence_upper':         float(min(100, kpi_score + 5.0)),
-            'top_contributing_factors': top_factors[:5],
+            'top_contributing_factors': self._get_feature_importance(employee_data),
         }
+
+    def _get_feature_importance(self, employee_data: Dict) -> List[Dict]:
+        if not hasattr(self.regression_model, 'feature_importances_'):
+            return []
+        role     = employee_data.get('role', employee_data.get('Role', ''))
+        role_map = ROLE_FEATURE_MAP.get(role, {})
+        importances = self.regression_model.feature_importances_
+
+        # Only show features relevant to this role
+        role_indices = [
+            i for i, f in enumerate(self.expected_features)
+            if f in role_map or f in SHARED_FEATURES or f in ('Role', 'Domain')
+        ]
+        role_indices_sorted = sorted(role_indices, key=lambda i: importances[i], reverse=True)[:5]
+
+        return [
+            {
+                'feature':    self.expected_features[i],
+                'importance': float(importances[i]),
+                'value':      str(employee_data.get(
+                    role_map.get(self.expected_features[i],
+                                 SHARED_FEATURES.get(self.expected_features[i], '')), 'N/A'
+                )),
+            }
+            for i in role_indices_sorted
+        ]
 
     def predict_team_kpi(self, team_members: List[Dict]) -> Dict[str, Any]:
         predictions  = []
@@ -401,30 +359,30 @@ if __name__ == "__main__":
     predictor = KPIMLPredictor()
 
     tests = [
-        ("Tech Lead   - Senior", {"role": "Tech Lead", "domain": "Health",
-            "analytical_skills": "Advanced", "technical_proficiency": "Advanced",
-            "communication_skills": "Advanced", "problem_solving": "Advanced",
-            "domain_expertise": "Advanced", "years_experience": "5+ years",
-            "domain_experience": "15+", "leadership_experience": "Leadership",
-            "bachelors_degree": "related", "masters_degree": "related"}),
-        ("Tech Lead   - Junior", {"role": "Tech Lead", "domain": "Health",
-            "analytical_skills": "Novice", "technical_proficiency": "Novice",
-            "communication_skills": "Novice", "problem_solving": "Novice",
-            "domain_expertise": "Novice", "years_experience": "1-2 years",
-            "domain_experience": "0 - 5", "leadership_experience": "Non-Lead",
-            "bachelors_degree": "Unrelated", "masters_degree": "Unrelated"}),
-        ("FullStack   - Senior", {"role": "FullStack Engineer", "domain": "Finance",
-            "analytical_skills": "Advanced", "technical_proficiency": "Advanced",
-            "communication_skills": "Advanced", "problem_solving": "Advanced",
-            "domain_expertise": "Advanced", "years_experience": "5+ years",
-            "domain_experience": "15+", "leadership_experience": "Leadership",
-            "bachelors_degree": "related", "masters_degree": "related"}),
-        ("FullStack   - Junior", {"role": "FullStack Engineer", "domain": "Education",
-            "analytical_skills": "Novice", "technical_proficiency": "Novice",
-            "communication_skills": "Novice", "problem_solving": "Novice",
-            "domain_expertise": "Novice", "years_experience": "1-2 years",
-            "domain_experience": "0 - 5", "leadership_experience": "Non-Lead",
-            "bachelors_degree": "Unrelated", "masters_degree": "Unrelated"}),
+        ("Tech Lead - Senior",  {"role": "Tech Lead",        "domain": "Health",
+                                  "analytical_skills": "Advanced", "technical_proficiency": "Advanced",
+                                  "communication_skills": "Advanced", "problem_solving": "Advanced",
+                                  "domain_expertise": "Advanced", "years_experience": "5+ years",
+                                  "domain_experience": "15+", "leadership_experience": "Leadership",
+                                  "bachelors_degree": "related", "masters_degree": "related"}),
+        ("Tech Lead - Junior",  {"role": "Tech Lead",        "domain": "Health",
+                                  "analytical_skills": "Novice", "technical_proficiency": "Novice",
+                                  "communication_skills": "Novice", "problem_solving": "Novice",
+                                  "domain_expertise": "Novice", "years_experience": "1-2 years",
+                                  "domain_experience": "0 - 5", "leadership_experience": "Non-Lead",
+                                  "bachelors_degree": "Unrelated", "masters_degree": "Unrelated"}),
+        ("FullStack - Senior",  {"role": "FullStack Engineer", "domain": "Finance",
+                                  "analytical_skills": "Advanced", "technical_proficiency": "Advanced",
+                                  "communication_skills": "Advanced", "problem_solving": "Advanced",
+                                  "domain_expertise": "Advanced", "years_experience": "5+ years",
+                                  "domain_experience": "15+", "leadership_experience": "Leadership",
+                                  "bachelors_degree": "related", "masters_degree": "related"}),
+        ("FullStack - Junior",  {"role": "FullStack Engineer", "domain": "Education",
+                                  "analytical_skills": "Novice", "technical_proficiency": "Novice",
+                                  "communication_skills": "Novice", "problem_solving": "Novice",
+                                  "domain_expertise": "Novice", "years_experience": "1-2 years",
+                                  "domain_experience": "0 - 5", "leadership_experience": "Non-Lead",
+                                  "bachelors_degree": "Unrelated", "masters_degree": "Unrelated"}),
     ]
 
     print("\n" + "="*60 + "\nRESULTS\n" + "="*60)
@@ -432,10 +390,15 @@ if __name__ == "__main__":
     for label, data in tests:
         r = predictor.predict_kpi_score(data)
         results[label] = r['predicted_kpi_score']
-        print(f"{label} → KPI={r['predicted_kpi_score']:6.2f}  ({r['performance_category']})")
+        print(f"{label:25s} → KPI={r['predicted_kpi_score']:6.2f}  ({r['performance_category']})")
 
     print("\n" + "="*60)
-    ok1 = results["Tech Lead   - Senior"] > results["Tech Lead   - Junior"]
-    ok2 = results["FullStack   - Senior"] > results["FullStack   - Junior"]
-    print("✅ PASS: Tech Lead Senior > Junior"   if ok1 else "❌ FAIL: Tech Lead scores same")
-    print("✅ PASS: FullStack Senior > Junior"   if ok2 else "❌ FAIL: FullStack scores same")
+    if results["Tech Lead - Senior"] > results["Tech Lead - Junior"]:
+        print("✅ PASS: Senior Tech Lead scores higher than Junior Tech Lead")
+    else:
+        print("❌ FAIL: Scores are same or reversed")
+
+    if results["FullStack - Senior"] > results["FullStack - Junior"]:
+        print("✅ PASS: Senior FullStack scores higher than Junior FullStack")
+    else:
+        print("❌ FAIL: Scores are same or reversed")
