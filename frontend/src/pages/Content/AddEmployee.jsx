@@ -9,6 +9,7 @@ import {
   Tag,
   Spin,
   Alert,
+  Tabs,
 } from "antd";
 import {
   UserAddOutlined,
@@ -20,9 +21,11 @@ import {
   ArrowRightOutlined,
   LoadingOutlined,
   SaveOutlined,
+  FileExcelOutlined,
 } from "@ant-design/icons";
 import Swal from "sweetalert2";
 import axios from "../../apis/axiosInstance";
+import BulkAddEmployee from "./Bulkaddemployee";
 
 const { Option } = Select;
 
@@ -148,14 +151,11 @@ const ROLE_SKILL_FIELDS = {
   ],
 };
 
-// Build single-domain object — backend now inserts only the selected domain row
 const buildDomainExp = (selectedDomain, selectedYears) => ({
   Domain: selectedDomain,
   Years: selectedYears,
 });
 
-// ─── Map generic keys → exact insert_json field names per role ─────────────────
-// Matches EXACTLY what the original individual role components sent to employee/insert
 const ROLE_INSERT_FIELDS = {
   BA: (v) => ({
     "Analytical Skills": v.analytical_skills,
@@ -163,10 +163,7 @@ const ROLE_INSERT_FIELDS = {
     "Communication Skills": v.communication_skills,
     "Problem Solving Skills": v.problem_solving,
     "Years of experience in Business Analysis": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Leadership-Team lead experience": v.leadership_experience,
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
@@ -178,10 +175,7 @@ const ROLE_INSERT_FIELDS = {
     "Knowledge of Frameworks": v.technical_proficiency,
     "Understanding of Microservices Architecture": v.analytical_skills,
     "Years of experience in Bacend Engineer": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
   }),
@@ -192,10 +186,7 @@ const ROLE_INSERT_FIELDS = {
     "Configuration Management Tools": v.technical_proficiency,
     "Monitoring and Logging Tools": v.analytical_skills,
     "Years of experience in DevOps Engineer": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Leadership/Team lead experience": v.leadership_experience,
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
@@ -205,13 +196,9 @@ const ROLE_INSERT_FIELDS = {
     "Proficiency in JavaScript/TypeScript": v.technical_proficiency,
     "Knowledge of Frontend Frameworks/Libraries": v.technical_proficiency,
     "UI/UX Design Principles": v.analytical_skills,
-    "Responsive Design and Cross-Browser Compatibility":
-      v.technical_proficiency,
+    "Responsive Design and Cross-Browser Compatibility": v.technical_proficiency,
     "Years of experience in FrontEnd engineer": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
   }),
@@ -223,10 +210,7 @@ const ROLE_INSERT_FIELDS = {
     "Database Management (SQL, NoSQL)": v.technical_proficiency,
     "API Development and Integration": v.technical_proficiency,
     "Years of experience in Fullstack engineer": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
   }),
@@ -238,23 +222,17 @@ const ROLE_INSERT_FIELDS = {
     "Budgeting and Cost Control": v.analytical_skills,
     "Knowledge of Project Management Methodologies": v.technical_proficiency,
     "Years of experience in Fullstack engineer": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
   }),
   QA: (v) => ({
-    "Excellent communication ": v.communication_skills, // trailing space matches Excel column
+    "Excellent communication ": v.communication_skills,
     "Test Automation": v.technical_proficiency,
     "Knowledge of testing methodologies": v.analytical_skills,
     "Bug tracking and reporting": v.technical_proficiency,
     "Years of experience in QA": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Leadership/Team lead experience": v.leadership_experience,
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
@@ -266,10 +244,7 @@ const ROLE_INSERT_FIELDS = {
     "Problem-Solving and Decision-Making": v.problem_solving,
     "Communication and Collaboration": v.communication_skills,
     "Years of experience in Tech Lead": v.years_experience,
-    "Experience of related Domain": buildDomainExp(
-      v.domain,
-      v.domain_experience
-    ),
+    "Experience of related Domain": buildDomainExp(v.domain, v.domain_experience),
     "Bachelor's Degree": v.bachelors_degree,
     "Master's Degree": v.masters_degree,
   }),
@@ -377,8 +352,7 @@ const Section = ({ title, subtitle, children, tinted }) => (
   </div>
 );
 
-// ─── Career Advice Modal ──────────────────────────────────────────────────────
-// ─── KPI score map (matches JSON config values) ───────────────────────────────
+// ─── KPI score map ────────────────────────────────────────────────────────────
 const LEVEL_SCORE = {
   Novice: 20,
   Intermediate: 50,
@@ -431,13 +405,8 @@ const buildGapAnalysis = (employeeData) => {
     .sort((a, b) => b.gain - a.gain);
 };
 
-const CareerAdviceModal = ({
-  open,
-  onClose,
-  employeeData,
-  kpiScore,
-  category,
-}) => {
+// ─── Career Advice Modal ──────────────────────────────────────────────────────
+const CareerAdviceModal = ({ open, onClose, employeeData, kpiScore, category }) => {
   const [advice, setAdvice] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -447,7 +416,6 @@ const CareerAdviceModal = ({
     setLoading(true);
     setAdvice(null);
     try {
-      // Call Flask backend /ml/career_advice (uses GPT-4o + ML gap analysis server-side)
       const res = await axios.post("ml/career_advice", {
         employee_data: {
           role: employeeData.roleLabel,
@@ -479,11 +447,7 @@ const CareerAdviceModal = ({
   const priorityColor = (i) =>
     i === 0 ? "#ff4d4f" : i === 1 ? "#faad14" : "#2E75B6";
   const priorityLabel = (i) =>
-    i === 0
-      ? "Highest Priority"
-      : i === 1
-      ? "High Priority"
-      : "Medium Priority";
+    i === 0 ? "Highest Priority" : i === 1 ? "High Priority" : "Medium Priority";
 
   return (
     <Modal
@@ -529,9 +493,7 @@ const CareerAdviceModal = ({
             }}
           >
             {kpiScore}
-            <span style={{ fontSize: 13, fontWeight: 400, color: "#aaa" }}>
-              /100
-            </span>
+            <span style={{ fontSize: 13, fontWeight: 400, color: "#aaa" }}>/100</span>
           </div>
         </div>
         <div style={{ flex: 1 }}>
@@ -559,9 +521,7 @@ const CareerAdviceModal = ({
         </div>
         <div>
           <div style={{ fontSize: 12, color: "#888" }}>Target</div>
-          <div style={{ fontSize: 22, fontWeight: 800, color: "#52c41a" }}>
-            61+
-          </div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: "#52c41a" }}>61+</div>
         </div>
       </div>
 
@@ -585,7 +545,6 @@ const CareerAdviceModal = ({
         </div>
       )}
 
-      {/* Loading */}
       {loading && (
         <div style={{ textAlign: "center", padding: "40px 0" }}>
           <Spin indicator={<LoadingOutlined style={{ fontSize: 32 }} spin />} />
@@ -595,7 +554,6 @@ const CareerAdviceModal = ({
         </div>
       )}
 
-      {/* Error */}
       {advice?.error && !loading && (
         <Alert
           type="error"
@@ -604,7 +562,6 @@ const CareerAdviceModal = ({
         />
       )}
 
-      {/* Advice cards */}
       {advice && !advice.error && !loading && (
         <div>
           <div
@@ -641,9 +598,7 @@ const CareerAdviceModal = ({
                 }}
               >
                 <div>
-                  <span
-                    style={{ fontWeight: 700, fontSize: 14, color: "#1F4E79" }}
-                  >
+                  <span style={{ fontWeight: 700, fontSize: 14, color: "#1F4E79" }}>
                     {area.area}
                   </span>
                   <span style={{ marginLeft: 8, fontSize: 12, color: "#888" }}>
@@ -726,8 +681,8 @@ const CareerAdviceModal = ({
   );
 };
 
-// ─── Main Component ────────────────────────────────────────────────────────────
-const AddEmployee = () => {
+// ─── Manual Add Form ───────────────────────────────────────────────────────────
+const ManualAddEmployee = () => {
   const [form] = Form.useForm();
   const [selectedRole, setSelectedRole] = useState(null);
   const [predicting, setPredicting] = useState(false);
@@ -752,7 +707,6 @@ const AddEmployee = () => {
     ]);
   };
 
-  // ── Step 1: Predict KPI ───────────────────────────────────────────────────
   const handleFinish = async (values) => {
     setError(null);
     setPredicting(true);
@@ -786,7 +740,6 @@ const AddEmployee = () => {
     setPredicting(false);
   };
 
-  // ── Step 2: Save employee after confirming KPI ────────────────────────────
   const handleSave = async () => {
     if (!submittedValues || !selectedRole) return;
     setSaving(true);
@@ -807,25 +760,18 @@ const AddEmployee = () => {
         insert_json,
       });
       Swal.fire(res.data.response || "Employee Saved!", "", "success");
-      // Reset everything
       form.resetFields();
       setSelectedRole(null);
       setPrediction(null);
       setSubmittedValues(null);
     } catch (err) {
-      Swal.fire(
-        "Details Not Saved",
-        err.message || "Please try again.",
-        "error"
-      );
+      Swal.fire("Details Not Saved", err.message || "Please try again.", "error");
     }
     setSaving(false);
   };
 
   const roleFields = selectedRole ? ROLE_SKILL_FIELDS[selectedRole] || [] : [];
-  const catStyle = prediction
-    ? getCategoryStyle(prediction.performance_category)
-    : null;
+  const catStyle = prediction ? getCategoryStyle(prediction.performance_category) : null;
   const needsAdvice =
     prediction &&
     (prediction.performance_category === "Medium" ||
@@ -833,26 +779,6 @@ const AddEmployee = () => {
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto" }}>
-      {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 24,
-        }}
-      >
-        <UserAddOutlined style={{ fontSize: 28, color: "#2E75B6" }} />
-        <div>
-          <div style={{ fontSize: 22, fontWeight: 700, color: "#1F4E79" }}>
-            Add Employee
-          </div>
-          <div style={{ fontSize: 13, color: "#888" }}>
-            Fill in details → click Predict KPI → review score → Save Employee.
-          </div>
-        </div>
-      </div>
-
       <Form
         form={form}
         layout="vertical"
@@ -940,9 +866,7 @@ const AddEmployee = () => {
           <Form.Item
             name="domain_experience"
             label="Years of Experience in This Domain"
-            rules={[
-              { required: true, message: "Please select domain experience" },
-            ]}
+            rules={[{ required: true, message: "Please select domain experience" }]}
             style={{ width: "48%" }}
           >
             <Select placeholder="-- Select --" allowClear>
@@ -1054,7 +978,6 @@ const AddEmployee = () => {
             boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
           }}
         >
-          {/* Header */}
           <div
             style={{
               display: "flex",
@@ -1066,9 +989,7 @@ const AddEmployee = () => {
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <TrophyOutlined style={{ fontSize: 24, color: catStyle.color }} />
               <div>
-                <div
-                  style={{ fontSize: 16, fontWeight: 700, color: "#1F4E79" }}
-                >
+                <div style={{ fontSize: 16, fontWeight: 700, color: "#1F4E79" }}>
                   KPI Prediction Result
                 </div>
                 <div style={{ fontSize: 13, color: "#888" }}>
@@ -1091,7 +1012,6 @@ const AddEmployee = () => {
             </Tag>
           </div>
 
-          {/* Score bar */}
           <div style={{ marginBottom: 20 }}>
             <div
               style={{
@@ -1108,8 +1028,7 @@ const AddEmployee = () => {
               >
                 {prediction.predicted_kpi_score}
                 <span style={{ fontSize: 14, fontWeight: 400, color: "#aaa" }}>
-                  {" "}
-                  / 100
+                  {" "}/ 100
                 </span>
               </span>
             </div>
@@ -1143,7 +1062,6 @@ const AddEmployee = () => {
             </div>
           </div>
 
-          {/* Contributing factors */}
           {prediction.top_contributing_factors?.length > 0 && (
             <div style={{ marginBottom: 20 }}>
               <div
@@ -1182,7 +1100,6 @@ const AddEmployee = () => {
             </div>
           )}
 
-          {/* Career advice — Low / Medium only */}
           {needsAdvice && (
             <div
               style={{
@@ -1202,11 +1119,7 @@ const AddEmployee = () => {
             >
               <div>
                 <div
-                  style={{
-                    fontWeight: 600,
-                    color: catStyle.color,
-                    fontSize: 14,
-                  }}
+                  style={{ fontWeight: 600, color: catStyle.color, fontSize: 14 }}
                 >
                   {prediction.performance_category === "Medium"
                     ? "This employee shows room for improvement."
@@ -1239,7 +1152,6 @@ const AddEmployee = () => {
             </div>
           )}
 
-          {/* High performer */}
           {prediction.performance_category === "High" && (
             <div
               style={{
@@ -1257,7 +1169,6 @@ const AddEmployee = () => {
             </div>
           )}
 
-          {/* ── Save button ── */}
           <div
             style={{
               borderTop: "1px solid #f0f0f0",
@@ -1290,7 +1201,6 @@ const AddEmployee = () => {
         </div>
       )}
 
-      {/* Career Advice Modal */}
       {adviceOpen && submittedValues && prediction && (
         <CareerAdviceModal
           open={adviceOpen}
@@ -1303,6 +1213,60 @@ const AddEmployee = () => {
           category={prediction.performance_category}
         />
       )}
+    </div>
+  );
+};
+
+// ─── Main Component (tabbed) ───────────────────────────────────────────────────
+const AddEmployee = () => {
+  return (
+    <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      {/* Header */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          marginBottom: 24,
+        }}
+      >
+        <UserAddOutlined style={{ fontSize: 28, color: "#2E75B6" }} />
+        <div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: "#1F4E79" }}>
+            Add Employee
+          </div>
+          <div style={{ fontSize: 13, color: "#888" }}>
+            Add employees one at a time or upload an Excel file for bulk import.
+          </div>
+        </div>
+      </div>
+
+      <Tabs
+        defaultActiveKey="manual"
+        size="large"
+        items={[
+          {
+            key: "manual",
+            label: (
+              <span>
+                <UserAddOutlined style={{ marginRight: 6 }} />
+                Manual Add
+              </span>
+            ),
+            children: <ManualAddEmployee />,
+          },
+          {
+            key: "bulk",
+            label: (
+              <span>
+                <FileExcelOutlined style={{ marginRight: 6 }} />
+                Bulk Add (Excel)
+              </span>
+            ),
+            children: <BulkAddEmployee />,
+          },
+        ]}
+      />
     </div>
   );
 };
