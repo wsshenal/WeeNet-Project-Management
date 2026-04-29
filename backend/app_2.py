@@ -8,6 +8,7 @@ from flask_cors import CORS
 from flask import Flask, request, jsonify
 from llama_index.core.llms import ChatMessage, MessageRole
 import traceback
+import secrets
 
 try:
     from dotenv import load_dotenv
@@ -934,8 +935,15 @@ def login():
         users = json.load(f)
     for user in users:
         if user['email'] == data_json['email'] and user['password'] == data_json['password']:
-            return jsonify({"response": "User Logged In Successfully !!!", "status": 200})
+            token = secrets.token_hex(32)        
+            return jsonify({
+                "response": "User Logged In Successfully !!!",
+                "status": 200,
+                "token": token,                   
+                "user": {"email": user["email"]}
+            })
     return jsonify({"response": "Invalid Credentials !!!", "status": 400})
+
 
 
 @app.route('/risk', methods=['POST'])
