@@ -11,6 +11,7 @@ openpyxl
 llama-index
 llama-index-core
 llama-index-llms-openai
+llama-index-llms-gemini
 scikit-learn>=1.4.0
 xgboost>=2.0.0
 flask

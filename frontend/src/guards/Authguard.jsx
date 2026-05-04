@@ -1,17 +1,11 @@
 import { Navigate } from "react-router-dom";
 
 export const AuthGuard = ({ children }) => {
-  const userLoggedIn = Boolean(localStorage.getItem("token"));
-  if (userLoggedIn) {
-    return <Navigate to="/requirement" replace />;
-  }
-  return children;
+  // Bypass login: directly return to home page
+  return <Navigate to="/requirement" replace />;
 };
 
 export const ProtectedRoute = ({ children }) => {
-  const userLoggedIn = Boolean(localStorage.getItem("token"));
-  if (!userLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
+  // Bypass protection: always allow access
   return children;
 };
