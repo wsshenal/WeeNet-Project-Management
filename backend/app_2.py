@@ -21,6 +21,11 @@ except Exception:
     OpenAI = None
 
 try:
+    from llama_index.llms.gemini import Gemini
+except Exception:
+    Gemini = None
+
+try:
     from gpt4all import GPT4All
 except Exception:
     GPT4All = None
@@ -98,12 +103,62 @@ def load_openai_llm():
     )
 
 
+import requests
+
+class GeminiRESTLLM:
+    def __init__(self, api_key, model="models/gemini-2.5-flash"):
+        self.api_key = api_key
+        self.model = model
+
+    def chat(self, messages, **kwargs):
+        prompt = ""
+        for m in messages:
+            if hasattr(m, 'content'):
+                prompt += str(m.content) + "\n"
+            else:
+                prompt += str(m) + "\n"
+        
+        url = f"https://generativelanguage.googleapis.com/v1beta/{self.model}:generateContent?key={self.api_key}"
+        payload = {"contents": [{"parts": [{"text": prompt}]}]}
+        resp = requests.post(url, json=payload)
+        
+        class Dummy: pass
+        response = Dummy()
+        response.message = Dummy()
+        try:
+            data = resp.json()
+            response.message.content = data["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as e:
+            response.message.content = ""
+            print(f"Gemini REST error: {resp.text} - {e}")
+            
+        return response
+
+def load_gemini_llm():
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    if _placeholder_key(api_key):
+        raise RuntimeError("GEMINI_API_KEY is missing or placeholder.")
+    return GeminiRESTLLM(
+        api_key=api_key,
+        model=os.environ.get("GEMINI_MODEL", "models/gemini-2.5-flash")
+    )
+
+
 def init_llm():
     provider = os.environ.get("LLM_PROVIDER", "openai").strip().lower()
 
     if provider == "none":
         print("LLM disabled (LLM_PROVIDER=none). Running heuristic fallback mode.")
         return None, "none"
+
+    if provider == "gemini":
+        try:
+            llm_gemini = load_gemini_llm()
+            print("LLM provider: gemini")
+            return llm_gemini, "gemini"
+        except Exception as e:
+            print(f"Gemini LLM unavailable: {e}")
+            return None, "none"
 
     if provider == "local":
         try:
@@ -124,6 +179,12 @@ def init_llm():
             return None, "none"
 
     if provider == "auto":
+        try:
+            llm_gemini = load_gemini_llm()
+            print("LLM provider(auto): gemini")
+            return llm_gemini, "gemini"
+        except Exception as e_gemini:
+            print(f"Gemini unavailable in auto mode: {e_gemini}")
         try:
             llm_openai = load_openai_llm()
             print("LLM provider(auto): openai")
@@ -528,11 +589,12 @@ def calculate_kpi_value(role, criteria_json):
 
 
 def calculate_kpi_sheet(role, domain, employee_file_path='data/KPI/employees.xlsx'):
-    df_kpi = {'EmpID': [], 'Domain': [], 'Role': [], 'KPI': []}
+    df_kpi = {'EmpID': [], 'Domain': [], 'Role': [], 'KPI': [], 'Name': []}
     df_role_values = pd.read_excel(employee_file_path, sheet_name=role)
     df_role_values = df_role_values[df_role_values['Domain'] == domain].reset_index(drop=True)
     for i in range(df_role_values.shape[0]):
         criteria_json = json.loads(df_role_values.loc[i, :].to_json())
+        emp_name = criteria_json.get('Name', 'Unknown')
         for key in ['Name', 'Home Town', 'Phone Number', 'Age']:
             if key in criteria_json:
                 del criteria_json[key]
@@ -545,7 +607,8 @@ def calculate_kpi_sheet(role, domain, employee_file_path='data/KPI/employees.xls
         df_kpi['Domain'].append(domain)
         df_kpi['EmpID'].append(emp_id)
         df_kpi['Role'].append(role)
-    df_kpi = pd.DataFrame(df_kpi)[['EmpID', 'Role', 'KPI']]
+        df_kpi['Name'].append(emp_name)
+    df_kpi = pd.DataFrame(df_kpi)[['EmpID', 'Role', 'KPI', 'Name']]
     return df_kpi
 
 
@@ -608,6 +671,9 @@ def inference_complexity(data_json):
             else:
                 response_raw = llm.chat(complexity_prompt_template)
                 raw_team     = str(response_raw.message.content).strip()
+                if raw_team.startswith("```"):
+                    raw_team = _re.sub(r"^```(?:json)?", "", raw_team).strip()
+                    raw_team = _re.sub(r"```$", "", raw_team).strip()
                 try:
                     selected_team = json.loads(raw_team)
                 except Exception:
@@ -620,10 +686,36 @@ def inference_complexity(data_json):
                 unoccupied_empids  = list(df_unoccupied_role['EMP ID'])
                 df_kpi_role        = calculate_kpi_sheet(role, domain)
                 df_kpi_role        = df_kpi_role[df_kpi_role['EmpID'].isin(unoccupied_empids)]
-                df_kpi_role        = df_kpi_role.sort_values(by='KPI', ascending=False).iloc[:count, :]
+                
+                # Determine ideal KPI bucket based on project Team Experience Requirement
+                target_priority = data_json.get("Team Experience", "Medium") # e.g., 'High', 'Medium', 'Low'
+                
+                def get_bucket_match_score(kpi):
+                    """Assign a match score based on how close the KPI is to the target priority bucket."""
+                    if target_priority == 'High':
+                        if kpi > 60: return 2
+                        elif kpi > 30: return 1
+                        else: return 0
+                    elif target_priority == 'Medium':
+                        if 30 < kpi <= 60: return 2
+                        elif kpi > 60: return 1 # Overqualified a bit better than underqualified
+                        else: return 0
+                    else: # Low priority
+                        if kpi <= 30: return 2
+                        elif kpi <= 60: return 1
+                        else: return 0
+                
+                # Apply bucket matching score
+                df_kpi_role['BucketMatch'] = df_kpi_role['KPI'].apply(get_bucket_match_score)
+                
+                # Sort primarily by how well they fit the target bucket, then by KPI descending to get the best of that tier
+                df_kpi_role = df_kpi_role.sort_values(by=['BucketMatch', 'KPI'], ascending=[False, False])
+                
+                df_kpi_role = df_kpi_role.iloc[:count, :]
                 for emp_id_ in list(df_kpi_role['EmpID']):
                     kpi = df_kpi_role[df_kpi_role['EmpID'] == emp_id_]['KPI'].values[0]
-                    selected_employees.append({'Emp ID': emp_id_, 'Role': role, 'KPI': kpi})
+                    emp_name_val = df_kpi_role[df_kpi_role['EmpID'] == emp_id_]['Name'].values[0]
+                    selected_employees.append({'Emp ID': emp_id_, 'Name': emp_name_val, 'Role': role, 'KPI': kpi})
             return selected_team, selected_employees, prediction
         except Exception as e:
             last_error = e

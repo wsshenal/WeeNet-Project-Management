@@ -21,8 +21,7 @@ import MLRecommendations from "../pages/Content/MLRecommendations";
 import MLTeamPrediction from "../pages/Content/MLTeamPrediction";
 
 const RootRedirect = () => {
-  const userLoggedIn = Boolean(localStorage.getItem("token"));
-  return <Navigate to={userLoggedIn ? "/requirement" : "/login"} replace />;
+  return <Navigate to="/requirement" replace />;
 };
 
 const router = createBrowserRouter([

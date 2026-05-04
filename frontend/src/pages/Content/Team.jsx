@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Table, Select, Card, Row, Col, Form, Button, Spin, Tag,
-  Divider, Statistic, Empty, Progress, Alert, Tooltip,
+  Divider, Statistic, Empty, Progress, Alert, Tooltip, Modal,
 } from "antd";
 import {
   TeamOutlined, ProjectOutlined, SearchOutlined, UserOutlined,
@@ -116,8 +116,13 @@ const Team = () => {
 
   const [teamData, setTeamData] = useState([]);
   const [resourceData, setResourceData] = useState([]);
+  const [selectedEmployees, setSelectedEmployees] = useState([]);
   const [analytics, setAnalytics] = useState(null);
   const [workflowStatus, setWorkflowStatus] = useState(null);
+
+  // Modal State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeRole, setActiveRole] = useState(null);
 
   useEffect(() => {
     const getProjects = async () => {
@@ -193,6 +198,7 @@ const Team = () => {
         const results = computeAllocationsAndCosts(rawTeam, selectedProj.team_experience);
         setTeamData(results.enrichedTeam);
         setResourceData(results.resources);
+        setSelectedEmployees(res.data.selected_employees || []);
         setAnalytics(results);
 
         // Update workflow
@@ -227,10 +233,19 @@ const Team = () => {
     },
     {
       title: "Headcount", dataIndex: "count", key: "count", align: "center",
-      render: (count) => (
-        <Tag color={count > 2 ? "purple" : count > 1 ? "blue" : "green"} style={{ fontSize: 14, padding: "4px 12px", borderRadius: 12 }}>
-          {count} {count === 1 ? "member" : "members"}
-        </Tag>
+      render: (count, record) => (
+        <Tooltip title="View assigned members & KPIs">
+          <Tag
+            color={count > 2 ? "purple" : count > 1 ? "blue" : "green"}
+            style={{ fontSize: 14, padding: "4px 12px", borderRadius: 12, cursor: "pointer" }}
+            onClick={() => {
+              setActiveRole(record.role);
+              setIsModalOpen(true);
+            }}
+          >
+            {count} {count === 1 ? "member" : "members"}
+          </Tag>
+        </Tooltip>
       ),
     },
     {
@@ -503,6 +518,41 @@ const Team = () => {
                 </Card>
               </Col>
             </Row>
+
+            {/* Modal for viewing Assigned Employee KPIs */}
+            <Modal
+              title={`Assigned Members: ${activeRole}`}
+              open={isModalOpen}
+              onCancel={() => setIsModalOpen(false)}
+              footer={null}
+              destroyOnClose
+            >
+              <Table
+                dataSource={selectedEmployees.filter(emp => emp.Role === activeRole)}
+                rowKey="Emp ID"
+                pagination={false}
+                size="middle"
+                columns={[
+                  { title: "Employee ID", dataIndex: "Emp ID", key: "Emp ID", width: 120 },
+                  { title: "Name", dataIndex: "Name", key: "Name" },
+                  {
+                    title: "Historical Score (KPI)",
+                    dataIndex: "KPI",
+                    key: "KPI",
+                    render: (kpi) => {
+                      const priorityTag = kpi > 60 ? "High" : kpi > 30 ? "Medium" : "Low";
+                      const priorityColor = priorityTag === "High" ? "green" : priorityTag === "Medium" ? "orange" : "red";
+                      return (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ fontWeight: 600 }}>{Number(kpi).toFixed(2)}</span>
+                          <Tag color={priorityColor}>{priorityTag}</Tag>
+                        </div>
+                      );
+                    }
+                  }
+                ]}
+              />
+            </Modal>
           </>
         ) : (
           <div style={{ padding: "40px 0" }}>
